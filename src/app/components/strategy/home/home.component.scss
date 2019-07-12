@@ -2,12 +2,14 @@
   box-shadow: 0px 0px 5px #ccc;
   padding: 0px 0px 50px 0px;
 }
+
 .innerPageMenuBG ul {
   display: flex;
   margin: 0px;
   padding: 0px;
   margin-left: 20px;
 }
+
 .innerPageMenuBG ul li {
   list-style-type: none;
   float: left;
@@ -17,18 +19,78 @@
   position: relative;
 }
 
-.innerPageMenuBG ul li a {
-  color: #ffffff;
-  text-decoration: none;
-  padding: 15px 5px;
-  margin: 0px 5px;
-  display: inline-block;
-}
+//.innerPageMenuBG ul li a {
+//  color: #ffffff;
+//  text-decoration: none;
+//  padding: 15px 5px;
+//  margin: 0px 5px;
+//  display: inline-block;
+//}
 
 .innerPageMenuBG ul li a img {
   margin-right: 5px;
 }
-.innerPageMenuBG ul li:hover a {
+
+//.innerPageMenuBG ul li:hover a {
+//  background: #ffffff;
+//  color: #000000;
+//  text-decoration: none;
+//  padding: 15px 5px;
+//  margin: 0px 5px;
+//  border-top-left-radius: 5px;
+//  border-top-right-radius: 5px;
+//}
+
+.innerPageMenuBG ul li #subMenus li {
+  margin-top: 4px;
+}
+
+//#subMenus {
+//  display: none;
+//}
+
+//.innerPageMenuBG ul li:hover #subMenus {
+//  position: absolute;
+//  display: -webkit-inline-box;
+//  margin-left: 0px;
+//}
+
+//.innerPageMenuBG ul li:hover #subMenus .active a {
+//  color: #f3476f;
+//}
+
+//.innerPageMenuBG ul li:hover #subMenus li a {
+//  background: none;
+//
+//}
+//
+//.innerPageMenuBG ul li #subMenus li:hover a {
+//  color: #f3476f;
+//}
+
+.innerPageMenuBG ul li #subMenus li {
+  margin-top: 4px;
+}
+
+//.innerPageMenuBG ul li:hover #subMenus {
+//  position: absolute;
+//  display: -webkit-inline-box;
+//  margin-left: 0px;
+//}
+
+//.innerPageMenuBG ul li:hover #subMenus .active a {
+//  color: #f3476f;
+//}
+
+//.innerPageMenuBG ul li:hover #subMenus li a {
+//  background: none;
+//
+//}
+
+//.innerPageMenuBG ul li #subMenus li:hover a {
+//  color: #f3476f;
+//}
+.my-class{
   background: #ffffff;
   color: #000000;
   text-decoration: none;
@@ -36,54 +98,4 @@
   margin: 0px 5px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-}
-
-.innerPageMenuBG ul li #subMenus {
-
-}
-
-.innerPageMenuBG ul li #subMenus li {
-  margin-top: 4px;
-}
-#subMenus {
-  display: none;
-}
-.innerPageMenuBG ul li:hover #subMenus {
-  position: absolute;
-  display: -webkit-inline-box;
-  margin-left: 0px;
-}
-.innerPageMenuBG ul li:hover #subMenus .active a {
-  color: #f3476f;
-}
-.innerPageMenuBG ul li:hover #subMenus li a {
-  background: none;
-
-}
-
-.innerPageMenuBG ul li #subMenus li:hover a {
-  color: #f3476f;
-}
-.innerPageMenuBG ul li #subMenus li {
-  margin-top: 4px;
-}
-
-#subMenus {
-  display: none;
-}
-.innerPageMenuBG ul li:hover #subMenus {
-  position: absolute;
-  display: -webkit-inline-box;
-  margin-left: 0px;
-}
-.innerPageMenuBG ul li:hover #subMenus .active a {
-  color: #f3476f;
-}
-.innerPageMenuBG ul li:hover #subMenus li a {
-  background: none;
-
-}
-
-.innerPageMenuBG ul li #subMenus li:hover a {
-  color: #f3476f;
 }

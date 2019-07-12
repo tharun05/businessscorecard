@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
+  clicked: boolean = false;
   constructor() { }
 
   ngOnInit() {
   }
-
+  Clicked() {
+    this.clicked = true;
+  }
 }

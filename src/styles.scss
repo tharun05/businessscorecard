@@ -254,51 +254,47 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
   margin-right: 5px;
 }
 
-.innerPageMenuBG ul li:hover a {
-  background: #ffffff;
-  color: #000000;
-  text-decoration: none;
-  padding: 15px 5px;
-  margin: 0px 5px;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-}
-
-.innerPageMenuBG ul li #subMenus {
-
-}
+//.innerPageMenuBG ul li:hover a {
+//  background: #ffffff;
+//  color: #000000;
+//  text-decoration: none;
+//  padding: 15px 5px;
+//  margin: 0px 5px;
+//  border-top-left-radius: 5px;
+//  border-top-right-radius: 5px;
+//}
 
 .innerPageMenuBG ul li #subMenus li {
   margin-top: 4px;
 }
 
-#subMenus {
-  display: none;
-}
+//#subMenus {
+//  display: none;
+//}
 
-.innerPageMenuBG ul li:hover #subMenus {
-  position: absolute;
-  display: -webkit-inline-box;
-  margin-left: 0px;
-}
+//.innerPageMenuBG ul li:hover #subMenus {
+//  position: absolute;
+//  display: -webkit-inline-box;
+//  margin-left: 0px;
+//}
 
 .innerPageBorder {
   box-shadow: 0px 0px 5px #ccc;
   padding: 0px 0px 50px 0px;
 }
 
-.innerPageMenuBG ul li:hover #subMenus .active a {
-  color: #f3476f;
-}
+//.innerPageMenuBG ul li:hover #subMenus .active a {
+//  color: #f3476f;
+//}
 
-.innerPageMenuBG ul li:hover #subMenus li a {
-  background: none;
+//.innerPageMenuBG ul li:hover #subMenus li a {
+//  background: none;
+//
+//}
 
-}
-
-.innerPageMenuBG ul li #subMenus li:hover a {
-  color: #f3476f;
-}
+//.innerPageMenuBG ul li #subMenus li:hover a {
+//  color: #f3476f;
+//}
 
 .boxs_BG {
   background-color: #ffffff;

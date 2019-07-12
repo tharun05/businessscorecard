@@ -10,22 +10,25 @@ import {CorporateStructureComponent} from '../components/strategy/corporate-stru
 import {ValueGapCloserComponent} from '../components/strategy/value-gap-closer/value-gap-closer.component';
 import {ValueGapComponent} from '../components/strategy/value-gap/value-gap.component';
 import {OverviewComponent} from '../components/strategy/overview/overview.component';
+import {TestComponent} from '../components/strategyMap/test/test.component';
 import {HttpService} from '../shared/http.service';
 import {AppService} from '../shared/app.service';
 
 const routes: Routes = [
   {
-    path: 'strategyHome', component: HomeComponent,
+    path: '', component: HomeComponent,
     children: [
-      {path: '', component: OverviewComponent},
+      {path: '', redirectTo: 'overview', pathMatch: 'full'},
       {path: 'overview', component: OverviewComponent},
       {path: 'strategyAnalysis', component: StrategyAnalysisComponent},
       {path: 'strategyProjection', component: StrategyProjectionComponent},
       {path: 'corporateStructure', component: CorporateStructureComponent},
       {path: 'valuegapCloser', component: ValueGapCloserComponent},
       {path: 'valuegap', component: ValueGapComponent},
+
     ]
-  },
+  }
+
 ];
 
 @NgModule({
@@ -36,7 +39,8 @@ const routes: Routes = [
     StrategyProjectionComponent,
     CorporateStructureComponent,
     ValueGapCloserComponent,
-    ValueGapComponent
+    ValueGapComponent,
+    TestComponent
   ],
   imports: [
     CommonModule,
