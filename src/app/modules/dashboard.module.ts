@@ -4,17 +4,17 @@ import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
-import {LoginComponent} from '../components/auth/login/login.component';
+import {DashboardComponent} from '../components/dashboard/dashboard.component';
 import {AppService} from '../shared/app.service';
 
 const routes: Routes = [
-  {path: '', component: LoginComponent},
-  {path: 'login', component: LoginComponent},
+  {path: '', component: DashboardComponent},
+  {path: 'dashboard', component: DashboardComponent}
 ];
 
 @NgModule({
   declarations: [
-    LoginComponent,
+    DashboardComponent,
   ],
   imports: [
     CommonModule,
@@ -25,5 +25,5 @@ const routes: Routes = [
   ],
   providers: [AppService],
 })
-export class AuthModule {
+export class DashboardModule {
 }

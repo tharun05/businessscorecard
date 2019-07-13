@@ -5,7 +5,8 @@ const routes: Routes = [
   {path: '', loadChildren: './modules/auth.module#AuthModule'},
   {path: 'auth', loadChildren: './modules/auth.module#AuthModule'},
   {path: 'strategy', loadChildren: './modules/strategy.module#StrategyModule'},
-  {path: 'strategyMap', loadChildren: './modules/strategyMap.module#StrategyMapModule'},
+  {path: 'dashboard', loadChildren: './modules/dashboard.module#DashboardModule'},
+  // {path: 'strategyMap', loadChildren: './modules/strategyMap.module#StrategyMapModule'},
 ];
 
 @NgModule({

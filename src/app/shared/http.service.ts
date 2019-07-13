@@ -43,6 +43,4 @@ export class HttpService {
     url = this.host + url;
     return this.http.post(url, _formData);
   }
-  
-
 }
