@@ -1,0 +1,189 @@
+<div class="container-fluid gryBG">
+  <form [formGroup]="corporateStructureForm">
+    <div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="boxs_BG mt-5">
+            <div class="titleBG"> Organization Structure</div>
+            <div class="row mt-4">
+              <div class="col-md-6 pr-0">
+                <div class="form-group row m-0">
+                  <label for="" class="col-sm-5 col-form-label col-form-label-sm">Organization Unit Code <span
+                    class="red">*</span></label>
+                  <div class="col-sm-7 input_i_icon">
+                    <input type="text" class="form-control col-form-label-sm" placeholder="Organization Unit Code"
+                           formControlName="code" name="code">
+                    <img src="../../../assets/images/icons/input_i_icon.png" width="12" height="12"/>
+                  </div>
+                </div>
+                <div class="form-group row m-0">
+                  <label for="" class="col-sm-5 col-form-label col-form-label-sm">Parent Organization Unit Code </label>
+                  <div class="col-sm-7">
+                    <input type="text" class="form-control col-form-label-sm"
+                           placeholder="Parent Organization Unit Code"
+                           formControlName="parentCode" name="parentCode">
+                  </div>
+                </div>
+                <div class="form-group row m-0">
+                  <label for="" class="col-sm-5 col-form-label col-form-label-sm">Name of the Manager </label>
+                  <div class="col-sm-7">
+                    <input type="text" class="form-control col-form-label-sm" placeholder="Name of the Manager "
+                           formControlName="managerName" name="managerName">
+                  </div>
+                </div>
+                <div class="form-group row m-0">
+                  <label for="" class="col-sm-5 col-form-label col-form-label-sm">No of Employees </label>
+                  <div class="col-sm-7">
+                    <input type="text" class="form-control col-form-label-sm" id="" placeholder="No of Employees "
+                           formControlName="employeeCount" name="employeeCount">
+                  </div>
+                </div>
+                <div class="form-group row m-0">
+                  <label for="" class="col-sm-5 col-form-label col-form-label-sm">Logo</label>
+                  <div class="col-sm-7">
+                    <input type="text" class="form-control col-form-label-sm" id="" placeholder="Logo"
+                           formControlName="logoUrl" name="logoUrl">
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 pl-0">
+                <div class="form-group row m-0">
+                  <label for="" class="col-sm-5 col-form-label col-form-label-sm">Organization Unit Name <span
+                    class="red">*</span></label>
+                  <div class="col-sm-7">
+                    <input type="text" class="form-control col-form-label-sm" id="" placeholder="Organization Unit Name"
+                           formControlName="parentName" name="parentName">
+                  </div>
+                </div>
+                <div class="form-group row m-0">
+                  <label for="" class="col-sm-5 col-form-label col-form-label-sm">Type of Unit <span
+                    class="red">*</span></label>
+                  <div class="col-sm-7 input_i_icon">
+                    <input type="text" class="form-control col-form-label-sm" id="" placeholder="Type of Unit"
+                           formControlName="type" name="type">
+                    <img src="../../../assets/images/icons/input_i_icon.png" width="12" height="12"/>
+                  </div>
+                </div>
+                <div class="form-group row m-0">
+                  <label for="" class="col-sm-5 col-form-label col-form-label-sm">Location <span
+                    class="red">*</span></label>
+                  <div class="col-sm-7">
+                    <input type="text" class="form-control col-form-label-sm" id="" placeholder="Location"
+                           formControlName="location" name="location">
+                  </div>
+                </div>
+
+                <div class="form-group row m-0">
+                  <label for="" class="col-sm-5 col-form-label col-form-label-sm">Head of Organization <span
+                    class="red">*</span></label>
+                  <div class="col-sm-7">
+                    <input type="text" class="form-control col-form-label-sm" id="" placeholder="Head of Organization"
+                           formControlName="head" name="head">
+                  </div>
+                </div>
+                <div class="form-group row m-0">
+                  <label for="" class="col-sm-4 col-form-label col-form-label-sm"> </label>
+                  <div class="col-sm-8">
+                    <button type="button" class="btn btn-cancel"> Cancel</button>
+                    <button type="button" class="btn btn-save" (click)="orgStructure()"
+                            [disabled]="corporateStructureForm.invalid"> Save
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="col-md-6">
+          <div class="boxs_BG mt-5">
+            <div class="titleBG"> Mission</div>
+            <span>
+          <i class="fa fa-save pull-right" style="padding: 10px;cursor: pointer" (click)="saveMissionText()"></i>
+          <i class="fa fa-edit pull-right" style="padding: 10px;cursor: pointer" (click)="editMissionText()"></i>
+        </span>
+            <div class="mt-4">
+
+              <div class="col-md-12 mvv_textarea mt-1">
+            <textarea placeholder="Enter your mission..." formControlName="missionStmt" name="missionStmt"
+                      [readOnly]="!editMission" name="mission"
+                      [ngStyle]="{'background-color':!editMission === false ? 'white' : ''}"></textarea>
+              </div>
+              <div class="col-md-12 mvv_textarea mt-1">
+                <textarea placeholder="Enter your mission..."></textarea>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-md-6">
+        <div class="boxs_BG">
+          <div class="titleBG"> Vission</div>
+          <span>
+          <i class="fa fa-save pull-right" style="padding: 10px;cursor: pointer" (click)="saveVisionText()"></i>
+          <i class="fa fa-edit pull-right" style="padding: 10px;cursor: pointer" (click)="editVisionText()"></i>
+        </span>
+          <div class="mt-4">
+            <div class="col-md-12 mvv_textarea mt-1">
+           <textarea placeholder="Enter your vision..." formControlName="visionStmt" name="visionStmt"
+                     [readOnly]="!editVision" name="vision"
+                     [ngStyle]="{'background-color':!editVision === false ? 'white' : ''}"></textarea>
+
+            </div>
+            <div class="col-md-12 mvv_textarea mt-1">
+              <textarea placeholder="Enter your vission..."></textarea>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="boxs_BG">
+          <div class="titleBG"> Values</div>
+          <span>
+          <i class="fa fa-save pull-right" style="padding: 10px;cursor: pointer" (click)="saveValueText()"></i>
+          <i class="fa fa-edit pull-right" style="padding: 10px;cursor: pointer" (click)="editValueText()"></i>
+        </span>
+          <div class="mt-4">
+            <div class="col-md-12 mvv_textarea mt-1">
+              <textarea placeholder="Enter your value..." formControlName="valuesStmt" name="valuesStmt"
+                        [readOnly]="!editValue" name="value"
+                        [ngStyle]="{'background-color':!editValue === false ? 'white' : ''}"></textarea>
+
+            </div>
+            <div class="col-md-12 mvv_textarea mt-1">
+              <textarea placeholder="Enter your values..."></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="row summary_View">
+
+      <div class="col-md-6">
+        <div class="float-left">
+          <button class="btn btn-pink" (click)="routeToSummaryView()"><i class="fa fa-eye"></i> Summary View</button>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="float-right">
+          <button type="button" class="btn btn-cancel"> Cancel</button>
+          <button type="button" class="btn btn-save" (click)="submitOrganization()"
+                  [disabled]="corporateStructureForm.invalid"> Save
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+

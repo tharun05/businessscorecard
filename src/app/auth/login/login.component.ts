@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {AppService} from '../../../shared/app.service';
+import {Component, OnInit} from '@angular/core';
+import {AppService} from '../../shared/app.service';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +8,8 @@ import {AppService} from '../../../shared/app.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private appService: AppService) { }
+  constructor(private appService: AppService) {
+  }
 
   ngOnInit() {
   }
