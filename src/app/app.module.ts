@@ -15,6 +15,10 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {StrategyPreviewComponent} from './strategy/strategy-preview/strategy-preview.component';
 import {StrategyComponent} from './strategy/strategy.component';
+import {ValueGapComponent} from './strategy/value-gap/value-gap.component';
+import {ValueGapCloserComponent} from './strategy/value-gap-closer/value-gap-closer.component';
+import {EmitterService} from './shared/emitter.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +30,10 @@ import {StrategyComponent} from './strategy/strategy.component';
     CorporateStructureComponent,
     DashboardComponent,
     StrategyPreviewComponent,
-    StrategyComponent
+    StrategyComponent,
+    ValueGapComponent,
+    ValueGapCloserComponent
+
   ],
   imports: [
     BrowserModule,
@@ -34,7 +41,7 @@ import {StrategyComponent} from './strategy/strategy.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [WINDOW_PROVIDERS, AppService],
+  providers: [WINDOW_PROVIDERS, AppService, EmitterService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

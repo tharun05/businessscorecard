@@ -6,6 +6,8 @@ import {OverviewComponent} from './strategy/overview/overview.component';
 import {CorporateStructureComponent} from './strategy/corporate-structure/corporate-structure.component';
 import {StrategyPreviewComponent} from './strategy/strategy-preview/strategy-preview.component';
 import {StrategyComponent} from './strategy/strategy.component';
+import {ValueGapComponent} from './strategy/value-gap/value-gap.component';
+import {ValueGapCloserComponent} from './strategy/value-gap-closer/value-gap-closer.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -17,6 +19,8 @@ const routes: Routes = [
       {path: 'overview', component: OverviewComponent},
       {path: 'corporateStructure', component: CorporateStructureComponent},
       {path: 'strategyPreview', component: StrategyPreviewComponent},
+      {path: 'valueGap', component: ValueGapComponent},
+      {path: 'valueGapCloser', component: ValueGapCloserComponent}
     ]
   },
 

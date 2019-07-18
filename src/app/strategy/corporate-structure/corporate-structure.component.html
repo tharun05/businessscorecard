@@ -51,7 +51,7 @@
                   <label for="" class="col-sm-5 col-form-label col-form-label-sm">Organization Unit Name <span
                     class="red">*</span></label>
                   <div class="col-sm-7">
-                    <input type="text" class="form-control col-form-label-sm" id="" placeholder="Organization Unit Name"
+                    <input type="text" class="form-control col-form-label-sm" placeholder="Organization Unit Name"
                            formControlName="parentName" name="parentName">
                   </div>
                 </div>
@@ -59,8 +59,12 @@
                   <label for="" class="col-sm-5 col-form-label col-form-label-sm">Type of Unit <span
                     class="red">*</span></label>
                   <div class="col-sm-7 input_i_icon">
-                    <input type="text" class="form-control col-form-label-sm" id="" placeholder="Type of Unit"
-                           formControlName="type" name="type">
+                    <select placeholder="Transaction Types" formControlName="type" name="type"
+                            class="form-control col-form-label-sm">
+                      <option *ngFor="let code of unitCodes">
+                        {{ code.value}}
+                      </option>
+                    </select>
                     <img src="../../../assets/images/icons/input_i_icon.png" width="12" height="12"/>
                   </div>
                 </div>
@@ -68,7 +72,7 @@
                   <label for="" class="col-sm-5 col-form-label col-form-label-sm">Location <span
                     class="red">*</span></label>
                   <div class="col-sm-7">
-                    <input type="text" class="form-control col-form-label-sm" id="" placeholder="Location"
+                    <input type="text" class="form-control col-form-label-sm" placeholder="Location"
                            formControlName="location" name="location">
                   </div>
                 </div>
@@ -84,7 +88,7 @@
                 <div class="form-group row m-0">
                   <label for="" class="col-sm-4 col-form-label col-form-label-sm"> </label>
                   <div class="col-sm-8">
-                    <button type="button" class="btn btn-cancel"> Cancel</button>
+                    <button type="button" class="btn btn-cancel" (click)="clearFields()">Clear</button>
                     <button type="button" class="btn btn-save" (click)="orgStructure()"
                             [disabled]="corporateStructureForm.invalid"> Save
                     </button>
@@ -100,68 +104,79 @@
         <div class="col-md-6">
           <div class="boxs_BG mt-5">
             <div class="titleBG"> Mission</div>
-            <span>
-          <i class="fa fa-save pull-right" style="padding: 10px;cursor: pointer" (click)="saveMissionText()"></i>
-          <i class="fa fa-edit pull-right" style="padding: 10px;cursor: pointer" (click)="editMissionText()"></i>
-        </span>
+            <div style="padding: 10px;">
+              <i class="fa fa-save pull-right" style="padding: 10px;cursor: pointer"
+                 (click)="saveMissionText()"></i>
+              <i class="fa fa-edit pull-right" style="padding: 10px;cursor: pointer"
+                 (click)="editMissionText()"></i>
+            </div>
             <div class="mt-4">
-
               <div class="col-md-12 mvv_textarea mt-1">
-            <textarea placeholder="Enter your mission..." formControlName="missionStmt" name="missionStmt"
-                      [readOnly]="!editMission" name="mission"
-                      [ngStyle]="{'background-color':!editMission === false ? 'white' : ''}"></textarea>
+                <div [ngClass]="{ 'readonlyControl1': editMission === false }" *ngIf="!editMission">
+                  {{missiontxt}}
+                </div>
+                <textarea placeholder="Enter your mission..." *ngIf="editMission"
+                          name="mission" formControlName="missionStmt"
+                          name="missionStmt"
+                          [ngClass]="{'readonlyControl': editMission === true}"></textarea>
               </div>
               <div class="col-md-12 mvv_textarea mt-1">
-                <textarea placeholder="Enter your mission..."></textarea>
+                <textarea placeholder="Enter your mission..." formControlName="missionStmt"
+                          name="missionStmt"></textarea>
               </div>
             </div>
-
           </div>
         </div>
-
       </div>
     </div>
-
     <div class="row">
-
       <div class="col-md-6">
         <div class="boxs_BG">
           <div class="titleBG"> Vission</div>
-          <span>
-          <i class="fa fa-save pull-right" style="padding: 10px;cursor: pointer" (click)="saveVisionText()"></i>
-          <i class="fa fa-edit pull-right" style="padding: 10px;cursor: pointer" (click)="editVisionText()"></i>
-        </span>
+          <div style="padding: 10px;">
+            <i class="fa fa-save pull-right" style="padding: 10px;cursor: pointer"
+               (click)="saveVisionText()"></i>
+            <i class="fa fa-edit pull-right" style="padding: 10px;cursor: pointer"
+               (click)="editVisionText()"></i>
+          </div>
           <div class="mt-4">
             <div class="col-md-12 mvv_textarea mt-1">
-           <textarea placeholder="Enter your vision..." formControlName="visionStmt" name="visionStmt"
-                     [readOnly]="!editVision" name="vision"
-                     [ngStyle]="{'background-color':!editVision === false ? 'white' : ''}"></textarea>
-
+              <div [ngClass]="{ 'readonlyControl1': editMission === false }" *ngIf="!editVision">
+                {{visiontxt}}
+              </div>
+              <textarea placeholder="Enter your mission..." *ngIf="editVision"
+                        name="vision" formControlName="visionStmt"
+                        name="visionStmt"
+                        [ngClass]="{'readonlyControl': editVision === true}"></textarea>
             </div>
             <div class="col-md-12 mvv_textarea mt-1">
-              <textarea placeholder="Enter your vission..."></textarea>
+              <textarea placeholder="Enter your vission..." formControlName="visionStmt" name="visionStmt"></textarea>
             </div>
           </div>
-
         </div>
       </div>
 
       <div class="col-md-6">
         <div class="boxs_BG">
           <div class="titleBG"> Values</div>
-          <span>
-          <i class="fa fa-save pull-right" style="padding: 10px;cursor: pointer" (click)="saveValueText()"></i>
-          <i class="fa fa-edit pull-right" style="padding: 10px;cursor: pointer" (click)="editValueText()"></i>
-        </span>
+          <div style="padding: 10px;">
+            <i class="fa fa-save pull-right" style="padding: 10px;cursor: pointer"
+               (click)="saveValueText()"></i>
+            <i class="fa fa-edit pull-right" style="padding: 10px;cursor: pointer"
+               (click)="editValueText()"></i>
+          </div>
           <div class="mt-4">
             <div class="col-md-12 mvv_textarea mt-1">
-              <textarea placeholder="Enter your value..." formControlName="valuesStmt" name="valuesStmt"
-                        [readOnly]="!editValue" name="value"
-                        [ngStyle]="{'background-color':!editValue === false ? 'white' : ''}"></textarea>
-
+              <div [ngClass]="{ 'readonlyControl1': editValue === false }" *ngIf="!editValue">
+                {{valuetxt}}
+              </div>
+              <textarea placeholder="Enter your mission..." *ngIf="editValue"
+                        name="vision" formControlName="valuesStmt"
+                        name="valuesStmt"
+                        [ngClass]="{'readonlyControl': editValue === true}"></textarea>
             </div>
             <div class="col-md-12 mvv_textarea mt-1">
-              <textarea placeholder="Enter your values..."></textarea>
+              <textarea placeholder="Enter your values..." formControlName="valuesStmt" name="valuesStmt"></textarea>
             </div>
           </div>
         </div>
@@ -177,7 +192,7 @@
       </div>
       <div class="col-md-6">
         <div class="float-right">
-          <button type="button" class="btn btn-cancel"> Cancel</button>
+          <button type="button" class="btn btn-cancel" (click)="clearFields()"> Cancel</button>
           <button type="button" class="btn btn-save" (click)="submitOrganization()"
                   [disabled]="corporateStructureForm.invalid"> Save
           </button>

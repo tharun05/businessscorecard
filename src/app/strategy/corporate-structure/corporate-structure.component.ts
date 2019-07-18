@@ -15,7 +15,17 @@ export class CorporateStructureComponent implements OnInit {
   editMission = false;
   editVision = false;
   editValue = false;
+  missiontxt: any;
+  visiontxt: any;
+  valuetxt: any;
   corporateStructure: CorporateStructure;
+  unitCodes = [
+    {name: 'Group Company', value: 'Group Company'},
+    {name: 'Corporate Unit', value: 'Corporate Unit'},
+    {name: 'Corporate Department', value: 'Corporate Department'},
+    {name: 'Subsidiary', value: 'Subsidiary'},
+    {name: 'Subsidiary Department', value: 'Subsidiary Department'}
+  ];
 
   constructor(private formBuilder: FormBuilder,
               private appService: AppService) {
@@ -25,27 +35,32 @@ export class CorporateStructureComponent implements OnInit {
   corporateStructureForm = this.formBuilder.group({
     code: ['', [Validators.required]],
     parentCode: ['', [Validators.required]],
-    managerName: ['', [Validators.required]],
-    employeeCount: ['', [Validators.required]],
-    logoUrl: ['', [Validators.required]],
+    managerName: ['', []],
+    employeeCount: ['', []],
+    logoUrl: ['', []],
     parentName: ['', [Validators.required]],
-    type: ['', [Validators.required]],
-    location: ['', [Validators.required]],
-    head: ['', [Validators.required]],
-    missionStmt: ['', [Validators.required]],
-    visionStmt: ['', [Validators.required]],
-    valuesStmt: ['', [Validators.required]]
+    type: ['', []],
+    location: ['', []],
+    head: ['', []],
+    missionStmt: ['Lorem ipsum dolor sit amet consectetur adipiscing elit. Nunc semper massa elit, et facilisis turpis facilisis vel.', []],
+    visionStmt: ['Lorem ipsum dolor sit amet consectetur adipiscing elit. Nunc semper massa elit, et facilisis turpis facilisis vel.', []],
+    valuesStmt: ['Lorem ipsum dolor sit amet consectetur adipiscing elit. Nunc semper massa elit, et facilisis turpis facilisis vel.', []]
   });
 
   ngOnInit() {
+    this.missiontxt = this.corporateStructureForm.controls.missionStmt.value;
+    this.visiontxt = this.corporateStructureForm.controls.visionStmt.value;
+    this.valuetxt = this.corporateStructureForm.controls.valuesStmt.value;
   }
 
   editMissionText() {
     this.editMission = true;
+
   }
 
   saveMissionText() {
     this.editMission = false;
+    this.missiontxt = this.corporateStructureForm.controls.missionStmt.value;
   }
 
   editVisionText() {
@@ -54,6 +69,7 @@ export class CorporateStructureComponent implements OnInit {
 
   saveVisionText() {
     this.editVision = false;
+    this.visiontxt = this.corporateStructureForm.controls.visionStmt.value;
   }
 
   editValueText() {
@@ -62,6 +78,7 @@ export class CorporateStructureComponent implements OnInit {
 
   saveValueText() {
     this.editValue = false;
+    this.valuetxt = this.corporateStructureForm.controls.valuesStmt.value;
   }
 
   submitOrganization() {
@@ -74,6 +91,10 @@ export class CorporateStructureComponent implements OnInit {
 
   routeToSummaryView() {
     console.log('ds');
-    this.appService.navigate('/strategyPreview', []);
+    this.appService.navigate('/strategy/strategyPreview', []);
+  }
+
+  clearFields() {
+    this.corporateStructureForm.reset();
   }
 }

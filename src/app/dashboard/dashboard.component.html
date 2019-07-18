@@ -62,59 +62,10 @@
 
       <div class="col-md-12 inSideBG">
         <div class="row dashboard_menus m-0">
-
-          <div id="dashMenus" class="col-xl-1 col-lg-3 col-md-2 col-sm-3 run-animation">
-            <a [routerLink]="['/strategy/overview']">
+          <div id="dashMenus" class="col-xl-1 col-lg-3 col-md-2 col-sm-3 run-animation" *ngFor="let item of strategyCards">
+            <a [routerLink]="[item.link]">
               <img src="../../assets/images/icons/strategy.png" width="40" height="35"/>
-              <p>strategy</p>
-            </a>
-          </div>
-          <div id="dashMenus" class="col-xl-1 col-lg-3 col-md-2 col-sm-3 run-animation">
-            <a>
-              <img src="../../assets/images/icons/strategy_map.png" width="27" height="40"/>
-              <p>strategy map</p>
-            </a>
-          </div>
-          <div id="dashMenus" class="col-xl-1 col-lg-3 col-md-2 col-sm-3 run-animation">
-            <a>
-              <img src="../../assets/images/icons/bsc.png" width="39" height="39"/>
-              <p>bsc</p>
-            </a>
-          </div>
-          <div id="dashMenus" class="col-xl-1 col-lg-3 col-md-2 col-sm-3 run-animation">
-            <a>
-              <img src="../../assets/images/icons/Alignment.png" width="33" height="33"/>
-              <p>Alignment</p>
-            </a>
-          </div>
-          <div id="dashMenus" class="col-xl-1 col-lg-3 col-md-2 col-sm-3 run-animation">
-            <a>
-              <img src="../../assets/images/icons/initiatives.png" width="45" height="31"/>
-              <p>initiatives</p>
-            </a>
-          </div>
-          <div id="dashMenus" class="col-xl-1 col-lg-3 col-md-2 col-sm-3 run-animation">
-            <a>
-              <img src="../../assets/images/icons/Action_Items.png" width="36" height="36"/>
-              <p>Action Items</p>
-            </a>
-          </div>
-          <div id="dashMenus" class="col-xl-1 col-lg-3 col-md-2 col-sm-3 run-animation">
-            <a>
-              <img src="../../assets/images/icons/Startegy_Reviews.png" width="40" height="40"/>
-              <p>Startegy Reviews</p>
-            </a>
-          </div>
-          <div id="dashMenus" class="col-xl-1 col-lg-3 col-md-2 col-sm-3 run-animation">
-            <a>
-              <img src="../../../assets/images/icon/strategy_Planning.png" width="40" height="40"/>
-              <p>Strategy Planning</p>
-            </a>
-          </div>
-          <div id="dashMenus" class="col-xl-1 col-lg-3 col-md-2 col-sm-3 run-animation">
-            <a>
-              <img src="../../assets/images/icons/Industry_KPIS.png" width="47" height="32"/>
-              <p>Industry KPIS</p>
+              <p>{{item.name}}</p>
             </a>
           </div>
         </div>
@@ -165,23 +116,8 @@
       <div class="footerBG">
         <p class="float-left mt-2 mr-4">Quick links :</p>
         <div class="row">
-          <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 quickLinks">
-            <a>Objective Story</a>
-          </div>
-          <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 quickLinks">
-            <a>Theme Story</a>
-          </div>
-          <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 quickLinks">
-            <a>Initiative Status</a>
-          </div>
-          <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 quickLinks">
-            <a>Dashboards</a>
-          </div>
-          <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 quickLinks">
-            <a>Action items</a>
-          </div>
-          <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 quickLinks">
-            <a>Progress reports</a>
+          <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 quickLinks cursor-pointer" *ngFor="let link of footerLinks">
+            <a>{{link.name}}</a>
           </div>
         </div>
       </div>
