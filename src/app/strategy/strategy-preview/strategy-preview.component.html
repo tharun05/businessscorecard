@@ -116,15 +116,15 @@
 
             <div class="row">
               <div class="col-md-6">Organization Unit Code:</div>
-              <div class="col-md-6 gCompRightList">G100</div>
+              <div class="col-md-6 gCompRightList">{{organizationData.code}}</div>
             </div>
             <div class="row">
               <div class="col-md-6">Organization Unit Name:</div>
-              <div class="col-md-6 gCompRightList">Group Name</div>
+              <div class="col-md-6 gCompRightList">{{organizationData.name}}</div>
             </div>
             <div class="row">
               <div class="col-md-6">Parnet Organization Unit Name:</div>
-              <div class="col-md-6 gCompRightList">Parent Group Name</div>
+              <div class="col-md-6 gCompRightList">{{organizationData.parentName}}</div>
             </div>
             <div class="row">
               <div class="col-md-6">Type of Unit:</div>
@@ -132,15 +132,15 @@
             </div>
             <div class="row">
               <div class="col-md-6">Head of Organization:</div>
-              <div class="col-md-6 gCompRightList">CEO</div>
+              <div class="col-md-6 gCompRightList">{{organizationData.head}}</div>
             </div>
             <div class="row">
               <div class="col-md-6">Number of Employees:</div>
-              <div class="col-md-6 gCompRightList">5000 +</div>
+              <div class="col-md-6 gCompRightList">{{organizationData.employeeCount}}</div>
             </div>
             <div class="row">
               <div class="col-md-6">Location of Organization Unit:</div>
-              <div class="col-md-6 gCompRightList">Ananthapur</div>
+              <div class="col-md-6 gCompRightList">{{organizationData.location}}</div>
             </div>
             <div class="row">
               <div class="col-md-6">Name of the Manager:</div>
@@ -171,16 +171,13 @@
             <!-- Tab panes -->
             <div class="tab-border">
               <div class="tab-pane active show" id="home" role="tabpanel" *ngIf="isStepOne">
-                <p>The Vision statetment and mission statement are often confused, and many companies use the terms
-                  interchangeably. However, they each have a different purpose</p>
+                <p>{{organizationData.missionStmt}}</p>
               </div>
               <div class="tab-pane" id="profile" role="tabpanel" *ngIf="isStepTwo">
-                <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining
-                  essentially unchanged. It was popularised in the 1960s with the release </p>
+                <p>{{organizationData.valuesStmt}} </p>
               </div>
               <div class="tab-pane" id="messages" role="tabpanel" *ngIf="isStepThree">
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                  industry's standard dummy text ever since the 1500s. </p>
+                <p>{{organizationData.visionStmt}} </p>
               </div>
 
             </div>

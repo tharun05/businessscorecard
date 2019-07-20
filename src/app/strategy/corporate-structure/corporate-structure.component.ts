@@ -4,7 +4,7 @@ import {FormBuilder, Validators} from '@angular/forms';
 import {AppService} from '../../shared/app.service';
 import {StrategyService} from '../strategy.service';
 import {ToastrService} from 'ngx-toastr';
-
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-corporate-structure',
@@ -21,6 +21,8 @@ export class CorporateStructureComponent implements OnInit {
   missiontxt: any;
   visiontxt: any;
   valuetxt: any;
+  updateCounter = 0;
+  orgId: any;
   corporateStructure: CorporateStructure;
   unitCodes = [
     {name: 'Group Company', value: 'Group Company'},
@@ -30,7 +32,7 @@ export class CorporateStructureComponent implements OnInit {
     {name: 'Subsidiary Department', value: 'Subsidiary Department'}
   ];
 
-  constructor(private formBuilder: FormBuilder, private strategyService: StrategyService, private toastrService: ToastrService,
+  constructor(private formBuilder: FormBuilder, private strategyService: StrategyService, private toastrService: ToastrService, private router: Router,
               private appService: AppService) {
     this.corporateStructure = new CorporateStructure();
   }
@@ -87,8 +89,16 @@ export class CorporateStructureComponent implements OnInit {
   submitOrganization() {
 
     this.strategyService.saveOrganization(this.corporateStructureForm.value).subscribe((orgData: any) => {
+      this.updateCounter = this.updateCounter + 1;
+      this.orgId = orgData.id;
       this.toastrService.success('Saved Successfully');
-      console.log(orgData);
+      if (!!orgData && !!orgData.id && this.updateCounter > 1) {
+        this.orgId = orgData.id;
+        this.strategyService.UpdateOrganization(this.corporateStructureForm.value, orgData.id).subscribe((updatedOrg) => {
+          this.toastrService.success('Saved Successfully');
+          console.log('updated successfully');
+        });
+      }
     });
   }
 
@@ -97,8 +107,8 @@ export class CorporateStructureComponent implements OnInit {
   }
 
   routeToSummaryView() {
-    console.log('ds');
-    this.appService.navigate('/strategy/strategyPreview', []);
+    console.log(this.orgId);
+    this.router.navigate(['/strategy/strategyPreview'], {queryParams: {id: this.orgId}});
   }
 
   clearFields() {

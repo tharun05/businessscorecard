@@ -11,35 +11,35 @@ export class HttpService {
   constructor(private http: HttpClient, private apexService: ApexService) {
   }
 
-  get(url: string, data: any, loader?: boolean) {
-    // this.apexService.showLoader(loader ? true : false);
+  get(url: string, data: any) {
     const paramString = Util.GetParamString(data ? data.data : {});
     url = this.host + url + paramString;
     return this.http.get(url);
   }
 
-  post(url: string, data: any, loader?: boolean) {
-    // this.apexService.showLoader(loader ? true : false);
+  getById(url: string) {
+    url = this.host + url;
+    return this.http.get(url);
+  }
+
+  post(url: string, data: any) {
     url = this.host + url;
     return this.http.post(url, data);
   }
 
-  put(url: string, data: any, loader?: boolean) {
-    // this.apexService.showLoader(loader ? true : false);
+  put(url: string, data: any) {
     url = this.host + url;
     console.log(data);
     return this.http.put(url, data);
   }
 
-  delete(url: string, data: any, loader?: boolean) {
-    // this.apexService.showLoader(loader ? true : false);
+  delete(url: string, data: any) {
     const paramString = Util.GetParamString(data ? data : {});
     url = this.host + url + paramString;
     return this.http.delete(url);
   }
 
-  formData(url: string, _formData: FormData, loader?: boolean) {
-    // this.apexService.showLoader(loader ? true : false);
+  formData(url: string, _formData: FormData) {
     url = this.host + url;
     return this.http.post(url, _formData);
   }

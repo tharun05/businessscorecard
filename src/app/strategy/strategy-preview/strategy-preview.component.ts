@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
+import {StrategyService} from '../strategy.service';
 
 @Component({
   selector: 'app-strategy-preview',
@@ -10,6 +12,7 @@ export class StrategyPreviewComponent implements OnInit {
   isStepTwo: boolean;
   isStepThree: boolean;
   selectedIndex = true;
+  organizationData: any;
   missionVisionValues = [{
     slug: 'Mission',
     title: 'Mission',
@@ -26,12 +29,26 @@ export class StrategyPreviewComponent implements OnInit {
     content: 'Dynamic content 2',
     tab: 'tabThree'
   }];
+  orgId: any;
 
-  constructor() {
+  constructor(private router: Router,
+              private activatedRoute: ActivatedRoute,
+              private strategyService: StrategyService) {
     this.showTab('tabOne', 0);
   }
 
   ngOnInit() {
+    this.activatedRoute.queryParams.subscribe(params => {
+      this.orgId = params['id'];
+      this.getOrganizationById(this.orgId);
+    });
+  }
+
+  getOrganizationById(id) {
+    this.strategyService.getOrganizationById(id).subscribe((organizationData: any) => {
+      this.organizationData = organizationData;
+      console.log(this.organizationData);
+    });
   }
 
   showTab(tab, index) {

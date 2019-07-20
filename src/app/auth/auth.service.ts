@@ -18,7 +18,7 @@ export class AuthService {
       password: data.password,
       provider: data.provider,
     };
-    return this.http.post(this.auth_url, reqData, true);
+    return this.http.post(this.auth_url, reqData);
   }
 
 
@@ -28,8 +28,7 @@ export class AuthService {
       this.auth_url,
       {
         data: { userid: reqData },
-      },
-      true
+      }
     );
   }
 }
