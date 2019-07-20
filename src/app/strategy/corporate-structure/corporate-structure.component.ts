@@ -1,7 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {CorporateStructure} from '../../entities/corporateStructure';
 import {FormBuilder, Validators} from '@angular/forms';
-import {AppService} from './../../shared/app.service';
+import {AppService} from '../../shared/app.service';
+import {StrategyService} from '../strategy.service';
+import {ToastrService} from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-corporate-structure',
@@ -27,7 +30,7 @@ export class CorporateStructureComponent implements OnInit {
     {name: 'Subsidiary Department', value: 'Subsidiary Department'}
   ];
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(private formBuilder: FormBuilder, private strategyService: StrategyService, private toastrService: ToastrService,
               private appService: AppService) {
     this.corporateStructure = new CorporateStructure();
   }
@@ -82,7 +85,11 @@ export class CorporateStructureComponent implements OnInit {
   }
 
   submitOrganization() {
-    console.log(this.corporateStructureForm.value);
+
+    this.strategyService.saveOrganization(this.corporateStructureForm.value).subscribe((orgData: any) => {
+      this.toastrService.success('Saved Successfully');
+      console.log(orgData);
+    });
   }
 
   orgStructure() {

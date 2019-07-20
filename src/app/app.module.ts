@@ -18,6 +18,11 @@ import {StrategyComponent} from './strategy/strategy.component';
 import {ValueGapComponent} from './strategy/value-gap/value-gap.component';
 import {ValueGapCloserComponent} from './strategy/value-gap-closer/value-gap-closer.component';
 import {EmitterService} from './shared/emitter.service';
+import {AuthService} from './auth/auth.service';
+import {StrategyService} from './strategy/strategy.service';
+import {HttpService} from './shared/http.service';
+import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -39,9 +44,11 @@ import {EmitterService} from './shared/emitter.service';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    ToastrModule.forRoot({positionClass: 'toast-top-center'})
   ],
-  providers: [WINDOW_PROVIDERS, AppService, EmitterService],
+  providers: [WINDOW_PROVIDERS, AppService, EmitterService, AuthService, StrategyService, HttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

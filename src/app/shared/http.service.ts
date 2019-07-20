@@ -1,12 +1,12 @@
 import {Injectable, Inject} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Prop} from '../common/props';
+import {Props} from '../common/props';
 import {Util} from './utils/util';
 import {ApexService} from './apex.service';
 
 @Injectable()
 export class HttpService {
-  private host = Prop.API_END_POINT;
+  private host = Props.API_END_POINT;
 
   constructor(private http: HttpClient, private apexService: ApexService) {
   }
