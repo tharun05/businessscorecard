@@ -1,0 +1,100 @@
+<div class="container-fluid gryBG">
+  <div class="row">
+    <div class="col-md-12 col-lg-12 p-0 whiteBG">
+      <nav class="navbar navbar-dark sticky-top flex-md-nowrap innerPageBorder">
+        <div class="col-lg-2 p-0 text-center innerLogoBG">
+          <div class="">
+            <img src="../../../../assets/images/D_logo.png" class="" width="130" height="30"/>
+          </div>
+
+          <div class="tabLine border-0">
+				<span>
+					STRATEGY EXECUTION SYSTEM
+				</span>
+          </div>
+        </div>
+
+        <div class="col-lg-10 p-0">
+          <div class="topMenuBG right_menu">
+            <a class="navbar-brand col-sm-4 col-md-3 mr-0 px-4">Balance Scorecard</a>
+            <ul class="navbar-nav float-right">
+              <li class="nav-item text-nowrap">
+
+                <div class="form-group float-left mr-md-4 mt-md-1 m-0">
+                  <select class="form-control form-control-sm" id="exampleFormControlSelect1">
+                    <option>Untiles 1</option>
+                    <option>Untiles 2</option>
+                    <option>Untiles 3</option>
+                    <option>Untiles 4</option>
+                    <option>Untiles 5</option>
+                  </select>
+                </div>
+
+                <a class=" "><img src="../../../assets/images/icons/reload_Icon.png" width="24"
+                                  height="19"/></a>
+                <a class=" "><img src="../../../assets/images/icons/list_icon.png" width="17" height="20"/></a>
+                <a class=" "><img src="../../../assets/images/icons/tag_Icon.png" width="12" height="20"/></a>
+                <a class=" "><img src="../../../assets/images/icons/home.png" width="21" height="19"/></a>
+                <a class="mr-md-5"><img src="../../../assets/images/icons/star.png" width="20"
+                                        height="20"/></a>
+
+                <a class=" "><img src="../../../../assets/images/icons/settings.png" width="21" height="21"/></a>
+                <a class=" "><img src="../../../../assets/images/icons/question-fill.png" width="22" height="22"/></a>
+                <a class=" "><img src="../../../../assets/images/icons/user_male.png" width="40" height="40"/></a>
+              </li>
+            </ul>
+          </div>
+          <div class="innerPageMenuBG">
+            <ul>
+              <li *ngFor="let headerLink of headerLinks; let i = index"><a [routerLink]="headerLink.link"
+              ><img
+                src="../../../../assets/images/icons/strategy.png" (click)="activeLink(headerLink.id, i)" width="20"
+                height="20"/>{{headerLink.name}}</a>
+                <ul id="subMenus">
+                  <li *ngFor="let link of headerLink.children"><a
+                    [routerLink]="link.route">{{link.name}}</a>
+                  </li>
+                </ul>
+              </li>
+              <li><a><img src="../../../assets/images/icons/strategy_map.png" width="15" height="20"/> strategy
+              map</a>
+              <!--&lt;!&ndash;<ul id="subMenus">&ndash;&gt;-->
+              <!--&lt;!&ndash;<li><a>overview</a></li>&ndash;&gt;-->
+              <!--&lt;!&ndash;<li><a >corporate structure</a></li>&ndash;&gt;-->
+              <!--&lt;!&ndash;<li><a >STrategry Analysis</a></li>&ndash;&gt;-->
+              <!--&lt;!&ndash;<li><a >Value Gap</a></li>&ndash;&gt;-->
+              <!--&lt;!&ndash;<li><a >Value Gap  Closer</a></li>&ndash;&gt;-->
+              <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+              <!--</li>-->
+              <!--<li><a><img src="../../../../assets/images/icons/bsc.png" width="19" height="20"/>bsc</a></li>-->
+              <!--<li><a><img src="../../../../assets/images/icons/Alignment.png" width="15" height="20"/>-->
+              <!--Alignment</a></li>-->
+              <!--<li><a><img src="../../../../assets/images/icons/initiatives.png" width="25" height="20"/>-->
+              <!--initiatives</a>-->
+              <!--<ul id="subMenus">-->
+              <!--<li><a>Overview</a></li>-->
+              <!--<li><a>Corporate structure</a></li>-->
+              <!--<li><a>Strategry Analysis</a></li>-->
+              <!--<li><a>Value Gap</a></li>-->
+              <!--<li><a>Value Gap Closer</a></li>-->
+              <!--</ul>-->
+              <!--</li>-->
+              <li><a><img src="../../../../../assets/images/icons/Action_Items.png" width="16" height="20"/> Action
+              Items</a></li>
+              <li><a><img src="../../../../assets/images/icons/Startegy_Reviews.png" width="20" height="20"/>
+              Startegy Reviews</a></li>
+              <li><a [routerLink]="['strategyAnalysis']" routerLinkActive="my-class"><img
+              src="../../../../assets/images/icons/strategy_Planning.png" width="20" height="20"/>
+              Strategy Analysis</a>
+              </li>
+              <li><a><img src="../../../../assets/images/icons/Industry_KPIS.png" width="27" height="20"/>
+              Industry
+              KPIS</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+</div>
+
