@@ -43,16 +43,17 @@
                 </div>
                 <div class="form-group row m-0">
                   <label for="" class="col-sm-5 col-form-label col-form-label-sm">Logo</label>
-                  <div class="col-sm-7">
-                    <input type="text" class="form-control col-form-label-sm" id="" placeholder="Logo"
-                           formControlName="logoUrl" name="logoUrl">
-                  </div>
+                  
+                  <div class="col-sm-7 input_i_icon">
+                      <input type="text" class="form-control col-form-label-sm" placeholder="Upload Logo..."
+                             formControlName="logoUrl" name="logoUrl">
+                      <img src="../../../assets/images/icons/input_i_icon.png" width="12" height="12"/>
+                    </div>
                 </div>
               </div>
               <div class="col-md-6 pl-0">
                 <div class="form-group row m-0">
-                  <label for="" class="col-sm-5 col-form-label col-form-label-sm">Organization Unit Name <span
-                    class="red">*</span></label>
+                  <label for="" class="col-sm-5 col-form-label col-form-label-sm">Organization Unit Name  </label>
                   <div class="col-sm-7">
                     <input type="text" class="form-control col-form-label-sm" placeholder="Organization Unit Name"
                            formControlName="parentName" name="parentName">
@@ -71,27 +72,30 @@
                     <img src="../../../assets/images/icons/input_i_icon.png" width="12" height="12"/>
                   </div>
                 </div>
+                
                 <div class="form-group row m-0">
-                  <label for="" class="col-sm-5 col-form-label col-form-label-sm">Location <span
-                    class="red">*</span></label>
-                  <div class="col-sm-7">
-                    <input type="text" class="form-control col-form-label-sm" placeholder="Location"
-                           formControlName="location" name="location">
-                  </div>
-                </div>
-
-                <div class="form-group row m-0">
-                  <label for="" class="col-sm-5 col-form-label col-form-label-sm">Head of Organization <span
-                    class="red">*</span></label>
+                  <label for="" class="col-sm-5 col-form-label col-form-label-sm">Head of Organization  </label>
                   <div class="col-sm-7">
                     <input type="text" class="form-control col-form-label-sm" id="" placeholder="Head of Organization"
                            formControlName="head" name="head">
                   </div>
                 </div>
                 <div class="form-group row m-0">
+                    <label for="" class="col-sm-5 col-form-label col-form-label-sm">Location <span
+                      class="red">*</span></label>
+                    <div class="col-sm-7">
+                      <input type="text" class="form-control col-form-label-sm" placeholder="Location"
+                             formControlName="location" name="location">
+                    </div>
+                  </div>
+
+                  <br/>
+                  <br/>
+  
+                <div class="form-group row m-0">
                   <label for="" class="col-sm-4 col-form-label col-form-label-sm"> </label>
-                  <div class="col-sm-8">
-                    <button type="button" class="btn btn-cancel" (click)="clearFields()">Clear</button>
+                  <div class="col-sm-8 text-right">
+                    <button type="button" class="btn btn-cancel mr-1" (click)="clearFields()">Clear</button>
                     <button type="button" class="btn btn-save" (click)="orgStructure()"
                             [disabled]="corporateStructureForm.invalid"> Save
                     </button>
@@ -107,24 +111,20 @@
         <div class="col-md-6">
           <div class="boxs_BG mt-5">
             <div class="titleBG"> Mission</div>
-            <div style="position:absolute;right: 58px;z-index: 999;top: 95px;font-size: 20px">
-              <i class="fa fa-save pull-right" style="padding: 10px;cursor: pointer"
-                 (click)="saveMissionText()"></i>
-              <i class="fa fa-edit pull-right" style="padding: 10px;cursor: pointer"
-                 (click)="editMissionText()"></i>
+            <div >
+              <i class="fa fa-save pull-right" (click)="saveMissionText()"></i>
+              <i class="fa fa-edit pull-right" (click)="editMissionText()"></i>
             </div>
             <div class="mt-4">
-              <div class="col-md-12 mvv_textarea mt-1">
-                <div [ngClass]="{ 'readonlyControl1': editMission === false }" *ngIf="!editMission"
-                     style="padding-right: 90px;">
+              <div class="col-md-12 mvv_Box mvv_textarea mb-3">
+                <div [ngClass]="{ 'readonlyControl1': editMission === false }" *ngIf="!editMission" >
                   {{missiontxt}}
                 </div>
-                <textarea placeholder="Enter your mission..." *ngIf="editMission" style="padding-right: 90px;"
-                          name="mission" formControlName="missionStmt"
+                <textarea placeholder="Enter your mission..." *ngIf="editMission" name="mission" formControlName="missionStmt"
                           name="missionStmt"
                           [ngClass]="{'readonlyControl': editMission === true}"></textarea>
               </div>
-              <div class="col-md-12 mvv_textarea mt-1">
+              <div class="col-md-12 mvv_textarea mvv_textarea_child2 mt-1">
                 <textarea placeholder="Enter your mission..." formControlName="missionStmt"
                           name="missionStmt"></textarea>
               </div>
@@ -137,24 +137,20 @@
       <div class="col-md-6">
         <div class="boxs_BG">
           <div class="titleBG"> Vission</div>
-          <div style="position:absolute;right: 58px;z-index: 999;top: 68px;font-size: 20px">
-            <i class="fa fa-save pull-right" style="padding: 10px;cursor: pointer"
-               (click)="saveVisionText()"></i>
-            <i class="fa fa-edit pull-right" style="padding: 10px;cursor: pointer"
-               (click)="editVisionText()"></i>
+          <div >
+            <i class="fa fa-save pull-right" (click)="saveVisionText()"></i>
+            <i class="fa fa-edit pull-right" (click)="editVisionText()"></i>
           </div>
           <div class="mt-4">
-            <div class="col-md-12 mvv_textarea mt-1">
-              <div [ngClass]="{ 'readonlyControl1': editMission === false }" *ngIf="!editVision"
-                   style="padding-right: 90px;">
+            <div class="col-md-12 mvv_Box mvv_textarea mb-3">
+              <div [ngClass]="{ 'readonlyControl1': editMission === false }" *ngIf="!editVision" >
                 {{visiontxt}}
               </div>
-              <textarea placeholder="Enter your mission..." *ngIf="editVision" style="padding-right: 90px;"
-                        name="vision" formControlName="visionStmt"
+              <textarea placeholder="Enter your mission..." *ngIf="editVision"  name="vision" formControlName="visionStmt"
                         name="visionStmt"
                         [ngClass]="{'readonlyControl': editVision === true}"></textarea>
             </div>
-            <div class="col-md-12 mvv_textarea mt-1">
+            <div class="col-md-12 mvv_textarea mvv_textarea_child2 mt-1">
               <textarea placeholder="Enter your vission..." formControlName="visionStmt" name="visionStmt"></textarea>
             </div>
           </div>
@@ -164,24 +160,21 @@
       <div class="col-md-6">
         <div class="boxs_BG">
           <div class="titleBG"> Values</div>
-          <div style="position:absolute;right: 58px;z-index: 999;top: 68px;font-size: 20px">
-            <i class="fa fa-save pull-right" style="padding: 10px;cursor: pointer"
-               (click)="saveValueText()"></i>
-            <i class="fa fa-edit pull-right" style="padding: 10px;cursor: pointer"
-               (click)="editValueText()"></i>
+          <div>
+            <i class="fa fa-save pull-right" (click)="saveValueText()"></i>
+            <i class="fa fa-edit pull-right" (click)="editValueText()"></i>
           </div>
           <div class="mt-4">
-            <div class="col-md-12 mvv_textarea mt-1">
-              <div [ngClass]="{ 'readonlyControl1': editValue === false }" *ngIf="!editValue"
-                   style="padding-right: 90px;">
+            <div class="col-md-12 mvv_Box mvv_textarea mb-3">
+              <div [ngClass]="{ 'readonlyControl1': editValue === false }" *ngIf="!editValue">
                 {{valuetxt}}
               </div>
-              <textarea placeholder="Enter your mission..." *ngIf="editValue" style="padding-right: 90px;"
+              <textarea placeholder="Enter your mission..." *ngIf="editValue" 
                         name="vision" formControlName="valuesStmt"
                         name="valuesStmt"
                         [ngClass]="{'readonlyControl': editValue === true}"></textarea>
             </div>
-            <div class="col-md-12 mvv_textarea mt-1">
+            <div class="col-md-12 mvv_textarea mvv_textarea_child2 mt-1">
               <textarea placeholder="Enter your values..." formControlName="valuesStmt" name="valuesStmt"></textarea>
             </div>
           </div>
@@ -198,7 +191,7 @@
       </div>
       <div class="col-md-6">
         <div class="float-right">
-          <button type="button" class="btn btn-cancel" (click)="clearFields()"> Cancel</button>
+          <button type="button" class="btn btn-cancel mr-2" (click)="clearFields()"> Clear</button>
           <button type="button" class="btn btn-save" (click)="submitOrganization()"
           > Save
           </button>
