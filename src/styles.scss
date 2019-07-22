@@ -1,11 +1,16 @@
-*{margin:0px 0px;}
+@import '~ngx-toastr/toastr';
 
-body{
+* {
+  margin: 0px 0px;
+}
+
+body {
 
 }
+
 input:focus, input.form-control:focus, select:focus, select.form-control:focus, button:focus, button.btn:focus, textarea:focus {
 
-  outline:none !important;
+  outline: none !important;
   outline-width: 0 !important;
   box-shadow: none;
   -moz-box-shadow: none;
@@ -13,49 +18,58 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
 }
 
 .gryBG {
-  background-color:#f2f2f2;
+  background-color: #f2f2f2;
 }
+
 .whiteBG {
-  background-color:#ffffff;
+  background-color: #ffffff;
 }
+
 .topMenuBG {
-  background-image:url(./assets/images/topMenuBG.jpg);
+  background-image: url(./assets/images/topMenuBG.jpg);
   background-repeat: repeat-y;
 }
+
 .pFix {
   position: fixed;
 }
 
 .logoBG {
   background-color: #ededed;
-  padding:10px 20px;
+  padding: 10px 20px;
 }
 
 .tabLine {
   border-bottom: 1px solid #ccc;
   padding-bottom: 4px;
 }
-.tabLine span{
-  font-size:10px;
-  letter-spacing:2px;
+
+.tabLine span {
+  font-size: 10px;
+  letter-spacing: 2px;
 }
+
 .left_blockQuote p {
-  padding:50px;
-  text-align:left;
-  font-size:12px;
-  color:#a0a0a0;
+  padding: 50px;
+  text-align: left;
+  font-size: 12px;
+  color: #a0a0a0;
 }
+
 .right_menu {
-  height:50px;
+  height: 50px;
 }
+
 .left_Icon {
   margin-top: 63px;
 }
-.left_Icon img{
+
+.left_Icon img {
   opacity: 0.3;
 }
+
 .inSideBG {
-  background-image:url(./assets/images/bttmMenuBG.jpg);
+  background-image: url(./assets/images/bttmMenuBG.jpg);
   background-repeat: repeat-y;
   border-bottom-left-radius: 15px;
   height: 430px;
@@ -64,14 +78,15 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
 }
 
 .dashboard_menus {
-  padding:50px;
+  padding: 50px;
 }
+
 .dashboard_menus ul {
   display: inline-block;
   margin: 50px 0px;
 }
 
-.dashboard_menus .run-animation{
+.dashboard_menus .run-animation {
   list-style-type: none;
   float: left;
   background-color: #ffffff;
@@ -80,75 +95,84 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
   box-shadow: 1px 1px 10px #707070;
   /* width: 110px; */
   /* height: 180px; */
-  text-align:center;
+  text-align: center;
   text-transform: uppercase;
-  margin-right:1.9%;
+  margin-right: 1.9%;
   padding: 0px 8px;
 }
+
 .dashboard_menus .run-animation:last-child {
-  margin-right:0px;
+  margin-right: 0px;
 }
+
 .dashboard_menus .run-animation a {
   display: inline-block;
   text-decoration: none;
   padding: 15px 0px;
 }
-.dashboard_menus .run-animation img{
+
+.dashboard_menus .run-animation img {
   margin-top: 25px;
 }
-.dashboard_menus .run-animation p{
-  color:#000000;
+
+.dashboard_menus .run-animation p {
+  color: #000000;
   font-size: 12px;
   font-weight: 500;
-  margin-top:15px;
+  margin-top: 15px;
   padding: 0px;
 }
+
 .btmBoxs {
-  padding:0px 60px;
+  padding: 0px 60px;
 }
 
 .btmBoxs .innerBtmBoxs {
   background-color: #ffffff;
-  border-radius:10px;
+  border-radius: 10px;
   box-shadow: 1px 1px 10px #707070;
 }
+
 .btmBoxs .innerBtmBoxs .dashTitle h4 {
-  font-size:16px;
-  color:#5747df;
+  font-size: 16px;
+  color: #5747df;
   text-transform: uppercase;
-  font-weight:700;
+  font-weight: 700;
 }
+
 .dashTitle {
-  padding:20px 25px;
+  padding: 20px 25px;
 }
 
 .keyGoalsLines ul {
   padding-left: 27px;
   padding-bottom: 15px;
 }
-.keyGoalsLines ul li{
+
+.keyGoalsLines ul li {
   list-style-type: none;
   line-height: 31px;
 
 }
-.keyGoalsLines ul li img{
+
+.keyGoalsLines ul li img {
   margin: 8px 15px 0px 0px;
 
 }
-.keyGoalsLines ul li p{
-  font-size:12px;
-}
 
+.keyGoalsLines ul li p {
+  font-size: 12px;
+}
 
 
 @keyframes my-animation {
   from {
-    opacity : 0;
-    left : -500px;
+    opacity: 0;
+    left: -500px;
   }
   to {
-    opacity : 1;
-    left : 0;
+    opacity: 1;
+    left: 0;
   }
 }
 
@@ -157,11 +181,13 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
   animation: my-animation 2s ease;
 
 }
+
 #bar-chart {
   font-family: 'Roboto';
 }
+
 .footerBG {
-  background-image:url(./assets/images/bttmMenuBG.jpg);
+  background-image: url(./assets/images/bttmMenuBG.jpg);
   background-repeat: repeat-y;
   border-top-left-radius: 15px;
   margin-top: 190px;
@@ -177,13 +203,15 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
   text-align: center;
   display: grid;
 }
+
 .footerBG .quickLinks a {
   color: #ffffff;
-  text-decoration:none;
+  text-decoration: none;
   padding: 10px 30px;
   border: 1px solid #ffffff;
   border-radius: 3px;
 }
+
 .right_menu ul li a {
   padding: 10px;
 }
@@ -191,13 +219,15 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
 
 /* =========== Overview page style =========== */
 .innerLogoBG {
-  background:#ffffff;
-  padding:5px 20px;
+  background: #ffffff;
+  padding: 5px 20px;
 }
+
 .innerPageMenuBG {
-  background-image:url(./assets/images/bttmMenuBG.jpg);
+  background-image: url(./assets/images/bttmMenuBG.jpg);
   background-repeat: repeat-y;
 }
+
 .innerPageMenuBG ul {
   display: flex;
   margin: 0px;
@@ -213,7 +243,8 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
   font-size: 12px;
   position: relative;
 }
-.innerPageMenuBG ul li a{
+
+.innerPageMenuBG ul li a {
   color: #ffffff;
   text-decoration: none;
   padding: 15px 5px;
@@ -225,7 +256,7 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
   margin-right: 5px;
 }
 
-.innerPageMenuBG ul li:hover a{
+.innerPageMenuBG ul li:hover a {
   background: #ffffff;
   color: #000000;
   text-decoration: none;
@@ -234,94 +265,113 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
+
 /* =============== Top Menu Icons Color Change ================== */
 .strategyImg {
-  display:none;
+  display: none;
 }
+
 .innerPageMenuBG ul li:hover a .strategyImg {
   display: inline-block;
 }
+
 .innerPageMenuBG ul li:hover a .strategy_whiteImg {
   display: none;
 }
 
 .strategy_mapImg {
-  display:none;
+  display: none;
 }
+
 .innerPageMenuBG ul li:hover a .strategy_mapImg {
   display: inline-block;
 }
+
 .innerPageMenuBG ul li:hover a .strategy_map_whiteImg {
   display: none;
 }
 
 
 .bscImg {
-  display:none;
+  display: none;
 }
+
 .innerPageMenuBG ul li:hover a .bscImg {
   display: inline-block;
 }
+
 .innerPageMenuBG ul li:hover a .bsc_whiteImg {
   display: none;
 }
 
 .AlignmentImg {
-  display:none;
+  display: none;
 }
+
 .innerPageMenuBG ul li:hover a .AlignmentImg {
   display: inline-block;
 }
+
 .innerPageMenuBG ul li:hover a .Alignment_whiteImg {
   display: none;
 }
 
 .initiativesImg {
-  display:none;
+  display: none;
 }
+
 .innerPageMenuBG ul li:hover a .initiativesImg {
   display: inline-block;
 }
+
 .innerPageMenuBG ul li:hover a .initiatives_whiteImg {
   display: none;
 }
 
 .Action_ItemsImg {
-  display:none;
+  display: none;
 }
+
 .innerPageMenuBG ul li:hover a .Action_ItemsImg {
   display: inline-block;
 }
+
 .innerPageMenuBG ul li:hover a .Action_Items_whiteImg {
   display: none;
 }
 
 .Startegy_ReviewsImg {
-  display:none;
+  display: none;
 }
+
 .innerPageMenuBG ul li:hover a .Startegy_ReviewsImg {
   display: inline-block;
 }
+
 .innerPageMenuBG ul li:hover a .Startegy_Reviews_whiteImg {
   display: none;
 }
 
 .strategy_PlanningImg {
-  display:none;
+  display: none;
 }
+
 .innerPageMenuBG ul li:hover a .strategy_PlanningImg {
   display: inline-block;
 }
+
 .innerPageMenuBG ul li:hover a .strategy_Planning_whiteImg {
   display: none;
 }
 
 .Industry_KPISImg {
-  display:none;
+  display: none;
 }
+
 .innerPageMenuBG ul li:hover a .Industry_KPISImg {
   display: inline-block;
 }
+
 .innerPageMenuBG ul li:hover a .Industry_KPIS_whiteImg {
   display: none;
 }
@@ -331,31 +381,39 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
 .innerPageMenuBG ul li #subMenus {
 
 }
-.innerPageMenuBG ul li #subMenus li{
+
+.innerPageMenuBG ul li #subMenus li {
   margin-top: 4px;
 }
+
 #subMenus {
   display: none;
 }
+
 .innerPageMenuBG ul li:hover #subMenus {
   position: absolute;
-  display:-webkit-box;
+  display: -webkit-box;
   margin-left: 0px;
 }
+
 .innerPageBorder {
   box-shadow: 0px 0px 5px #ccc;
   padding: 0px 0px 50px 0px;
 }
-.innerPageMenuBG ul li:hover #subMenus .active a{
+
+.innerPageMenuBG ul li:hover #subMenus .active a {
   color: #f3476f;
 }
+
 .innerPageMenuBG ul li:hover #subMenus li a {
-  background:none;
+  background: none;
 
 }
+
 .innerPageMenuBG ul li #subMenus li:hover a {
   color: #f3476f;
 }
+
 .boxs_BG {
   background-color: #ffffff;
   border-top: 3px solid #7254ab;
@@ -363,6 +421,7 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
   padding: 20px;
 
 }
+
 .boxs_BG .titleBG {
   background-color: #7254ab;
   color: #ffffff;
@@ -375,26 +434,31 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
   width: 200px;
   font-weight: 700;
 }
+
 .boxs_BG label {
   font-size: 12px;
 }
+
 .boxs_BG input {
   background-color: #f7f7f7;
   font-size: 12px;
   margin-bottom: 5px;
 }
-.red{
+
+.red {
   color: red;
 }
 
 .boxs_BG .input_i_icon {
   position: relative;
 }
+
 .boxs_BG .input_i_icon img {
   position: absolute;
   top: 10px;
   left: -5px;
 }
+
 .btn-cancel {
   color: #fff;
   background-color: #6d6d6d;
@@ -403,11 +467,13 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
   padding: 6px 20px;
   border-radius: 3px;
 }
+
 .btn-cancel:hover {
   color: #fff;
   background-color: #5a5a5a;
   border-color: #5a5a5a;
 }
+
 .btn-save {
   color: #fff;
   background-color: #4aa116;
@@ -416,20 +482,24 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
   padding: 6px 24px;
   border-radius: 3px;
 }
+
 .btn-save:hover {
   color: #fff;
   background-color: #418f13;
   border-color: #418f13;
 }
+
 .mvv_Box {
   border-radius: 3px;
   padding: 10px 0px 30px;
   font-size: 12px;
   color: #404040;
 }
+
 .mvv_textarea {
   padding: 0px;
 }
+
 .mvv_textarea textarea {
   width: 100%;
   border: 1px solid #e1e1e1;
@@ -439,10 +509,12 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
   background-color: #f7f7f7;
   font-size: 12px;
 }
+
 .summary_View {
   background-color: #ffffff;
   padding: 30px 20px 60px;
 }
+
 .btn-pink {
   color: #fff;
   background-color: #e16a87;
@@ -450,6 +522,7 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
   font-size: 14px;
   padding: 6px 24px;
 }
+
 .btn-pink:hover {
   color: #fff;
   background-color: #bf5770;
@@ -470,9 +543,10 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
   text-align: center;
   display: grid;
 }
+
 .overviewFooterBG .quickLinks a {
   color: #ffffff;
-  text-decoration:none;
+  text-decoration: none;
   padding: 10px 30px;
   border: 1px solid #ffffff;
   border-radius: 3px;
@@ -481,7 +555,7 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
 /* ========== Login Page ============= */
 
 .loginBG {
-  background-image:url(./assets/images/login_bgImg.jpg);
+  background-image: url(./assets/images/login_bgImg.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -490,8 +564,9 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
   width: 100%;
   max-height: 750px;
   min-height: 750px;
-  height:100%;
+  height: 100%;
 }
+
 .loginBG .loginFormBg {
   background-color: #ffffff;
   border-radius: 5px;
@@ -500,21 +575,24 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
   margin-top: 8%;
   margin-bottom: 8%;
 }
+
 .loginBG .loginFormBg select {
-  margin:10px 0px;
-  color:#8f8f8f;
+  margin: 10px 0px;
+  color: #8f8f8f;
   font-size: 14px;
   background-color: #fafafa;
   border: 1px solid #eeeeee;
 }
+
 .loginBG .loginFormBg .form-group label {
   font-size: 12px;
   color: #babbbb;
   margin-bottom: 0px;
 }
+
 .loginBG .loginFormBg input {
-  margin:10px 0px;
-  color:#5e49db;
+  margin: 10px 0px;
+  color: #5e49db;
   font-size: 14px;
   border: none;
   border-bottom: 1px solid #eeeeee;
@@ -522,21 +600,26 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
   border-radius: 0px;
   padding-right: 30px;
 }
+
 .loginBG .loginFormBg .loginInputfleds {
   position: relative;
 }
+
 .loginBG .loginFormBg .loginInputfleds img {
   position: absolute;
   bottom: 15px;
   right: 0px;
 }
+
 .loginBG .loginFormBg .login_footer {
   display: flow-root;
 }
+
 .loginBG .loginFormBg .login_footer .float-left a {
-  font-size:12px;
+  font-size: 12px;
   color: #b2b2b2;
 }
+
 .btn-login {
   color: #fff;
   background-color: #5e49db;
@@ -544,16 +627,19 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
   padding: 8px 40px;
   font-size: 14px;
 }
+
 .btn-login:hover {
   color: #fff;
   background-color: #402ea7;
   border-color: #402ea7;
 }
+
 .loginBG .loginFormBg .validationErr {
-  font-size:10px;
-  color:red;
-  display:none;
+  font-size: 10px;
+  color: red;
+  display: none;
 }
+
 /* ========== Login Page End ============= */
 
 
@@ -567,14 +653,17 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
   padding: 10px;
   display: block;
 }
+
 #left ul li.item-1 ul {
   list-style-type: none;
 }
-#left ul li.item-1 ul li{
+
+#left ul li.item-1 ul li {
   /* margin: 25px 0px; */
   position: relative;
   margin-top: 10px;
 }
+
 #left ul li.item-1 ul li a {
   background-color: #ffcc99;
   color: #000000;
@@ -585,9 +674,11 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
   max-width: 250px;
   min-width: 250px;
 }
+
 #left ul li.item-1 ul li a span.unit_icon {
 
 }
+
 #left ul li.item-1 ul li.corporateUnit ul.children li a {
   background-color: #866cb7;
   color: #ffffff;
@@ -595,9 +686,11 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
   text-decoration: none;
   margin-bottom: 3px;
 }
+
 #left ul li.item-1 ul li.corporateUnit ul.children li a:hover {
   background-color: #623ea5;
 }
+
 /* #left ul li.item-1 ul li.rightListHover a.hoverArrow:hover :after { */
 /* content: ''; */
 /* display: block; */
@@ -612,14 +705,16 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
 /* } */
 
 #left ul li.item-1 ul li.rightListHover ul.children {
-  display:none;
+  display: none;
 }
+
 #left ul li.item-1 ul li.rightListHover:hover ul.children {
   position: absolute;
   top: 0px;
   left: 220px;
   display: block;
 }
+
 #left ul li.item-1 ul li.rightListHover:hover ul.children:after {
   content: '';
   display: block;
@@ -632,9 +727,11 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
   border-style: solid;
   border-width: 10px;
 }
+
 #left ul li.item-1 ul li.sbu a span.sbu_icon {
 
 }
+
 #left ul li.item-1 ul li.sbu ul.children li a {
   background-color: #fddfc1;
   color: #000000;
@@ -642,6 +739,7 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
   text-decoration: none;
   margin-bottom: 3px;
 }
+
 #left ul li.item-1 ul li.sbu ul.children li a:hover {
   background-color: #f8bf85;
 }
@@ -650,9 +748,11 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
   font-size: 13px;
   padding-left: 50px;
 }
+
 .groupCompanyList .row {
   margin-bottom: 10px;
 }
+
 .groupCompanyList .gCompRightList {
   color: #4f5c9d;
   font-weight: 600;
@@ -661,6 +761,7 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
 .groupCompanyTabs {
   display: inline-block;
 }
+
 .groupCompanyTabs .nav-item {
   border: 1px solid #d76c91;
   border-bottom: none;
@@ -669,6 +770,7 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
   line-height: 25px;
   cursor: pointer;
 }
+
 .groupCompanyTabs .nav-item a {
   color: #000000;
   padding: 8px 70px;
@@ -676,15 +778,18 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
   font-weight: 600;
   background-color: #ffecf3;
 }
+
 .groupCompanyTabs .nav-item a i {
   font-size: 20px;
   margin-right: 10px;
 }
+
 .groupCompanyTabs .tab-border {
   border: 1px solid #d76c91;
   padding: 20px;
-  font-size:14px;
+  font-size: 14px;
 }
+
 .groupCompanyTabs .nav-item .nav-link.active {
   background-color: #d76c91;
   border-color: #d76c91;
@@ -693,11 +798,12 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
   padding-bottom: 10px;
 }
 
-.cursor-pointer{
+.cursor-pointer {
   cursor: pointer;
 }
-.readonlyControl{
-  height:100px;
+
+.readonlyControl {
+  height: 100px;
   background-color: #f7f7f7f7;
   padding: 10px;
   font-size: 12px;
@@ -707,8 +813,8 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
   border-radius: 4px;
 }
 
-.readonlyControl1{
-  height:100px;
+.readonlyControl1 {
+  height: 100px;
   background-color: #ffffff;
   padding: 10px;
   font-size: 12px;

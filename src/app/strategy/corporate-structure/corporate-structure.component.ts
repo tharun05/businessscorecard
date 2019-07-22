@@ -23,6 +23,7 @@ export class CorporateStructureComponent implements OnInit {
   valuetxt: any;
   updateCounter = 0;
   orgId: any;
+  codeAndName;
   corporateStructure: CorporateStructure;
   unitCodes = [
     {name: 'Group Company', value: 'Group Company'},
@@ -56,6 +57,7 @@ export class CorporateStructureComponent implements OnInit {
     this.missiontxt = this.corporateStructureForm.controls.missionStmt.value;
     this.visiontxt = this.corporateStructureForm.controls.visionStmt.value;
     this.valuetxt = this.corporateStructureForm.controls.valuesStmt.value;
+    this.getCodeAndName();
   }
 
   editMissionText() {
@@ -87,27 +89,30 @@ export class CorporateStructureComponent implements OnInit {
   }
 
   submitOrganization() {
-
-    this.strategyService.saveOrganization(this.corporateStructureForm.value).subscribe((orgData: any) => {
-      this.updateCounter = this.updateCounter + 1;
-      this.orgId = orgData.id;
-      this.toastrService.success('Saved Successfully');
-      if (!!orgData && !!orgData.id && this.updateCounter > 1) {
+    if (!!this.orgId) {
+      this.strategyService.UpdateOrganization(this.corporateStructureForm.value, this.orgId).subscribe((updatedOrg) => {
+        this.toastrService.success('Updated Successfully');
+      });
+    } else {
+      this.strategyService.saveOrganization(this.corporateStructureForm.value).subscribe((orgData: any) => {
+        this.toastrService.success('Saved Successfully');
         this.orgId = orgData.id;
-        this.strategyService.UpdateOrganization(this.corporateStructureForm.value, orgData.id).subscribe((updatedOrg) => {
-          this.toastrService.success('Saved Successfully');
-          console.log('updated successfully');
-        });
-      }
+      });
+    }
+
+  }
+
+  getCodeAndName() {
+    this.strategyService.getCodeAndName().subscribe((data: any) => {
+      this.codeAndName = data;
+      console.log(this.codeAndName);
     });
   }
 
   orgStructure() {
-    console.log(this.corporateStructureForm.value);
   }
 
   routeToSummaryView() {
-    console.log(this.orgId);
     this.router.navigate(['/strategy/strategyPreview'], {queryParams: {id: this.orgId}});
   }
 

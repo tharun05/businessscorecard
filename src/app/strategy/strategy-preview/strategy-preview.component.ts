@@ -13,6 +13,7 @@ export class StrategyPreviewComponent implements OnInit {
   isStepThree: boolean;
   selectedIndex = true;
   organizationData: any;
+  orgTree: any;
   missionVisionValues = [{
     slug: 'Mission',
     title: 'Mission',
@@ -30,6 +31,36 @@ export class StrategyPreviewComponent implements OnInit {
     tab: 'tabThree'
   }];
   orgId: any;
+  tree = [{
+    code: 'F100',
+    name: 'My parent departmen',
+    children: [
+      {
+        code: 'G100',
+        name: 'My dept',
+        children: [
+          {
+            code: 'H100',
+            name: 'My child dept',
+            children: [{name: 'tharun'}]
+          },
+          {
+            code: 'H101',
+            name: 'My child dept',
+            children: [{name: 'tharun'}]
+          }
+
+        ]
+      },
+      {
+        code: 'G101',
+        name: 'My department',
+        children: [{name: 'arun'}]
+      }
+
+    ]
+  }];
+
 
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
@@ -42,12 +73,19 @@ export class StrategyPreviewComponent implements OnInit {
       this.orgId = params['id'];
       this.getOrganizationById(this.orgId);
     });
+    this.getOrganizationTree();
   }
 
   getOrganizationById(id) {
     this.strategyService.getOrganizationById(id).subscribe((organizationData: any) => {
       this.organizationData = organizationData;
       console.log(this.organizationData);
+    });
+  }
+
+  getOrganizationTree() {
+    this.strategyService.getOrganizationTree().subscribe((orgTree: any) => {
+      this.orgTree = orgTree;
     });
   }
 

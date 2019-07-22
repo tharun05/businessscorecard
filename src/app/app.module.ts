@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
@@ -22,8 +22,8 @@ import {EmitterService} from './shared/emitter.service';
 import {AuthService} from './auth/auth.service';
 import {StrategyService} from './strategy/strategy.service';
 import {HttpService} from './shared/http.service';
-import { HttpClientModule } from '@angular/common/http';
-import { ToastrModule } from 'ngx-toastr';
+import {HttpClientModule} from '@angular/common/http';
+import {ToastrModule} from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -48,7 +48,7 @@ import { ToastrModule } from 'ngx-toastr';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    ToastrModule.forRoot({positionClass: 'toast-top-center'})
+    ToastrModule.forRoot({positionClass: 'toast-top-center', timeOut: 2000})
   ],
   providers: [WINDOW_PROVIDERS, AppService, EmitterService, AuthService, StrategyService, HttpService],
   bootstrap: [AppComponent]

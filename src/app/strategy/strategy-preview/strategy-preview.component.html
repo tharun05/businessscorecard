@@ -1,95 +1,78 @@
 <div class="container-fluid gryBG">
   <div class="row">
     <div class="col-md-5">
-
       <div class="boxs_BG mt-5">
         <div class="titleBG"> Organization Structure</div>
-
         <div class="mt-4 ml-4">
-
-
           <div class="row">
             <div id="left" class="span3">
               <ul id="menu-group-1" class="nav menu">
-                <li class="item-1 deeper parent active">
+                <li class="item-1 deeper parent active" *ngFor="let item of tree">
                   <a class="minGroupCompany">
-
-                    <span>Group Company</span>
+                    <span>{{item.name}}</span>
                   </a>
                   <ul class="children" id="sub-item-1" style="">
-                    <li class="rightListHover corporateUnit">
+                    <li class="rightListHover corporateUnit" *ngFor="let child of item.children">
                       <a class="hoverArrow">
-
-                        <span>Corporate Unit</span>
+                        <span>{{child.name}}</span>
                         <span class="float-right"><i class="fa fa-angle-right"></i></span>
                       </a>
                       <ul class="children">
-                        <li class="item-3 mt-0">
+
+                        <li class="item-3 mt-0" *ngFor="let subChild of child.children">
                           <a>
                             <span class="sign"><i class="icon-play"></i></span>
-                            <span>Corporate Unit Department</span>
-                          </a>
-                        </li>
-                        <li class="item-3 mt-0">
-                          <a>
-                            <span class="sign"><i class="icon-play"></i></span>
-                            <span>Corporate Unit Department</span>
-                          </a>
-                        </li>
-                        <li class="item-3 mt-0">
-                          <a>
-                            <span class="sign"><i class="icon-play"></i></span>
-                            <span>Corporate Unit Department</span>
+                            <span>{{subChild.name}}</span>
                           </a>
                         </li>
 
                       </ul>
                     </li>
-                    <li class="rightListHover sbu">
-                      <a class="hoverArrow">
+                    <!--<li class="rightListHover sbu">-->
+                    <!--<a class="hoverArrow">-->
 
-                        <span>SBU</span>
-                        <span class="float-right"><i class="fa fa-angle-right"></i></span>
-                      </a>
-                      <ul class="children">
-                        <li class="item-6 mt-0">
-                          <a>
-                            <span class="sign"><i class="icon-play"></i></span>
-                            <span>SBU Department</span>
-                          </a>
-                        </li>
-                        <li class="item-6 mt-0">
-                          <a>
-                            <span class="sign"><i class="icon-play"></i></span>
-                            <span>SBU Department</span>
-                          </a>
-                        </li>
-                        <li class="item-6 mt-0">
-                          <a>
-                            <span class="sign"><i class="icon-play"></i></span>
-                            <span>SBU Department</span>
-                          </a>
-                        </li>
-                        <li class="item-6 mt-0">
-                          <a>
-                            <span class="sign"><i class="icon-play"></i></span>
-                            <span>SBU Department</span>
-                          </a>
-                        </li>
-                        <li class="item-6 mt-0">
-                          <a>
-                            <span class="sign"><i class="icon-play"></i></span>
-                            <span>SBU Department</span>
-                          </a>
-                        </li>
-                        <li class="item-6 mt-0">
-                          <a>
-                            <span class="sign"><i class="icon-play"></i></span>
-                            <span>SBU Department</span>
-                          </a>
-                        </li>
-                      </ul>
-                    </li>
+                    <!--<span>SBU</span>-->
+                    <!--<span class="float-right"><i class="fa fa-angle-right"></i></span>-->
+                    <!--</a>-->
+                    <!--<ul class="children">-->
+                    <!--<li class="item-6 mt-0">-->
+                    <!--<a>-->
+                    <!--<span class="sign"><i class="icon-play"></i></span>-->
+                    <!--<span>SBU Department</span>-->
+                    <!--</a>-->
+                    <!--</li>-->
+                    <!--<li class="item-6 mt-0">-->
+                    <!--<a>-->
+                    <!--<span class="sign"><i class="icon-play"></i></span>-->
+                    <!--<span>SBU Department</span>-->
+                    <!--</a>-->
+                    <!--</li>-->
+                    <!--<li class="item-6 mt-0">-->
+                    <!--<a>-->
+                    <!--<span class="sign"><i class="icon-play"></i></span>-->
+                    <!--<span>SBU Department</span>-->
+                    <!--</a>-->
+                    <!--</li>-->
+                    <!--<li class="item-6 mt-0">-->
+                    <!--<a>-->
+                    <!--<span class="sign"><i class="icon-play"></i></span>-->
+                    <!--<span>SBU Department</span>-->
+                    <!--</a>-->
+                    <!--</li>-->
+                    <!--<li class="item-6 mt-0">-->
+                    <!--<a>-->
+                    <!--<span class="sign"><i class="icon-play"></i></span>-->
+                    <!--<span>SBU Department</span>-->
+                    <!--</a>-->
+                    <!--</li>-->
+                    <!--<li class="item-6 mt-0">-->
+                    <!--<a>-->
+                    <!--<span class="sign"><i class="icon-play"></i></span>-->
+                    <!--<span>SBU Department</span>-->
+                    <!--</a>-->
+                    <!--</li>-->
+                    <!--</ul>-->
+                    <!--</li>-->
                   </ul>
                 </li>
               </ul>
@@ -128,7 +111,7 @@
             </div>
             <div class="row">
               <div class="col-md-6">Type of Unit:</div>
-              <div class="col-md-6 gCompRightList">Group Name</div>
+              <div class="col-md-6 gCompRightList">{{organizationData.type}}</div>
             </div>
             <div class="row">
               <div class="col-md-6">Head of Organization:</div>
@@ -144,7 +127,7 @@
             </div>
             <div class="row">
               <div class="col-md-6">Name of the Manager:</div>
-              <div class="col-md-6 gCompRightList">Mr. Abdul</div>
+              <div class="col-md-6 gCompRightList">{{organizationData.managerName}}l</div>
             </div>
 
           </div>

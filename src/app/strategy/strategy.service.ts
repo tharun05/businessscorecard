@@ -10,6 +10,7 @@ export class StrategyService {
   private organizationTree_url = '/organization/tree';
   private organizationByCode_url = '/organization/code';
   private organizationById_url = '/organization';
+  private organizationCodeAndName_url = '/organization/codeAndName';
 
 
   constructor(private http: HttpService, private appService: AppService) {
@@ -23,16 +24,13 @@ export class StrategyService {
     return this.http.put(this.organization_url + '/' + id, data);
   }
 
-  getOrganizationTree(data: any) {
-    const reqData = {
-      username: data.userid,
-      name: data.name,
-      password: data.password,
-      provider: data.provider,
-    };
-    return this.http.get(this.organization_url, reqData);
+  getOrganizationTree() {
+    return this.http.get(this.organizationTree_url, null);
   }
 
+  getCodeAndName() {
+    return this.http.get(this.organizationCodeAndName_url, null);
+  }
   getOrganizationByCode(data: any) {
     return this.http.get(this.organizationByCode_url, data);
   }
