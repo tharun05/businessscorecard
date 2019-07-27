@@ -13,7 +13,10 @@ export class StrategyPreviewComponent implements OnInit {
   isStepThree: boolean;
   selectedIndex = true;
   organizationData: any;
+  mergeArrays: any = [];
   orgTree: any = [];
+  getById: any;
+  noContentFound: string;
   missionVisionValues = [{
     slug: 'Mission',
     title: 'Mission',
@@ -68,11 +71,13 @@ export class StrategyPreviewComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getOrganizationTree();
     this.activatedRoute.queryParams.subscribe(params => {
       this.orgId = params['id'];
-      this.getOrganizationById(this.orgId);
+      if (!!this.orgId) {
+        this.getOrganizationById(this.orgId);
+      }
     });
-    this.getOrganizationTree();
   }
 
   getOrganizationById(id) {
@@ -86,12 +91,24 @@ export class StrategyPreviewComponent implements OnInit {
   }
 
   getOrganizationTree() {
+    const self = this;
     this.strategyService.getOrganizationTree().subscribe((orgTree: any) => {
       if (!!orgTree) {
         this.orgTree.push(orgTree);
+        this.orgTree.forEach(function (val) {
+          val.children.forEach(function (children, i) {
+            if (children.children.length) {
+              self.mergeArrays.push(children.children);
+              if (self.mergeArrays[0][0].id) {
+                self.getById = self.mergeArrays[0][0].id;
+                self.getSubUnitById(self.getById);
+              } else {
+                self.noContentFound = 'Please Add an Organization';
+              }
+            }
+          });
+        });
       }
-      console.log(this.orgTree);
-
     });
   }
 
@@ -126,8 +143,6 @@ export class StrategyPreviewComponent implements OnInit {
       this.organizationData = data;
     });
   }
-
-
 
 
 }

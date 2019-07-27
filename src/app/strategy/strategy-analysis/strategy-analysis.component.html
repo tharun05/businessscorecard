@@ -105,24 +105,11 @@
                       <div class="row mt-4">
                         <div class="col-md-4 criteriaList">
                           <ul>
-                            <li><a href=""> Strength</a>
-                              <div class="float-right"><a href=""> <i class="fa fa-pencil-square-o"></i></a> <a
-                                href="">
-                                <i class="fa fa-plus"></i></a></div>
-                            </li>
-                            <li><a href=""> Weakness</a>
-                              <div class="float-right"><a href=""> <i class="fa fa-pencil-square-o"></i></a> <a
-                                href="">
-                                <i class="fa fa-plus"></i></a></div>
-                            </li>
-                            <li><a href=""> Opportunities</a>
-                              <div class="float-right"><a href=""> <i class="fa fa-pencil-square-o"></i></a> <a
-                                href="">
-                                <i class="fa fa-plus"></i></a></div>
-                            </li>
-                            <li><a href=""> Threats</a>
-                              <div class="float-right"><a href=""> <i class="fa fa-pencil-square-o"></i></a> <a
-                                href="">
+                            <li *ngFor="let item of swot; let i = index" (click)="activateClass(i)"
+                                [class.active]="selectedIndex === i"
+                            ><a> {{item.name}}</a>
+                              <div class="float-right"><a> <i class="fa fa-pencil-square-o"></i></a> <a
+                              >
                                 <i class="fa fa-plus"></i></a></div>
                             </li>
                           </ul>
@@ -210,7 +197,7 @@
                     <div class="col-md-12">
                       <div class="float-right">
                         <button type="button" class="btn btn-cancel"> Cancel</button>
-                        <button type="button" class="btn btn-save"> Save</button>
+                        <button type="button" class="btn btn-save" (click)="swatAnalysis('swot')"> Save</button>
                       </div>
                     </div>
                   </div>
@@ -328,28 +315,8 @@
                       <div class="row mt-4">
                         <div class="col-md-4 criteriaList">
                           <ul>
-                            <li><a href=""> Political Analysis</a>
-                              <div class="float-right"><a href=""> <i class="fa fa-pencil-square-o"></i></a> <a href="">
-                                <i class="fa fa-plus"></i></a></div>
-                            </li>
-                            <li><a href=""> Economic Analysis</a>
-                              <div class="float-right"><a href=""> <i class="fa fa-pencil-square-o"></i></a> <a href="">
-                                <i class="fa fa-plus"></i></a></div>
-                            </li>
-                            <li><a href=""> Social Analysis</a>
-                              <div class="float-right"><a href=""> <i class="fa fa-pencil-square-o"></i></a> <a href="">
-                                <i class="fa fa-plus"></i></a></div>
-                            </li>
-                            <li><a href=""> Technological Analysis</a>
-                              <div class="float-right"><a href=""> <i class="fa fa-pencil-square-o"></i></a> <a href="">
-                                <i class="fa fa-plus"></i></a></div>
-                            </li>
-                            <li><a href=""> Environmental Analysis</a>
-                              <div class="float-right"><a href=""> <i class="fa fa-pencil-square-o"></i></a> <a href="">
-                                <i class="fa fa-plus"></i></a></div>
-                            </li>
-                            <li><a href=""> Legol Analysis</a>
-                              <div class="float-right"><a href=""> <i class="fa fa-pencil-square-o"></i></a> <a href="">
+                            <li *ngFor="let item of pestalAnalysis"><a>{{item.name}}</a>
+                              <div class="float-right"><a> <i class="fa fa-pencil-square-o"></i></a> <a>
                                 <i class="fa fa-plus"></i></a></div>
                             </li>
                           </ul>
@@ -586,27 +553,10 @@
                       <div class="row mt-4">
                         <div class="col-md-4 criteriaList">
                           <ul>
-                            <li><a href=""> Supplier Power</a>
-                              <div class="float-right"><a href=""> <i class="fa fa-pencil-square-o"></i></a> <a href="">
+                            <li *ngFor="let item of perterAnalysis"><a>{{item.name}}</a>
+                              <div class="float-right"><a> <i class="fa fa-pencil-square-o"></i></a> <a>
                                 <i class="fa fa-plus"></i></a></div>
                             </li>
-                            <li><a href=""> Buyer Power</a>
-                              <div class="float-right"><a href=""> <i class="fa fa-pencil-square-o"></i></a> <a href="">
-                                <i class="fa fa-plus"></i></a></div>
-                            </li>
-                            <li><a href=""> Competitive Rivalry</a>
-                              <div class="float-right"><a href=""> <i class="fa fa-pencil-square-o"></i></a> <a href="">
-                                <i class="fa fa-plus"></i></a></div>
-                            </li>
-                            <li><a href=""> Threats Of Substitution</a>
-                              <div class="float-right"><a href=""> <i class="fa fa-pencil-square-o"></i></a> <a href="">
-                                <i class="fa fa-plus"></i></a></div>
-                            </li>
-                            <li><a href=""> Threats of New Entry</a>
-                              <div class="float-right"><a href=""> <i class="fa fa-pencil-square-o"></i></a> <a href="">
-                                <i class="fa fa-plus"></i></a></div>
-                            </li>
-
                           </ul>
                         </div>
                         <div class="col-md-8 criteriatextarea">
@@ -825,23 +775,10 @@
                         <div class="col-md-4 criteriaList">
                           <ul>
 
-                            <li><a href=""> Drivers</a>
-                              <div class="float-right"><a href=""> <i class="fa fa-pencil-square-o"></i></a> <a href="">
+                            <li *ngFor="let item of fourCornerAnalysis"><a> {{item.name}}</a>
+                              <div class="float-right"><a> <i class="fa fa-pencil-square-o"></i></a> <a>
                                 <i class="fa fa-plus"></i></a></div>
                             </li>
-                            <li><a href=""> Current Strategy</a>
-                              <div class="float-right"><a href=""> <i class="fa fa-pencil-square-o"></i></a> <a href="">
-                                <i class="fa fa-plus"></i></a></div>
-                            </li>
-                            <li><a href=""> Management Assumptions</a>
-                              <div class="float-right"><a href=""> <i class="fa fa-pencil-square-o"></i></a> <a href="">
-                                <i class="fa fa-plus"></i></a></div>
-                            </li>
-                            <li><a href=""> Capabilities</a>
-                              <div class="float-right"><a href=""> <i class="fa fa-pencil-square-o"></i></a> <a href="">
-                                <i class="fa fa-plus"></i></a></div>
-                            </li>
-
                           </ul>
                         </div>
                         <div class="col-md-8 criteriatextarea">

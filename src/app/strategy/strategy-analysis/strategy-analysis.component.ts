@@ -13,11 +13,45 @@ window['$'] = window['jQuery'] = $;
 export class StrategyAnalysisComponent implements OnInit {
   codeAndName: any;
   orgName: any;
+  selectedIndex: number = null;
 
   years = [{id: 1, name: '2016'},
     {id: 1, name: '2017'},
     {id: 1, name: '2018'},
     {id: 1, name: '2019'}];
+
+  swot = [
+    {id: 1, name: 'STRENGTH', active: true},
+    {id: 2, name: 'WEAKNESS', active: true},
+    {id: 3, name: 'OPPORTUNITIES', active: true},
+    {id: 4, name: 'THREATS', active: true}
+  ];
+
+  pestalAnalysis = [
+    {id: 1, name: 'Political Analysis'},
+    {id: 2, name: 'Economic Analysis'},
+    {id: 3, name: 'Social Analysis'},
+    {id: 4, name: 'Technological Analysis'},
+    {id: 5, name: 'Environmental Analysis'},
+    {id: 6, name: 'Legal Analysis'}
+  ];
+
+  perterAnalysis = [
+    {id: 1, name: 'Supplier Power'},
+    {id: 2, name: 'Buyer Power'},
+    {id: 3, name: 'Competitive Rivalry'},
+    {id: 4, name: 'Threats Of Substitution'},
+    {id: 5, name: 'Threats of New Entry'}
+  ];
+
+
+  fourCornerAnalysis = [
+    {id: 1, name: 'Drivers'},
+    {id: 2, name: 'Current Strategy'},
+    {id: 3, name: 'Management Assumptions'},
+    {id: 4, name: 'Capabilities'}
+  ];
+
 
   constructor(private formBuilder: FormBuilder, private strategyService: StrategyService) {
     $(document).ready(function () {
@@ -43,7 +77,8 @@ export class StrategyAnalysisComponent implements OnInit {
     version: [''],
     details: [''],
     additionalFields: [''],
-    year: ['', [Validators.required]]
+    year: ['', [Validators.required]],
+    type: ['']
 
   });
 
@@ -134,5 +169,13 @@ export class StrategyAnalysisComponent implements OnInit {
     });
   }
 
+  swatAnalysis(type: any) {
+    this.strategyAnalysisFrom.controls.type.setValue(type);
+    console.log(this.strategyAnalysisFrom.value);
+  }
 
+  activateClass(index: any) {
+    this.selectedIndex = index;
+    console.log(this.selectedIndex = index)
+  }
 }
