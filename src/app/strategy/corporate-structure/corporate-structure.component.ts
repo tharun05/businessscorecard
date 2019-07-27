@@ -5,6 +5,7 @@ import {AppService} from '../../shared/app.service';
 import {StrategyService} from '../strategy.service';
 import {ToastrService} from 'ngx-toastr';
 import {Router} from '@angular/router';
+import {Utilities} from '../../shared/utils/utilities.service';
 
 @Component({
   selector: 'app-corporate-structure',
@@ -21,6 +22,7 @@ export class CorporateStructureComponent implements OnInit {
   missiontxt: any;
   visiontxt: any;
   valuetxt: any;
+  isOrgAvailable = false;
   updateCounter = 0;
   orgId: any;
   codeAndName;
@@ -34,13 +36,15 @@ export class CorporateStructureComponent implements OnInit {
   ];
 
   constructor(private formBuilder: FormBuilder, private strategyService: StrategyService, private toastrService: ToastrService, private router: Router,
-              private appService: AppService) {
+              private appService: AppService, private  utilities: Utilities) {
     this.corporateStructure = new CorporateStructure();
+    this.utilities.fieldCriterias();
   }
 
   corporateStructureForm = this.formBuilder.group({
     code: ['', [Validators.required]],
     parentCode: ['', [Validators.required]],
+    name: ['', [Validators.required]],
     managerName: ['', []],
     employeeCount: ['', []],
     logoUrl: ['', []],
@@ -89,12 +93,15 @@ export class CorporateStructureComponent implements OnInit {
   }
 
   submitOrganization() {
+    console.log(this.corporateStructureForm.value)
     if (!!this.orgId) {
+      this.isOrgAvailable = true;
       this.strategyService.UpdateOrganization(this.corporateStructureForm.value, this.orgId).subscribe((updatedOrg) => {
         this.toastrService.success('Updated Successfully');
       });
     } else {
       this.strategyService.saveOrganization(this.corporateStructureForm.value).subscribe((orgData: any) => {
+        this.isOrgAvailable = true;
         this.toastrService.success('Saved Successfully');
         this.orgId = orgData.id;
       });

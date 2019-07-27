@@ -15,15 +15,18 @@ import {CorporateStructureComponent} from './strategy/corporate-structure/corpor
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {StrategyPreviewComponent} from './strategy/strategy-preview/strategy-preview.component';
+import {StrategyAnalysisComponent} from './strategy/strategy-analysis/strategy-analysis.component';
 import {StrategyComponent} from './strategy/strategy.component';
 import {ValueGapComponent} from './strategy/value-gap/value-gap.component';
 import {ValueGapCloserComponent} from './strategy/value-gap-closer/value-gap-closer.component';
+import {SubUnitComponent} from './strategy/sub-unit/sub-unit.component';
 import {EmitterService} from './shared/emitter.service';
 import {AuthService} from './auth/auth.service';
 import {StrategyService} from './strategy/strategy.service';
 import {HttpService} from './shared/http.service';
 import {HttpClientModule} from '@angular/common/http';
 import {ToastrModule} from 'ngx-toastr';
+import {Utilities} from './shared/utils/utilities.service';
 
 @NgModule({
   declarations: [
@@ -38,8 +41,9 @@ import {ToastrModule} from 'ngx-toastr';
     StrategyPreviewComponent,
     StrategyComponent,
     ValueGapComponent,
-    ValueGapCloserComponent
-
+    ValueGapCloserComponent,
+    StrategyAnalysisComponent,
+    SubUnitComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +54,7 @@ import {ToastrModule} from 'ngx-toastr';
     HttpClientModule,
     ToastrModule.forRoot({positionClass: 'toast-top-center', timeOut: 2000})
   ],
-  providers: [WINDOW_PROVIDERS, AppService, EmitterService, AuthService, StrategyService, HttpService],
+  providers: [WINDOW_PROVIDERS, AppService, EmitterService, AuthService, StrategyService, HttpService, Utilities],
   bootstrap: [AppComponent]
 })
 export class AppModule {

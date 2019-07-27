@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API_END_POINT: 'http://192.168.1.12:8081/api',
+  API_END_POINT: 'http://www.datalabsindia.ml:8081/api',
 };
 
 /*

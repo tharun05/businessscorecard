@@ -1,10 +1,12 @@
 import {Injectable} from '@angular/core';
 import {AppService} from '../shared/app.service';
 import {HttpService} from '../shared/http.service';
+import { HttpHeaders } from '@angular/common/http';
 import {Props} from '../common/props';
 
 @Injectable()
 export class StrategyService {
+  headers: HttpHeaders;
   props: Props = Props;
   private organization_url = '/organization';
   private organizationTree_url = '/organization/tree';
@@ -36,6 +38,10 @@ export class StrategyService {
   }
 
   getOrganizationById(id: any) {
+    return this.http.getById(this.organizationById_url + '/' + id);
+  }
+
+  getSubUnitById(id) {
     return this.http.getById(this.organizationById_url + '/' + id);
   }
 

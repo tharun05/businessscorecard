@@ -21,7 +21,8 @@
                   <div class="col-sm-7 input_i_icon">
 
                     <select name="items" placeholder="Parent Organization Unit Code" formControlName='parentCode' name='parentCode' class="form-control col-form-label-sm">
-                      <option *ngFor="let codeName of codeAndName">
+                      <option selected value="" disabled>Select Unit Code</option>
+                      <option *ngFor="let codeName of codeAndName" [value]="codeName.code">
                         {{ codeName.name}}
                       </option>
                     </select>
@@ -37,7 +38,7 @@
                 <div class="form-group row m-0">
                   <label for="" class="col-sm-5 col-form-label col-form-label-sm">No of Employees </label>
                   <div class="col-sm-7">
-                    <input type="text" class="form-control col-form-label-sm" id="" placeholder="No of Employees "
+                    <input type="text" class="form-control col-form-label-sm inputWithoutDecimal" id="" placeholder="No of Employees "
                            formControlName="employeeCount" name="employeeCount">
                   </div>
                 </div>
@@ -56,7 +57,7 @@
                   <label for="" class="col-sm-5 col-form-label col-form-label-sm">Organization Unit Name  </label>
                   <div class="col-sm-7">
                     <input type="text" class="form-control col-form-label-sm" placeholder="Organization Unit Name"
-                           formControlName="parentName" name="parentName">
+                           formControlName="name" name="name">
                   </div>
                 </div>
                 <div class="form-group row m-0">
@@ -96,8 +97,8 @@
                   <label for="" class="col-sm-4 col-form-label col-form-label-sm"> </label>
                   <div class="col-sm-8 text-right">
                     <button type="button" class="btn btn-cancel mr-1" (click)="clearFields()">Clear</button>
-                    <button type="button" class="btn btn-save" (click)="orgStructure()"
-                            [disabled]="corporateStructureForm.invalid"> Save
+                    <button type="button" class="btn btn-save" (click)="submitOrganization()"
+                            > Save
                     </button>
                   </div>
                 </div>

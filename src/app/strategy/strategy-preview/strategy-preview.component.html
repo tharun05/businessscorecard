@@ -7,7 +7,7 @@
           <div class="row">
             <div id="left" class="span3">
               <ul id="menu-group-1" class="nav menu">
-                <li class="item-1 deeper parent active" *ngFor="let item of tree">
+                <li class="item-1 deeper parent active" *ngFor="let item of orgTree">
                   <a class="minGroupCompany">
                     <span>{{item.name}}</span>
                   </a>
@@ -19,7 +19,7 @@
                       </a>
                       <ul class="children">
 
-                        <li class="item-3 mt-0" *ngFor="let subChild of child.children">
+                        <li class="item-3 mt-0" *ngFor="let subChild of child.children" (click)="getSubUnitById(subChild.id)">
                           <a>
                             <span class="sign"><i class="icon-play"></i></span>
                             <span>{{subChild.name}}</span>
@@ -46,85 +46,7 @@
       </div>
     </div>
     <div class="col-md-7">
-      <div class="boxs_BG mt-5">
-        <div class="titleBG"> Group Company</div>
-
-        <div class="row mt-4">
-          <div class="col-md-6 groupCompanyList">
-
-            <div class="row">
-              <div class="col-md-6">Organization Unit Code:</div>
-              <div class="col-md-6 gCompRightList">{{organizationData.code}}</div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">Organization Unit Name:</div>
-              <div class="col-md-6 gCompRightList">{{organizationData.name}}</div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">Parnet Organization Unit Name:</div>
-              <div class="col-md-6 gCompRightList">{{organizationData.parentName}}</div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">Type of Unit:</div>
-              <div class="col-md-6 gCompRightList">{{organizationData.type}}</div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">Head of Organization:</div>
-              <div class="col-md-6 gCompRightList">{{organizationData.head}}</div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">Number of Employees:</div>
-              <div class="col-md-6 gCompRightList">{{organizationData.employeeCount}}</div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">Location of Organization Unit:</div>
-              <div class="col-md-6 gCompRightList">{{organizationData.location}}</div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">Name of the Manager:</div>
-              <div class="col-md-6 gCompRightList">{{organizationData.managerName}}l</div>
-            </div>
-
-          </div>
-          <div class="col-md-6">
-            <div class="text-center">
-              <p>Organization Logo </p>
-              <img src="../../../assets/images/groupCompanyIcon.png" width="120" height="120"/>
-            </div>
-          </div>
-        </div>
-
-        <div class="row mt-5">
-
-          <div class="col-lg-12 groupCompanyTabs">
-            <!-- Nav tabs -->
-            <ul class="nav nav-tabs" role="tablist">
-
-              <li class="nav-item" *ngFor="let item of missionVisionValues; let i = index"
-                  (click)="showTab(item.tab, i)">
-                <a class="nav-link show" data-toggle="tab" role="tab" [ngClass]="{'active': i == selectedIndex}"> <i
-                  class="fa fa-area-chart"></i> {{item.title}}</a>
-              </li>
-            </ul>
-            <!-- Tab panes -->
-            <div class="tab-content">
-              <div class="tab-pane active show" id="home" role="tabpanel" *ngIf="isStepOne">
-                <p>{{organizationData.missionStmt}}</p>
-              </div>
-              <div class="tab-pane" id="profile" role="tabpanel" *ngIf="isStepTwo">
-                <p>{{organizationData.valuesStmt}} </p>
-              </div>
-              <div class="tab-pane" id="messages" role="tabpanel" *ngIf="isStepThree">
-                <p>{{organizationData.visionStmt}} </p>
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
+        <app-sub-unit [Subunit]="organizationData"></app-sub-unit>
     </div>
 
   </div>
