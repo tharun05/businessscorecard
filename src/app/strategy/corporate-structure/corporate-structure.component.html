@@ -98,7 +98,7 @@
                   <div class="col-sm-8 text-right">
                     <button type="button" class="btn btn-cancel mr-1" (click)="clearFields()">Clear</button>
                     <button type="button" class="btn btn-save" (click)="submitOrganization()"
-                            > Save
+                            [disabled]="corporateStructureForm.invalid"> Save
                     </button>
                   </div>
                 </div>

@@ -1,40 +1,44 @@
-<div class="container-fluid gryBG">
-<div class="container-fluid">
 <div class="strategryAnalysis">
   <div class="accordion" id="accordionSTrategryAnalysis">
 
     <!-- ================= SWOT Analysis Start=================== -->
-    <div class="strategryAnalysisTbs">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="boxs_BG mt-5">
-            <div class="strategryAnalysisTitle" id="sWOTAnalysis">
-              <div class="titleBG"> SWOT Analysis</div>
-              <i class="fa fa-angle-down collapsed" data-toggle="collapse" data-target="#collapseSWOTAnalysis"></i>
-            </div>
-            <div id="collapseSWOTAnalysis" class="collapse show" aria-labelledby="sWOTAnalysis"
-                 data-parent="#accordionSTrategryAnalysis">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-md-8">
-                    <form>
+    <form [formGroup]="strategyAnalysisFrom">
+      <div class="strategryAnalysisTbs">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="boxs_BG mt-5">
+              <div class="strategryAnalysisTitle" id="sWOTAnalysis">
+                <div class="titleBG"> SWOT Analysis</div>
+                <i class="fa fa-angle-down collapsed" data-toggle="collapse" data-target="#collapseSWOTAnalysis"></i>
+              </div>
+              <div id="collapseSWOTAnalysis" class="collapse show" aria-labelledby="sWOTAnalysis"
+                   data-parent="#accordionSTrategryAnalysis">
+
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-8">
+
                       <div class="row mt-4">
                         <div class="col-md-6 pr-0">
                           <div class="form-group row m-0">
-                            <label for="" class="col-sm-5 col-form-label col-form-label-sm">Organization Unit Code <span
-                              class="red">*</span></label>
+                            <label for="" class="col-sm-5 col-form-label col-form-label-sm">Organization Unit Code
+                              <span
+                                class="red">*</span></label>
                             <div class="col-sm-7 input_i_icon">
-                              <select class="form-control col-form-label-sm">
-                                <option>Select Unit Code</option>
-                                <option>2343</option>
-                                <option>5464</option>
+                              <select name="items" placeholder="Parent Organization Unit Code" (change)="getCodeName()"
+                                      formControlName='orgCode' name='orgCode' class="form-control col-form-label-sm">
+                                <option selected value="" disabled>Select Unit Code</option>
+                                <option *ngFor="let codeName of codeAndName" [value]="codeName.code">
+                                  {{ codeName.code}}
+                                </option>
                               </select>
                               <img src="img/icons/input_i_icon.png" width="12" height="12"/></div>
                           </div>
                           <div class="form-group row m-0">
                             <label for="" class="col-sm-5 col-form-label col-form-label-sm">Description </label>
                             <div class="col-sm-7">
-                              <textarea class="form-control col-form-label-sm" id=""
+                              <textarea class="form-control col-form-label-sm" formControlName="description"
+                                        name="description"
                                         placeholder="Description"></textarea>
                             </div>
                           </div>
@@ -53,10 +57,12 @@
                         </div>
                         <div class="col-md-6 p-0">
                           <div class="form-group row m-0">
-                            <label for="" class="col-sm-5 col-form-label col-form-label-sm">Organization Unit Name <span
-                              class="red">*</span> </label>
+                            <label for="" class="col-sm-5 col-form-label col-form-label-sm">Organization Unit Name
+                              <span
+                                class="red">*</span> </label>
                             <div class="col-sm-7 pr-0">
-                              <input type="text" class="form-control col-form-label-sm" id=""
+                              <input type="text" class="form-control col-form-label-sm" id="" readonly
+                                     formControlName="orgName" name="orgName"
                                      placeholder="Organization Unit Name">
                             </div>
                           </div>
@@ -64,10 +70,12 @@
                             <label for="" class="col-sm-5 col-form-label col-form-label-sm">Year <span
                               class="red">*</span> </label>
                             <div class="col-sm-7 input_i_icon pr-0">
-                              <select class="form-control col-form-label-sm">
-                                <option>Select Year</option>
-                                <option>2019</option>
-                                <option>2018</option>
+                              <select name="items" placeholder="Select Year"
+                                      formControlName='year' name='year' class="form-control col-form-label-sm">
+                                <option selected value="" disabled>Select Year</option>
+                                <option *ngFor="let year of years" [value]="year.name">
+                                  {{ year.name}}
+                                </option>
                               </select>
                               <img src="img/icons/input_i_icon.png" width="12" height="12"/></div>
                           </div>
@@ -75,7 +83,8 @@
                             <label for="" class="col-sm-5 col-form-label col-form-label-sm">Version <span
                               class="red">*</span> </label>
                             <div class="col-sm-7 input_i_icon pr-0">
-                              <input type="text" class="form-control col-form-label-sm" id="" placeholder="Version">
+                              <input type="text" class="form-control col-form-label-sm" id="" placeholder="Version"
+                                     formControlName="version" name="version">
                               <img src="img/icons/input_i_icon.png" width="12" height="12"/></div>
                           </div>
                           <div class="form-group row m-0">
@@ -97,19 +106,23 @@
                         <div class="col-md-4 criteriaList">
                           <ul>
                             <li><a href=""> Strength</a>
-                              <div class="float-right"><a href=""> <i class="fa fa-pencil-square-o"></i></a> <a href="">
+                              <div class="float-right"><a href=""> <i class="fa fa-pencil-square-o"></i></a> <a
+                                href="">
                                 <i class="fa fa-plus"></i></a></div>
                             </li>
                             <li><a href=""> Weakness</a>
-                              <div class="float-right"><a href=""> <i class="fa fa-pencil-square-o"></i></a> <a href="">
+                              <div class="float-right"><a href=""> <i class="fa fa-pencil-square-o"></i></a> <a
+                                href="">
                                 <i class="fa fa-plus"></i></a></div>
                             </li>
                             <li><a href=""> Opportunities</a>
-                              <div class="float-right"><a href=""> <i class="fa fa-pencil-square-o"></i></a> <a href="">
+                              <div class="float-right"><a href=""> <i class="fa fa-pencil-square-o"></i></a> <a
+                                href="">
                                 <i class="fa fa-plus"></i></a></div>
                             </li>
                             <li><a href=""> Threats</a>
-                              <div class="float-right"><a href=""> <i class="fa fa-pencil-square-o"></i></a> <a href="">
+                              <div class="float-right"><a href=""> <i class="fa fa-pencil-square-o"></i></a> <a
+                                href="">
                                 <i class="fa fa-plus"></i></a></div>
                             </li>
                           </ul>
@@ -117,127 +130,137 @@
                         <div class="col-md-8 criteriatextarea">
                           <textarea placeholder="Enter Strength..."></textarea>
                           <div class="form-group row m-0">
-                              <div class="col-sm-12 pr-0">
-                                <div class="float-right">
-                                  <button type="button" class="btn btn-cancel"> Cancel </button>
-                                  <button type="button" class="btn btn-pink"> Save </button>
-                                </div>
+                            <div class="col-sm-12 pr-0">
+                              <div class="float-right">
+                                <button type="button" class="btn btn-cancel"> Cancel</button>
+                                <button type="button" class="btn btn-pink"> Save</button>
                               </div>
                             </div>
+                          </div>
                         </div>
                       </div>
-                    </form>
-                  </div>
-                  <div class="col-md-4 mt-4">
-                    <div class="criteria">
-                      <div class="accordion" id="accordionCriteria">
-                        <div class="criteriaTbs">
-                          <div class="criteriaTitle" id="strength"><i class="fa fa-angle-down" data-toggle="collapse"
-                                                                      data-target="#collapseStrength"></i>
-                            <div class="titleBG"> Strength</div>
-                          </div>
-                          <div id="collapseStrength" class="collapse show" aria-labelledby="strength"
-                               data-parent="#accordionCriteria">
-                            <div class="card-body">
-                              <p>It has survived not only five centuries, but also the leap into electronic typesetting,
-                                remaining essentially unchanged.</p>
+                    </div>
+                    <div class="col-md-4 mt-4">
+                      <div class="criteria">
+                        <div class="accordion" id="accordionCriteria">
+                          <div class="criteriaTbs">
+                            <div class="criteriaTitle" id="strength"><i class="fa fa-angle-down" data-toggle="collapse"
+                                                                        data-target="#collapseStrength"></i>
+                              <div class="titleBG"> Strength</div>
+                            </div>
+                            <div id="collapseStrength" class="collapse show" aria-labelledby="strength"
+                                 data-parent="#accordionCriteria">
+                              <div class="card-body">
+                                <p>It has survived not only five centuries, but also the leap into electronic
+                                  typesetting,
+                                  remaining essentially unchanged.</p>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                        <div class="criteriaTbs">
-                          <div class="criteriaTitle" id="weakness"><i class="fa fa-angle-down collapsed"
-                                                                      data-toggle="collapse"
-                                                                      data-target="#collapseWeakness"></i>
-                            <div class="titleBG"> Weakness</div>
-                          </div>
-                          <div id="collapseWeakness" class="collapse" aria-labelledby="weakness"
-                               data-parent="#accordionCriteria">
-                            <div class="card-body">
-                              <p>It has survived not only five centuries, but also the leap into electronic typesetting,
-                                remaining essentially unchanged.</p>
+                          <div class="criteriaTbs">
+                            <div class="criteriaTitle" id="weakness"><i class="fa fa-angle-down collapsed"
+                                                                        data-toggle="collapse"
+                                                                        data-target="#collapseWeakness"></i>
+                              <div class="titleBG"> Weakness</div>
+                            </div>
+                            <div id="collapseWeakness" class="collapse" aria-labelledby="weakness"
+                                 data-parent="#accordionCriteria">
+                              <div class="card-body">
+                                <p>It has survived not only five centuries, but also the leap into electronic
+                                  typesetting,
+                                  remaining essentially unchanged.</p>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                        <div class="criteriaTbs">
-                          <div class="criteriaTitle" id="opportunities"><i class="fa fa-angle-down collapsed"
-                                                                           data-toggle="collapse"
-                                                                           data-target="#collapseOpportunities"></i>
-                            <div class="titleBG"> Opportunities</div>
-                          </div>
-                          <div id="collapseOpportunities" class="collapse" aria-labelledby="opportunities"
-                               data-parent="#accordionCriteria">
-                            <div class="card-body">
-                              <p>It has survived not only five centuries, but also the leap into electronic typesetting,
-                                remaining essentially unchanged.</p>
+                          <div class="criteriaTbs">
+                            <div class="criteriaTitle" id="opportunities"><i class="fa fa-angle-down collapsed"
+                                                                             data-toggle="collapse"
+                                                                             data-target="#collapseOpportunities"></i>
+                              <div class="titleBG"> Opportunities</div>
+                            </div>
+                            <div id="collapseOpportunities" class="collapse" aria-labelledby="opportunities"
+                                 data-parent="#accordionCriteria">
+                              <div class="card-body">
+                                <p>It has survived not only five centuries, but also the leap into electronic
+                                  typesetting,
+                                  remaining essentially unchanged.</p>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                        <div class="criteriaTbs">
-                          <div class="criteriaTitle" id="threats"><i class="fa fa-angle-down collapsed"
-                                                                     data-toggle="collapse"
-                                                                     data-target="#collapseThreats"></i>
-                            <div class="titleBG"> Threats</div>
-                          </div>
-                          <div id="collapseThreats" class="collapse" aria-labelledby="threats"
-                               data-parent="#accordionCriteria">
-                            <div class="card-body">
-                              <p>It has survived not only five centuries, but also the leap into electronic typesetting,
-                                remaining essentially unchanged.</p>
+                          <div class="criteriaTbs">
+                            <div class="criteriaTitle" id="threats"><i class="fa fa-angle-down collapsed"
+                                                                       data-toggle="collapse"
+                                                                       data-target="#collapseThreats"></i>
+                              <div class="titleBG"> Threats</div>
+                            </div>
+                            <div id="collapseThreats" class="collapse" aria-labelledby="threats"
+                                 data-parent="#accordionCriteria">
+                              <div class="card-body">
+                                <p>It has survived not only five centuries, but also the leap into electronic
+                                  typesetting,
+                                  remaining essentially unchanged.</p>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="float-right">
-                      <button type="button" class="btn btn-cancel"> Cancel</button>
-                      <button type="button" class="btn btn-save"> Save</button>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="float-right">
+                        <button type="button" class="btn btn-cancel"> Cancel</button>
+                        <button type="button" class="btn btn-save"> Save</button>
+                      </div>
                     </div>
                   </div>
                 </div>
+
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </form>
     <!-- ================= SWOT Analysis End=================== -->
 
     <!-- ================= PESTEL Analysis Start=================== -->
-    <div class="strategryAnalysisTbs">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="boxs_BG">
-            <div class="strategryAnalysisTitle" id="pESTELAnalysis">
-              <div class="titleBG"> PESTEL Analysis</div>
-              <i class="fa fa-angle-down collapsed" data-toggle="collapse" data-target="#collapsePESTELAnalysis"></i>
-            </div>
-            <div id="collapsePESTELAnalysis" class="collapse" aria-labelledby="pESTELAnalysis"
-                 data-parent="#accordionSTrategryAnalysis">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-md-8">
-                    <form>
+    <form [formGroup]="pestalAnalysisFrom">
+      <div class="strategryAnalysisTbs">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="boxs_BG">
+              <div class="strategryAnalysisTitle" id="pESTELAnalysis">
+                <div class="titleBG"> PESTEL Analysis</div>
+                <i class="fa fa-angle-down collapsed" data-toggle="collapse" data-target="#collapsePESTELAnalysis"></i>
+              </div>
+              <div id="collapsePESTELAnalysis" class="collapse" aria-labelledby="pESTELAnalysis"
+                   data-parent="#accordionSTrategryAnalysis">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-8">
+
                       <div class="row mt-4">
                         <div class="col-md-6 pr-0">
                           <div class="form-group row m-0">
                             <label for="" class="col-sm-5 col-form-label col-form-label-sm">Organization Unit Code <span
                               class="red">*</span></label>
                             <div class="col-sm-7 input_i_icon">
-                              <select class="form-control col-form-label-sm">
-                                <option>Select Unit Code</option>
-                                <option>2343</option>
-                                <option>5464</option>
+                              <select name="items" placeholder="Parent Organization Unit Code"
+                                      (change)="getCodeNameForPestal()"
+                                      formControlName='orgCode' name='orgCode' class="form-control col-form-label-sm">
+                                <option selected value="" disabled>Select Unit Code</option>
+                                <option *ngFor="let codeName of codeAndName" [value]="codeName.code">
+                                  {{ codeName.code}}
+                                </option>
                               </select>
                               <img src="img/icons/input_i_icon.png" width="12" height="12"/></div>
                           </div>
                           <div class="form-group row m-0">
                             <label for="" class="col-sm-5 col-form-label col-form-label-sm">Description </label>
                             <div class="col-sm-7">
-                              <textarea class="form-control col-form-label-sm" id=""
+                              <textarea class="form-control col-form-label-sm" formControlName="description"
+                                        name="description"
                                         placeholder="Description"></textarea>
                             </div>
                           </div>
@@ -259,7 +282,9 @@
                             <label for="" class="col-sm-5 col-form-label col-form-label-sm">Organization Unit Name <span
                               class="red">*</span> </label>
                             <div class="col-sm-7 pr-0">
-                              <input type="text" class="form-control col-form-label-sm" id=""
+                              <input type="text" class="form-control col-form-label-sm" formControlName="orgName"
+                                     readonly
+                                     name="orgName"
                                      placeholder="Organization Unit Name">
                             </div>
                           </div>
@@ -267,10 +292,12 @@
                             <label for="" class="col-sm-5 col-form-label col-form-label-sm">Year <span
                               class="red">*</span> </label>
                             <div class="col-sm-7 input_i_icon pr-0">
-                              <select class="form-control col-form-label-sm">
-                                <option>Select Year</option>
-                                <option>2019</option>
-                                <option>2018</option>
+                              <select name="items" placeholder="Select Year"
+                                      formControlName='year' name='year' class="form-control col-form-label-sm">
+                                <option selected value="" disabled>Select Year</option>
+                                <option *ngFor="let year of years" [value]="year.name">
+                                  {{ year.name}}
+                                </option>
                               </select>
                               <img src="img/icons/input_i_icon.png" width="12" height="12"/></div>
                           </div>
@@ -278,7 +305,9 @@
                             <label for="" class="col-sm-5 col-form-label col-form-label-sm">Version <span
                               class="red">*</span> </label>
                             <div class="col-sm-7 input_i_icon pr-0">
-                              <input type="text" class="form-control col-form-label-sm" id="" placeholder="Version">
+                              <input type="text" class="form-control col-form-label-sm" placeholder="Version"
+                                     formControlName="version" name="version"
+                              >
                               <img src="img/icons/input_i_icon.png" width="12" height="12"/></div>
                           </div>
                           <div class="form-group row m-0">
@@ -337,104 +366,112 @@
                           </div>
                         </div>
                       </div>
-                    </form>
-                  </div>
-                  <div class="col-md-4 mt-4">
-                    <div class="criteria">
-                      <div class="accordion" id="accordionCriteria2">
-                        <div class="criteriaTbs">
-                          <div class="criteriaTitle" id="politicalAnalysis"><i class="fa fa-angle-down"
-                                                                               data-toggle="collapse"
-                                                                               data-target="#collapsePoliticalAnalysis"></i>
-                            <div class="titleBG"> Political Analysis</div>
-                          </div>
-                          <div id="collapsePoliticalAnalysis" class="collapse show" aria-labelledby="politicalAnalysis"
-                               data-parent="#accordionCriteria2">
-                            <div class="card-body">
-                              <p>It has survived not only five centuries, but also the leap into electronic typesetting,
-                                remaining essentially unchanged.</p>
+
+                    </div>
+                    <div class="col-md-4 mt-4">
+                      <div class="criteria">
+                        <div class="accordion" id="accordionCriteria2">
+                          <div class="criteriaTbs">
+                            <div class="criteriaTitle" id="politicalAnalysis"><i class="fa fa-angle-down"
+                                                                                 data-toggle="collapse"
+                                                                                 data-target="#collapsePoliticalAnalysis"></i>
+                              <div class="titleBG"> Political Analysis</div>
+                            </div>
+                            <div id="collapsePoliticalAnalysis" class="collapse show"
+                                 aria-labelledby="politicalAnalysis"
+                                 data-parent="#accordionCriteria2">
+                              <div class="card-body">
+                                <p>It has survived not only five centuries, but also the leap into electronic
+                                  typesetting,
+                                  remaining essentially unchanged.</p>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                        <div class="criteriaTbs">
-                          <div class="criteriaTitle" id="economicAnalysis"><i class="fa fa-angle-down collapsed"
+                          <div class="criteriaTbs">
+                            <div class="criteriaTitle" id="economicAnalysis"><i class="fa fa-angle-down collapsed"
+                                                                                data-toggle="collapse"
+                                                                                data-target="#collapseEconomicAnalysis"></i>
+                              <div class="titleBG"> Economic Analysis</div>
+                            </div>
+                            <div id="collapseEconomicAnalysis" class="collapse" aria-labelledby="economicAnalysis"
+                                 data-parent="#accordionCriteria2">
+                              <div class="card-body">
+                                <p>It has survived not only five centuries, but also the leap into electronic
+                                  typesetting,
+                                  remaining essentially unchanged.</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="criteriaTbs">
+                            <div class="criteriaTitle" id="socialAnalysis"><i class="fa fa-angle-down collapsed"
                                                                               data-toggle="collapse"
-                                                                              data-target="#collapseEconomicAnalysis"></i>
-                            <div class="titleBG"> Economic Analysis</div>
-                          </div>
-                          <div id="collapseEconomicAnalysis" class="collapse" aria-labelledby="economicAnalysis"
-                               data-parent="#accordionCriteria2">
-                            <div class="card-body">
-                              <p>It has survived not only five centuries, but also the leap into electronic typesetting,
-                                remaining essentially unchanged.</p>
+                                                                              data-target="#collapseSocialAnalysis"></i>
+                              <div class="titleBG"> Social Analysis</div>
+                            </div>
+                            <div id="collapseSocialAnalysis" class="collapse" aria-labelledby="socialAnalysis"
+                                 data-parent="#accordionCriteria2">
+                              <div class="card-body">
+                                <p>It has survived not only five centuries, but also the leap into electronic
+                                  typesetting,
+                                  remaining essentially unchanged.</p>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                        <div class="criteriaTbs">
-                          <div class="criteriaTitle" id="socialAnalysis"><i class="fa fa-angle-down collapsed"
-                                                                            data-toggle="collapse"
-                                                                            data-target="#collapseSocialAnalysis"></i>
-                            <div class="titleBG"> Social Analysis</div>
-                          </div>
-                          <div id="collapseSocialAnalysis" class="collapse" aria-labelledby="socialAnalysis"
-                               data-parent="#accordionCriteria2">
-                            <div class="card-body">
-                              <p>It has survived not only five centuries, but also the leap into electronic typesetting,
-                                remaining essentially unchanged.</p>
+                          <div class="criteriaTbs">
+                            <div class="criteriaTitle" id="technologicalAnalysis"><i class="fa fa-angle-down collapsed"
+                                                                                     data-toggle="collapse"
+                                                                                     data-target="#collapseTechnologicalAnalysis"></i>
+                              <div class="titleBG"> Technological Analysis</div>
+                            </div>
+                            <div id="collapseTechnologicalAnalysis" class="collapse"
+                                 aria-labelledby="technologicalAnalysis" data-parent="#accordionCriteria2">
+                              <div class="card-body">
+                                <p>It has survived not only five centuries, but also the leap into electronic
+                                  typesetting,
+                                  remaining essentially unchanged.</p>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                        <div class="criteriaTbs">
-                          <div class="criteriaTitle" id="technologicalAnalysis"><i class="fa fa-angle-down collapsed"
-                                                                                   data-toggle="collapse"
-                                                                                   data-target="#collapseTechnologicalAnalysis"></i>
-                            <div class="titleBG"> Technological Analysis</div>
-                          </div>
-                          <div id="collapseTechnologicalAnalysis" class="collapse"
-                               aria-labelledby="technologicalAnalysis" data-parent="#accordionCriteria2">
-                            <div class="card-body">
-                              <p>It has survived not only five centuries, but also the leap into electronic typesetting,
-                                remaining essentially unchanged.</p>
+                          <div class="criteriaTbs">
+                            <div class="criteriaTitle" id="environmentalAnalysis"><i class="fa fa-angle-down collapsed"
+                                                                                     data-toggle="collapse"
+                                                                                     data-target="#collapseEnvironmentalAnalysis"></i>
+                              <div class="titleBG"> Environmental Analysis</div>
+                            </div>
+                            <div id="collapseEnvironmentalAnalysis" class="collapse"
+                                 aria-labelledby="environmentalAnalysis" data-parent="#accordionCriteria2">
+                              <div class="card-body">
+                                <p>It has survived not only five centuries, but also the leap into electronic
+                                  typesetting,
+                                  remaining essentially unchanged.</p>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                        <div class="criteriaTbs">
-                          <div class="criteriaTitle" id="environmentalAnalysis"><i class="fa fa-angle-down collapsed"
-                                                                                   data-toggle="collapse"
-                                                                                   data-target="#collapseEnvironmentalAnalysis"></i>
-                            <div class="titleBG"> Environmental Analysis</div>
-                          </div>
-                          <div id="collapseEnvironmentalAnalysis" class="collapse"
-                               aria-labelledby="environmentalAnalysis" data-parent="#accordionCriteria2">
-                            <div class="card-body">
-                              <p>It has survived not only five centuries, but also the leap into electronic typesetting,
-                                remaining essentially unchanged.</p>
+                          <div class="criteriaTbs">
+                            <div class="criteriaTitle" id="legolAnalysis"><i class="fa fa-angle-down collapsed"
+                                                                             data-toggle="collapse"
+                                                                             data-target="#collapseLegolAnalysis"></i>
+                              <div class="titleBG"> Legol Analysis</div>
                             </div>
-                          </div>
-                        </div>
-                        <div class="criteriaTbs">
-                          <div class="criteriaTitle" id="legolAnalysis"><i class="fa fa-angle-down collapsed"
-                                                                           data-toggle="collapse"
-                                                                           data-target="#collapseLegolAnalysis"></i>
-                            <div class="titleBG"> Legol Analysis</div>
-                          </div>
-                          <div id="collapseLegolAnalysis" class="collapse" aria-labelledby="legolAnalysis"
-                               data-parent="#accordionCriteria2">
-                            <div class="card-body">
-                              <p>It has survived not only five centuries, but also the leap into electronic typesetting,
-                                remaining essentially unchanged.</p>
+                            <div id="collapseLegolAnalysis" class="collapse" aria-labelledby="legolAnalysis"
+                                 data-parent="#accordionCriteria2">
+                              <div class="card-body">
+                                <p>It has survived not only five centuries, but also the leap into electronic
+                                  typesetting,
+                                  remaining essentially unchanged.</p>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="float-right">
-                      <button type="button" class="btn btn-cancel"> Cancel</button>
-                      <button type="button" class="btn btn-save"> Save</button>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="float-right">
+                        <button type="button" class="btn btn-cancel"> Cancel</button>
+                        <button type="button" class="btn btn-save"> Save</button>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -443,42 +480,46 @@
           </div>
         </div>
       </div>
-    </div>
+    </form>
     <!-- ================= PESTEL Analysis End=================== -->
 
     <!-- ================= Porter's Five Force Analysis Start=================== -->
-    <div class="strategryAnalysisTbs">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="boxs_BG">
-            <div class="strategryAnalysisTitle" id="portersFiveForceAnalysis">
-              <div class="titleBG"> Porter's Five Force Analysis</div>
-              <i class="fa fa-angle-down collapsed" data-toggle="collapse"
-                 data-target="#collapsePortersFiveForceAnalysis"></i>
-            </div>
-            <div id="collapsePortersFiveForceAnalysis" class="collapse" aria-labelledby="portersFiveForceAnalysis"
-                 data-parent="#accordionSTrategryAnalysis">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-md-8">
-                    <form>
+    <form [formGroup]="portersFiveForceAnalysisFrom">
+      <div class="strategryAnalysisTbs">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="boxs_BG">
+              <div class="strategryAnalysisTitle" id="portersFiveForceAnalysis">
+                <div class="titleBG"> Porter's Five Force Analysis</div>
+                <i class="fa fa-angle-down collapsed" data-toggle="collapse"
+                   data-target="#collapsePortersFiveForceAnalysis"></i>
+              </div>
+              <div id="collapsePortersFiveForceAnalysis" class="collapse" aria-labelledby="portersFiveForceAnalysis"
+                   data-parent="#accordionSTrategryAnalysis">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-8">
                       <div class="row mt-4">
                         <div class="col-md-6 pr-0">
                           <div class="form-group row m-0">
                             <label for="" class="col-sm-5 col-form-label col-form-label-sm">Organization Unit Code <span
                               class="red">*</span></label>
                             <div class="col-sm-7 input_i_icon">
-                              <select class="form-control col-form-label-sm">
-                                <option>Select Unit Code</option>
-                                <option>2343</option>
-                                <option>5464</option>
+                              <select name="items" placeholder="Parent Organization Unit Code"
+                                      (change)="getCodeNameForPortersFiveForce()"
+                                      formControlName='orgCode' name='orgCode' class="form-control col-form-label-sm">
+                                <option selected value="" disabled>Select Unit Code</option>
+                                <option *ngFor="let codeName of codeAndName" [value]="codeName.code">
+                                  {{ codeName.code}}
+                                </option>
                               </select>
                               <img src="img/icons/input_i_icon.png" width="12" height="12"/></div>
                           </div>
                           <div class="form-group row m-0">
                             <label for="" class="col-sm-5 col-form-label col-form-label-sm">Description </label>
                             <div class="col-sm-7">
-                              <textarea class="form-control col-form-label-sm" id=""
+                              <textarea class="form-control col-form-label-sm" formControlName="description"
+                                        name="description"
                                         placeholder="Description"></textarea>
                             </div>
                           </div>
@@ -500,7 +541,9 @@
                             <label for="" class="col-sm-5 col-form-label col-form-label-sm">Organization Unit Name <span
                               class="red">*</span> </label>
                             <div class="col-sm-7 pr-0">
-                              <input type="text" class="form-control col-form-label-sm" id=""
+                              <input type="text" class="form-control col-form-label-sm" formControlName="orgName"
+                                     readonly
+                                     name="orgName"
                                      placeholder="Organization Unit Name">
                             </div>
                           </div>
@@ -508,10 +551,12 @@
                             <label for="" class="col-sm-5 col-form-label col-form-label-sm">Year <span
                               class="red">*</span> </label>
                             <div class="col-sm-7 input_i_icon pr-0">
-                              <select class="form-control col-form-label-sm">
-                                <option>Select Year</option>
-                                <option>2019</option>
-                                <option>2018</option>
+                              <select name="items" placeholder="Select Year"
+                                      formControlName='year' name='year' class="form-control col-form-label-sm">
+                                <option selected value="" disabled>Select Year</option>
+                                <option *ngFor="let year of years" [value]="year.name">
+                                  {{ year.name}}
+                                </option>
                               </select>
                               <img src="img/icons/input_i_icon.png" width="12" height="12"/></div>
                           </div>
@@ -519,7 +564,8 @@
                             <label for="" class="col-sm-5 col-form-label col-form-label-sm">Version <span
                               class="red">*</span> </label>
                             <div class="col-sm-7 input_i_icon pr-0">
-                              <input type="text" class="form-control col-form-label-sm" id="" placeholder="Version">
+                              <input type="text" class="form-control col-form-label-sm" placeholder="Version"
+                                     formControlName="version" name="version">
                               <img src="img/icons/input_i_icon.png" width="12" height="12"/></div>
                           </div>
                           <div class="form-group row m-0">
@@ -575,90 +621,96 @@
                           </div>
                         </div>
                       </div>
-                    </form>
-                  </div>
-                  <div class="col-md-4 mt-4">
-                    <div class="criteria">
-                      <div class="accordion" id="accordionCriteria3">
-                        <div class="criteriaTbs">
-                          <div class="criteriaTitle" id="buyerPower"><i class="fa fa-angle-down" data-toggle="collapse"
-                                                                        data-target="#collapseBuyerPower"></i>
-                            <div class="titleBG"> Buyer Power</div>
-                          </div>
-                          <div id="collapseBuyerPower" class="collapse" aria-labelledby="buyerPower"
-                               data-parent="#accordionCriteria3">
-                            <div class="card-body">
-                              <p>It has survived not only five centuries, but also the leap into electronic typesetting,
-                                remaining essentially unchanged.</p>
+                    </div>
+                    <div class="col-md-4 mt-4">
+                      <div class="criteria">
+                        <div class="accordion" id="accordionCriteria3">
+                          <div class="criteriaTbs">
+                            <div class="criteriaTitle" id="buyerPower"><i class="fa fa-angle-down"
+                                                                          data-toggle="collapse"
+                                                                          data-target="#collapseBuyerPower"></i>
+                              <div class="titleBG"> Buyer Power</div>
+                            </div>
+                            <div id="collapseBuyerPower" class="collapse" aria-labelledby="buyerPower"
+                                 data-parent="#accordionCriteria3">
+                              <div class="card-body">
+                                <p>It has survived not only five centuries, but also the leap into electronic
+                                  typesetting,
+                                  remaining essentially unchanged.</p>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                        <div class="criteriaTbs">
-                          <div class="criteriaTitle" id="supplierPower"><i class="fa fa-angle-down collapsed"
-                                                                           data-toggle="collapse"
-                                                                           data-target="#collapseSupplierPower"></i>
-                            <div class="titleBG"> Supplier Power</div>
-                          </div>
-                          <div id="collapseSupplierPower" class="collapse" aria-labelledby="supplierPower"
-                               data-parent="#accordionCriteria3">
-                            <div class="card-body">
-                              <p>It has survived not only five centuries, but also the leap into electronic typesetting,
-                                remaining essentially unchanged.</p>
+                          <div class="criteriaTbs">
+                            <div class="criteriaTitle" id="supplierPower"><i class="fa fa-angle-down collapsed"
+                                                                             data-toggle="collapse"
+                                                                             data-target="#collapseSupplierPower"></i>
+                              <div class="titleBG"> Supplier Power</div>
+                            </div>
+                            <div id="collapseSupplierPower" class="collapse" aria-labelledby="supplierPower"
+                                 data-parent="#accordionCriteria3">
+                              <div class="card-body">
+                                <p>It has survived not only five centuries, but also the leap into electronic
+                                  typesetting,
+                                  remaining essentially unchanged.</p>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                        <div class="criteriaTbs">
-                          <div class="criteriaTitle" id="competitiveRivalry"><i class="fa fa-angle-down collapsed"
-                                                                                data-toggle="collapse"
-                                                                                data-target="#collapseCompetitiveRivalry"></i>
-                            <div class="titleBG"> Competitive Rivalry</div>
-                          </div>
-                          <div id="collapseCompetitiveRivalry" class="collapse show"
-                               aria-labelledby="competitiveRivalry" data-parent="#accordionCriteria3">
-                            <div class="card-body">
-                              <p>It has survived not only five centuries, but also the leap into electronic typesetting,
-                                remaining essentially unchanged.</p>
+                          <div class="criteriaTbs">
+                            <div class="criteriaTitle" id="competitiveRivalry"><i class="fa fa-angle-down collapsed"
+                                                                                  data-toggle="collapse"
+                                                                                  data-target="#collapseCompetitiveRivalry"></i>
+                              <div class="titleBG"> Competitive Rivalry</div>
+                            </div>
+                            <div id="collapseCompetitiveRivalry" class="collapse show"
+                                 aria-labelledby="competitiveRivalry" data-parent="#accordionCriteria3">
+                              <div class="card-body">
+                                <p>It has survived not only five centuries, but also the leap into electronic
+                                  typesetting,
+                                  remaining essentially unchanged.</p>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                        <div class="criteriaTbs">
-                          <div class="criteriaTitle" id="threatsOfSubstitution"><i class="fa fa-angle-down collapsed"
-                                                                                   data-toggle="collapse"
-                                                                                   data-target="#collapseThreatsOfSubstitution"></i>
-                            <div class="titleBG"> Threats Of Substitution</div>
-                          </div>
-                          <div id="collapseThreatsOfSubstitution" class="collapse"
-                               aria-labelledby="threatsOfSubstitution" data-parent="#accordionCriteria3">
-                            <div class="card-body">
-                              <p>It has survived not only five centuries, but also the leap into electronic typesetting,
-                                remaining essentially unchanged.</p>
+                          <div class="criteriaTbs">
+                            <div class="criteriaTitle" id="threatsOfSubstitution"><i class="fa fa-angle-down collapsed"
+                                                                                     data-toggle="collapse"
+                                                                                     data-target="#collapseThreatsOfSubstitution"></i>
+                              <div class="titleBG"> Threats Of Substitution</div>
+                            </div>
+                            <div id="collapseThreatsOfSubstitution" class="collapse"
+                                 aria-labelledby="threatsOfSubstitution" data-parent="#accordionCriteria3">
+                              <div class="card-body">
+                                <p>It has survived not only five centuries, but also the leap into electronic
+                                  typesetting,
+                                  remaining essentially unchanged.</p>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                        <div class="criteriaTbs">
-                          <div class="criteriaTitle" id="threatsOfNewEntry"><i class="fa fa-angle-down collapsed"
-                                                                               data-toggle="collapse"
-                                                                               data-target="#collapseThreatsOfNewEntry"></i>
-                            <div class="titleBG"> Threats of New Entry</div>
-                          </div>
-                          <div id="collapseThreatsOfNewEntry" class="collapse" aria-labelledby="threatsOfNewEntry"
-                               data-parent="#accordionCriteria3">
-                            <div class="card-body">
-                              <p>It has survived not only five centuries, but also the leap into electronic typesetting,
-                                remaining essentially unchanged.</p>
+                          <div class="criteriaTbs">
+                            <div class="criteriaTitle" id="threatsOfNewEntry"><i class="fa fa-angle-down collapsed"
+                                                                                 data-toggle="collapse"
+                                                                                 data-target="#collapseThreatsOfNewEntry"></i>
+                              <div class="titleBG"> Threats of New Entry</div>
+                            </div>
+                            <div id="collapseThreatsOfNewEntry" class="collapse" aria-labelledby="threatsOfNewEntry"
+                                 data-parent="#accordionCriteria3">
+                              <div class="card-body">
+                                <p>It has survived not only five centuries, but also the leap into electronic
+                                  typesetting,
+                                  remaining essentially unchanged.</p>
+                              </div>
                             </div>
                           </div>
-                        </div>
 
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="float-right">
-                      <button type="button" class="btn btn-cancel"> Cancel</button>
-                      <button type="button" class="btn btn-save"> Save</button>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="float-right">
+                        <button type="button" class="btn btn-cancel"> Cancel</button>
+                        <button type="button" class="btn btn-save"> Save</button>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -667,42 +719,46 @@
           </div>
         </div>
       </div>
-    </div>
+    </form>
     <!-- ================= Porter's Five Force Analysis End=================== -->
 
     <!-- ================= Four Corner's Analysis Start=================== -->
-    <div class="strategryAnalysisTbs">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="boxs_BG">
-            <div class="strategryAnalysisTitle" id="fourCornersAnalysis">
-              <div class="titleBG"> Four Corner's Analysis</div>
-              <i class="fa fa-angle-down collapsed" data-toggle="collapse"
-                 data-target="#collapseFourCornersAnalysis"></i>
-            </div>
-            <div id="collapseFourCornersAnalysis" class="collapse" aria-labelledby="fourCornersAnalysis"
-                 data-parent="#accordionSTrategryAnalysis">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-md-8">
-                    <form>
+    <form [formGroup]="fourCornerAnalysisFrom">
+      <div class="strategryAnalysisTbs">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="boxs_BG">
+              <div class="strategryAnalysisTitle" id="fourCornersAnalysis">
+                <div class="titleBG"> Four Corner's Analysis</div>
+                <i class="fa fa-angle-down collapsed" data-toggle="collapse"
+                   data-target="#collapseFourCornersAnalysis"></i>
+              </div>
+              <div id="collapseFourCornersAnalysis" class="collapse" aria-labelledby="fourCornersAnalysis"
+                   data-parent="#accordionSTrategryAnalysis">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-8">
                       <div class="row mt-4">
                         <div class="col-md-6 pr-0">
                           <div class="form-group row m-0">
                             <label for="" class="col-sm-5 col-form-label col-form-label-sm">Organization Unit Code <span
                               class="red">*</span></label>
                             <div class="col-sm-7 input_i_icon">
-                              <select class="form-control col-form-label-sm">
-                                <option>Select Unit Code</option>
-                                <option>2343</option>
-                                <option>5464</option>
+                              <select name="items" placeholder="Parent Organization Unit Code"
+                                      (change)="getCodeNameForFiveCorner()"
+                                      formControlName='orgCode' name='orgCode' class="form-control col-form-label-sm">
+                                <option selected value="" disabled>Select Unit Code</option>
+                                <option *ngFor="let codeName of codeAndName" [value]="codeName.code">
+                                  {{ codeName.code}}
+                                </option>
                               </select>
                               <img src="img/icons/input_i_icon.png" width="12" height="12"/></div>
                           </div>
                           <div class="form-group row m-0">
                             <label for="" class="col-sm-5 col-form-label col-form-label-sm">Description </label>
                             <div class="col-sm-7">
-                              <textarea class="form-control col-form-label-sm" id=""
+                              <textarea class="form-control col-form-label-sm" formControlName="description"
+                                        name="description"
                                         placeholder="Description"></textarea>
                             </div>
                           </div>
@@ -724,7 +780,8 @@
                             <label for="" class="col-sm-5 col-form-label col-form-label-sm">Organization Unit Name <span
                               class="red">*</span> </label>
                             <div class="col-sm-7 pr-0">
-                              <input type="text" class="form-control col-form-label-sm" id=""
+                              <input type="text" class="form-control col-form-label-sm" formControlName="orgName"
+                                     name="orgName"
                                      placeholder="Organization Unit Name">
                             </div>
                           </div>
@@ -732,10 +789,12 @@
                             <label for="" class="col-sm-5 col-form-label col-form-label-sm">Year <span
                               class="red">*</span> </label>
                             <div class="col-sm-7 input_i_icon pr-0">
-                              <select class="form-control col-form-label-sm">
-                                <option>Select Year</option>
-                                <option>2019</option>
-                                <option>2018</option>
+                              <select name="items" placeholder="Select Year"
+                                      formControlName='year' name='year' class="form-control col-form-label-sm">
+                                <option selected value="" disabled>Select Year</option>
+                                <option *ngFor="let year of years" [value]="year.name">
+                                  {{ year.name}}
+                                </option>
                               </select>
                               <img src="img/icons/input_i_icon.png" width="12" height="12"/></div>
                           </div>
@@ -743,7 +802,8 @@
                             <label for="" class="col-sm-5 col-form-label col-form-label-sm">Version <span
                               class="red">*</span> </label>
                             <div class="col-sm-7 input_i_icon pr-0">
-                              <input type="text" class="form-control col-form-label-sm" id="" placeholder="Version">
+                              <input type="text" class="form-control col-form-label-sm" placeholder="Version"
+                                     formControlName="version" name="version">
                               <img src="img/icons/input_i_icon.png" width="12" height="12"/></div>
                           </div>
                           <div class="form-group row m-0">
@@ -796,78 +856,83 @@
                           </div>
                         </div>
                       </div>
-                    </form>
-                  </div>
-                  <div class="col-md-4 mt-4">
-                    <div class="criteria">
-                      <div class="accordion" id="accordionCriteria4">
 
-                        <div class="criteriaTbs">
-                          <div class="criteriaTitle" id="drivers"><i class="fa fa-angle-down collapsed"
-                                                                     data-toggle="collapse"
-                                                                     data-target="#collapseDrivers"></i>
-                            <div class="titleBG"> Drivers</div>
-                          </div>
-                          <div id="collapseDrivers" class="collapse" aria-labelledby="drivers"
-                               data-parent="#accordionCriteria4">
-                            <div class="card-body">
-                              <p>It has survived not only five centuries, but also the leap into electronic typesetting,
-                                remaining essentially unchanged.</p>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="criteriaTbs">
-                          <div class="criteriaTitle" id="currentStrategy"><i class="fa fa-angle-down collapsed"
-                                                                             data-toggle="collapse"
-                                                                             data-target="#collapseCurrentStrategy"></i>
-                            <div class="titleBG"> Current Strategy</div>
-                          </div>
-                          <div id="collapseCurrentStrategy" class="collapse show" aria-labelledby="currentStrategy"
-                               data-parent="#accordionCriteria4">
-                            <div class="card-body">
-                              <p>It has survived not only five centuries, but also the leap into electronic typesetting,
-                                remaining essentially unchanged.</p>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="criteriaTbs">
-                          <div class="criteriaTitle" id="managementAssumptions"><i class="fa fa-angle-down collapsed"
-                                                                                   data-toggle="collapse"
-                                                                                   data-target="#collapseManagementAssumptions"></i>
-                            <div class="titleBG"> Management Assumptions</div>
-                          </div>
-                          <div id="collapseManagementAssumptions" class="collapse"
-                               aria-labelledby="managementAssumptions" data-parent="#accordionCriteria4">
-                            <div class="card-body">
-                              <p>It has survived not only five centuries, but also the leap into electronic typesetting,
-                                remaining essentially unchanged.</p>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="criteriaTbs">
-                          <div class="criteriaTitle" id="capabilities"><i class="fa fa-angle-down collapsed"
-                                                                          data-toggle="collapse"
-                                                                          data-target="#collapseCapabilities"></i>
-                            <div class="titleBG"> Capabilities</div>
-                          </div>
-                          <div id="collapseCapabilities" class="collapse" aria-labelledby="capabilities"
-                               data-parent="#accordionCriteria4">
-                            <div class="card-body">
-                              <p>It has survived not only five centuries, but also the leap into electronic typesetting,
-                                remaining essentially unchanged.</p>
-                            </div>
-                          </div>
-                        </div>
+                    </div>
+                    <div class="col-md-4 mt-4">
+                      <div class="criteria">
+                        <div class="accordion" id="accordionCriteria4">
 
+                          <div class="criteriaTbs">
+                            <div class="criteriaTitle" id="drivers"><i class="fa fa-angle-down collapsed"
+                                                                       data-toggle="collapse"
+                                                                       data-target="#collapseDrivers"></i>
+                              <div class="titleBG"> Drivers</div>
+                            </div>
+                            <div id="collapseDrivers" class="collapse" aria-labelledby="drivers"
+                                 data-parent="#accordionCriteria4">
+                              <div class="card-body">
+                                <p>It has survived not only five centuries, but also the leap into electronic
+                                  typesetting,
+                                  remaining essentially unchanged.</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="criteriaTbs">
+                            <div class="criteriaTitle" id="currentStrategy"><i class="fa fa-angle-down collapsed"
+                                                                               data-toggle="collapse"
+                                                                               data-target="#collapseCurrentStrategy"></i>
+                              <div class="titleBG"> Current Strategy</div>
+                            </div>
+                            <div id="collapseCurrentStrategy" class="collapse show" aria-labelledby="currentStrategy"
+                                 data-parent="#accordionCriteria4">
+                              <div class="card-body">
+                                <p>It has survived not only five centuries, but also the leap into electronic
+                                  typesetting,
+                                  remaining essentially unchanged.</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="criteriaTbs">
+                            <div class="criteriaTitle" id="managementAssumptions"><i class="fa fa-angle-down collapsed"
+                                                                                     data-toggle="collapse"
+                                                                                     data-target="#collapseManagementAssumptions"></i>
+                              <div class="titleBG"> Management Assumptions</div>
+                            </div>
+                            <div id="collapseManagementAssumptions" class="collapse"
+                                 aria-labelledby="managementAssumptions" data-parent="#accordionCriteria4">
+                              <div class="card-body">
+                                <p>It has survived not only five centuries, but also the leap into electronic
+                                  typesetting,
+                                  remaining essentially unchanged.</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="criteriaTbs">
+                            <div class="criteriaTitle" id="capabilities"><i class="fa fa-angle-down collapsed"
+                                                                            data-toggle="collapse"
+                                                                            data-target="#collapseCapabilities"></i>
+                              <div class="titleBG"> Capabilities</div>
+                            </div>
+                            <div id="collapseCapabilities" class="collapse" aria-labelledby="capabilities"
+                                 data-parent="#accordionCriteria4">
+                              <div class="card-body">
+                                <p>It has survived not only five centuries, but also the leap into electronic
+                                  typesetting,
+                                  remaining essentially unchanged.</p>
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="float-right">
-                      <button type="button" class="btn btn-cancel"> Cancel</button>
-                      <button type="button" class="btn btn-save"> Save</button>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="float-right">
+                        <button type="button" class="btn btn-cancel"> Cancel</button>
+                        <button type="button" class="btn btn-save"> Save</button>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -875,16 +940,12 @@
             </div>
           </div>
         </div>
-      </div>
 
-    </div>
+      </div>
+    </form>
     <!-- ================= Four Corner's Analysis End=================== -->
 
   </div>
 
 
-</div>
-
-
-</div>
 </div>
