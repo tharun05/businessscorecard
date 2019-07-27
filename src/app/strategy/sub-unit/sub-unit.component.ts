@@ -30,10 +30,11 @@ export class SubUnitComponent implements OnInit {
   }];
   constructor() {
     this.showTab('tabOne', 0);
-    console.log(this.Subunit);
+
   }
 
   ngOnInit() {
+    console.log(this.Subunit);
   }
   showTab(tab, index) {
     switch (tab) {

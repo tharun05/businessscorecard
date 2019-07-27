@@ -19,7 +19,7 @@ import {StrategyAnalysisComponent} from './strategy/strategy-analysis/strategy-a
 import {StrategyComponent} from './strategy/strategy.component';
 import {ValueGapComponent} from './strategy/value-gap/value-gap.component';
 import {ValueGapCloserComponent} from './strategy/value-gap-closer/value-gap-closer.component';
-import {SubUnitComponent} from './strategy/sub-unit/sub-unit.component';
+// import {SubUnitComponent} from './strategy/sub-unit/sub-unit.component';
 import {EmitterService} from './shared/emitter.service';
 import {AuthService} from './auth/auth.service';
 import {StrategyService} from './strategy/strategy.service';
@@ -43,7 +43,7 @@ import {Utilities} from './shared/utils/utilities.service';
     ValueGapComponent,
     ValueGapCloserComponent,
     StrategyAnalysisComponent,
-    SubUnitComponent
+    // SubUnitComponent
   ],
   imports: [
     BrowserModule,
