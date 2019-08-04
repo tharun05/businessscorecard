@@ -19,7 +19,8 @@
                       </a>
                       <ul class="children">
 
-                        <li class="item-3 mt-0" *ngFor="let subChild of child.children" (click)="getSubUnitById(subChild.id)">
+                        <li class="item-3 mt-0" *ngFor="let subChild of child.children"
+                            (click)="getSubUnitById(subChild.id)">
                           <a>
                             <span class="sign"><i class="icon-play"></i></span>
                             <span>{{subChild.name}}</span>
@@ -48,7 +49,10 @@
     <div class="col-md-7">
       <div class="boxs_BG mt-5">
         <div class="titleBG"> Group Company</div>
-
+        <div class="float-lg-right"><span><a class="padding10" style="cursor: pointer" (click)="editOrganization()"><i
+          class="fa fa-edit"></i></a>
+          <a class="padding10" style="cursor: pointer" (click)="addOrganization()"><i class="fa fa-plus"></i></a>
+          </span></div>
         <div class="row mt-4">
           <div class="col-md-6 groupCompanyList">
 
@@ -111,10 +115,10 @@
               <div class="tab-pane active show" id="home" role="tabpanel">
                 <p>{{organizationData.missionStmt}}</p>
               </div>
-              <div class="tab-pane" id="profile" role="tabpanel" >
+              <div class="tab-pane" id="profile" role="tabpanel">
                 <p>{{organizationData.valuesStmt}} </p>
               </div>
-              <div class="tab-pane" id="messages" role="tabpanel" >
+              <div class="tab-pane" id="messages" role="tabpanel">
                 <p>{{organizationData.visionStmt}} </p>
               </div>
 

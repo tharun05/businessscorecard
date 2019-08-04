@@ -4,7 +4,7 @@ import {FormBuilder, Validators} from '@angular/forms';
 import {AppService} from '../../shared/app.service';
 import {StrategyService} from '../strategy.service';
 import {ToastrService} from 'ngx-toastr';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Utilities} from '../../shared/utils/utilities.service';
 
 @Component({
@@ -27,6 +27,7 @@ export class CorporateStructureComponent implements OnInit {
   orgId: any;
   codeAndName;
   corporateStructure: CorporateStructure;
+  organizationData: any;
   unitCodes = [
     {name: 'Group Company', value: 'Group Company'},
     {name: 'Corporate Unit', value: 'Corporate Unit'},
@@ -35,8 +36,13 @@ export class CorporateStructureComponent implements OnInit {
     {name: 'Subsidiary Department', value: 'Subsidiary Department'}
   ];
 
-  constructor(private formBuilder: FormBuilder, private strategyService: StrategyService, private toastrService: ToastrService, private router: Router,
-              private appService: AppService, private  utilities: Utilities) {
+  constructor(private formBuilder: FormBuilder,
+              private strategyService: StrategyService,
+              private toastrService: ToastrService,
+              private router: Router,
+              private appService: AppService,
+              private  utilities: Utilities,
+              private activatedRoute: ActivatedRoute) {
     this.corporateStructure = new CorporateStructure();
     this.utilities.fieldCriterias();
   }
@@ -62,11 +68,27 @@ export class CorporateStructureComponent implements OnInit {
     this.visiontxt = this.corporateStructureForm.controls.visionStmt.value;
     this.valuetxt = this.corporateStructureForm.controls.valuesStmt.value;
     this.getCodeAndName();
+    this.activatedRoute.queryParams.subscribe(params => {
+      this.orgId = params['id'];
+      if (!!this.orgId) {
+        this.getOrganizationById(this.orgId);
+      }
+    });
+  }
+
+  getOrganizationById(id) {
+    this.strategyService.getOrganizationById(id).subscribe((organizationData: any) => {
+      if (!!organizationData) {
+        this.organizationData = organizationData;
+        console.log(this.organizationData);
+        this.corporateStructureForm.patchValue(this.organizationData);
+      }
+
+    });
   }
 
   editMissionText() {
     this.editMission = true;
-
   }
 
   saveMissionText() {
@@ -93,7 +115,7 @@ export class CorporateStructureComponent implements OnInit {
   }
 
   submitOrganization() {
-    console.log(this.corporateStructureForm.value)
+    console.log(this.corporateStructureForm.value);
     if (!!this.orgId) {
       this.isOrgAvailable = true;
       this.strategyService.UpdateOrganization(this.corporateStructureForm.value, this.orgId).subscribe((updatedOrg) => {

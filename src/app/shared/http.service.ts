@@ -43,7 +43,7 @@ export class HttpService {
   delete(url: string, data: any) {
     const paramString = Util.GetParamString(data ? data : {});
     url = this.host + url + paramString;
-    return this.http.delete(url);
+    return this.http.delete(url, this.httpOptions);
   }
 
   formData(url: string, _formData: FormData) {

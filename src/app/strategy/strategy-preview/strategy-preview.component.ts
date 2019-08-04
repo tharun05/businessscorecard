@@ -84,7 +84,6 @@ export class StrategyPreviewComponent implements OnInit {
     this.strategyService.getOrganizationById(id).subscribe((organizationData: any) => {
       if (!!organizationData) {
         this.organizationData = organizationData;
-        console.log(this.organizationData);
       }
 
     });
@@ -101,7 +100,7 @@ export class StrategyPreviewComponent implements OnInit {
               self.mergeArrays.push(children.children);
               if (self.mergeArrays[0][0].id) {
                 self.getById = self.mergeArrays[0][0].id;
-                self.getSubUnitById(self.getById);
+                // self.getSubUnitById(self.getById);
               } else {
                 self.noContentFound = 'Please Add an Organization';
               }
@@ -142,6 +141,14 @@ export class StrategyPreviewComponent implements OnInit {
     this.strategyService.getSubUnitById(id).subscribe((data: any) => {
       this.organizationData = data;
     });
+  }
+
+  editOrganization() {
+    this.router.navigate(['/strategy/corporateStructure'], {queryParams: {id: this.organizationData.id}});
+  }
+
+  addOrganization() {
+    this.router.navigate(['/strategy/corporateStructure'], {queryParams: {id: null}});
   }
 
 

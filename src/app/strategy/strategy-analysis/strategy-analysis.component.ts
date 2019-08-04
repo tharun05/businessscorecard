@@ -1,7 +1,9 @@
-import {FormBuilder, Validators} from '@angular/forms';
 import {Component, OnInit} from '@angular/core';
 import {StrategyService} from '../strategy.service';
+import {FormBuilder, Validators} from '@angular/forms';
 import * as $ from 'jquery';
+import {StrategyAnalysisService} from './strategy-analysis.service';
+import {ToastrService} from 'ngx-toastr';
 
 window['$'] = window['jQuery'] = $;
 
@@ -13,7 +15,15 @@ window['$'] = window['jQuery'] = $;
 export class StrategyAnalysisComponent implements OnInit {
   codeAndName: any;
   orgName: any;
-  selectedIndex: number = null;
+  selectedIndex: number = 0;
+  reqObj: any;
+  strength: any;
+  weaknesses: any;
+  opportunities: any;
+  threats: any;
+  swotTypes: any = 'Strengths';
+  type: any;
+  isEditMode = true;
 
   years = [{id: 1, name: '2016'},
     {id: 1, name: '2017'},
@@ -21,10 +31,10 @@ export class StrategyAnalysisComponent implements OnInit {
     {id: 1, name: '2019'}];
 
   swot = [
-    {id: 1, name: 'STRENGTH', active: true},
-    {id: 2, name: 'WEAKNESS', active: true},
-    {id: 3, name: 'OPPORTUNITIES', active: true},
-    {id: 4, name: 'THREATS', active: true}
+    {id: 1, name: 'Strengths', active: true},
+    {id: 2, name: 'Weaknesses', active: true},
+    {id: 3, name: 'Opportunities', active: true},
+    {id: 4, name: 'Threats', active: true}
   ];
 
   pestalAnalysis = [
@@ -53,7 +63,11 @@ export class StrategyAnalysisComponent implements OnInit {
   ];
 
 
-  constructor(private formBuilder: FormBuilder, private strategyService: StrategyService) {
+  constructor(private formBuilder: FormBuilder,
+              private strategyService: StrategyService,
+              private strategyAnalysisService: StrategyAnalysisService,
+              private toastrService: ToastrService) {
+
     $(document).ready(function () {
       // Add minus icon for collapse element which is open by default
       $('.collapse.show').each(function () {
@@ -135,7 +149,6 @@ export class StrategyAnalysisComponent implements OnInit {
         self.strategyAnalysisFrom.controls.orgName.setValue(self.orgName);
       }
     });
-
   }
 
   getCodeNameForPestal(code: any) {
@@ -174,8 +187,113 @@ export class StrategyAnalysisComponent implements OnInit {
     console.log(this.strategyAnalysisFrom.value);
   }
 
-  activateClass(index: any) {
+  activateClass(index: any, name: string) {
+    this.swotTypes = name;
     this.selectedIndex = index;
-    console.log(this.selectedIndex = index)
+    this.strategyAnalysisService.strategyAnalysis.details.forEach((key, i) => {
+      if (key.title.toUpperCase() === name.toUpperCase()) {
+        const swotMessage = this.strategyAnalysisService.strategyAnalysis.details[i].criterias;
+        this.strategyAnalysisFrom.controls.details.setValue(swotMessage);
+        switch (this.strategyAnalysisService.strategyAnalysis.details[i].title) {
+          case 'Strengths':
+            this.isEditMode = false;
+            this.strength = this.strategyAnalysisService.strategyAnalysis.details[i].criterias.toString();
+            break;
+          case 'Weaknesses':
+            this.weaknesses = this.strategyAnalysisService.strategyAnalysis.details[i].criterias.toString();
+            break;
+          case 'Opportunities':
+            this.opportunities = this.strategyAnalysisService.strategyAnalysis.details[i].criterias.toString();
+            break;
+          case 'Threats':
+            this.threats = this.strategyAnalysisService.strategyAnalysis.details[i].criterias.toString();
+            break;
+        }
+      }
+    });
+
+    // this.strategyAnalysisService.strategyAnalysis.details.forEach((key, i) => {
+    //   if (key.title.toUpperCase() === name) {
+    //     const isFound = this.strategyAnalysisService.strategyAnalysis.details[i].criterias.indexOf(this.strategyAnalysisFrom.value.details);
+    //     if (isFound !== -1 && this.strategyAnalysisService.strategyAnalysis.details[i].criterias.length) {
+    //       this.toastrService.error('already Exist');
+    //     } else {
+    //       this.strategyAnalysisService.strategyAnalysis.details[i].criterias.push(this.strategyAnalysisFrom.value.details);
+    //       this.toastrService.success('Added Successfully');
+    //     }
+    //   }
+    // });
+  }
+
+  saveStrategiySwotAnalysis(type: any) {
+
+    this.strategyAnalysisService.strategyAnalysis.orgCode = this.strategyAnalysisFrom.value.orgCode;
+    this.strategyAnalysisService.strategyAnalysis.description = this.strategyAnalysisFrom.value.description;
+    this.strategyAnalysisService.strategyAnalysis.orgName = this.strategyAnalysisFrom.value.orgName;
+    this.strategyAnalysisService.strategyAnalysis.type = type;
+    this.strategyAnalysisService.strategyAnalysis.year = this.strategyAnalysisFrom.value.year;
+    this.strategyAnalysisService.strategyAnalysis.version = this.strategyAnalysisFrom.value.version;
+    this.strategyService.saveSwotAnalysis(this.strategyAnalysisService.strategyAnalysis).subscribe((data: any) => {
+      console.log(data);
+    });
+  }
+
+  getStrategyAnalysis(event: any, type: any) {
+    this.reqObj = this.strategyAnalysisFrom.value;
+    this.strategyService.getStretegyAnalysis(this.reqObj.orgCode, this.reqObj.year, this.reqObj.version, type)
+      .subscribe((data: any) => {
+
+        this.strategyAnalysisService.strategyAnalysis = Object.assign({}, data);
+        this.strategyAnalysisService.strategyAnalysis.details.forEach((key, i) => {
+          const strategyDetails = this.strategyAnalysisService.strategyAnalysis;
+          switch (this.strategyAnalysisService.strategyAnalysis.details[i].title) {
+            case 'Strengths':
+              this.strength = strategyDetails.details[i].criterias.toString();
+              break;
+            case 'Weaknesses':
+              this.weaknesses = strategyDetails.details[i].criterias.toString();
+              break;
+            case 'Opportunities':
+              this.opportunities = strategyDetails.details[i].criterias.toString();
+              break;
+            case 'Threats':
+              this.threats = strategyDetails.details[i].criterias.toString();
+              break;
+          }
+        });
+        // this.activateClass(0, 'STRENGTHS');
+
+      });
+  }
+
+  updateSwotAnalysis() {
+    switch (this.swotTypes) {
+      case 'Strengths':
+        const strengthCriterias = this.strategyAnalysisFrom.controls.details.value.split(',');
+        strengthCriterias.forEach((key, i) => {
+          const isAvailable = this.strategyAnalysisService.strategyAnalysis.details[0].criterias.indexOf(key.trim());
+          if (isAvailable === -1) {
+            this.strategyAnalysisService.strategyAnalysis.details[0].criterias.push(key);
+            this.strength = this.strategyAnalysisService.strategyAnalysis.details[0].criterias.toString();
+          }
+        });
+        break;
+      case 'Weaknesses':
+        const isAvailable = this.strategyAnalysisService.strategyAnalysis.details[1].criterias.indexOf(this.strategyAnalysisFrom.value.details);
+        // this.weaknesses = this.strategyAnalysisService.strategyAnalysis.details[i].criterias.toString();
+        break;
+      case 'Opportunities':
+        // this.opportunities = this.strategyAnalysisService.strategyAnalysis.details[i].criterias.toString();
+        break;
+      case 'Threats':
+        // this.threats = this.strategyAnalysisService.strategyAnalysis.details[i].criterias.toString();
+        break;
+    }
+    // });
+  }
+
+  isEdit(type: string) {
+    // this.activateClass(0, type);
+    this.strategyAnalysisFrom.value.details = null;
   }
 }

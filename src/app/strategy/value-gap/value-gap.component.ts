@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {StrategyService} from '../strategy.service';
+import {FormBuilder, Validators, FormGroup} from '@angular/forms';
+import {Subject} from 'rxjs';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-value-gap',
@@ -6,10 +10,93 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./value-gap.component.scss']
 })
 export class ValueGapComponent implements OnInit {
+  valueGapForm: FormGroup;
+  codeAndName: any;
+  orgName: any;
+  AllYearsData = [
+    {yearRef: 'Y-5'},
+    {yearRef: 'Y-4'},
+    {yearRef: 'Y-3'},
+    {yearRef: 'Y-2'},
+    {yearRef: 'Y-1'},
+    {yearRef: 'Y'},
+    {yearRef: 'Y+1'},
+    {yearRef: 'Y+2'},
+    {yearRef: 'Y+3'},
+    {yearRef: 'Y+4'},
+    {yearRef: 'Y+5'}
+  ];
+  currenctUnit = [
+    {id: 1, type: 'USD'},
+    {id: 1, type: 'GBP'},
+    {id: 1, type: 'INR'},
+  ];
 
-  constructor() { }
+  createform() {
+    const arr = [];
+    for (let i = 0; i < this.AllYearsData.length; i++) {
+      arr.push(this.BuildFormDynamic(this.AllYearsData[i]));
+
+    }
+
+    this.valueGapForm = this.formBuilder.group({
+      orgCode: [''],
+      orgName: [''],
+      region: [''],
+      currencyType: [''],
+      productGroupName: [''],
+      productGroupUnitOfMeasure: [''],
+      year: [''],
+      version: [''],
+      values: this.formBuilder.array(arr)
+    });
+  }
+
+  BuildFormDynamic(product): FormGroup {
+    return this.formBuilder.group({
+      yearRef: [product.yearRef],
+      year: [''],
+      revenueGap: [''],
+      revenueAmount: ['']
+    });
+  }
+
+  getOrgUnitCode() {
+    this.strategyService.getCodeAndName().subscribe((codes) => {
+      this.codeAndName = codes;
+    });
+  }
+
+  getCodeName(code: any) {
+    this.codeAndName.forEach((val, key) => {
+      if (this.valueGapForm.controls.orgCode.value === val.code) {
+        this.orgName = val.name.toUpperCase();
+        this.valueGapForm.controls.orgName.setValue(this.orgName);
+      }
+    });
+  }
+
+  getCodeNameForPestal(code: any) {
+    this.codeAndName.forEach((val, key) => {
+      if (this.valueGapForm.controls.orgCode.value === val.code) {
+        this.orgName = val.name.toUpperCase();
+        this.valueGapForm.controls.orgName.setValue(this.orgName);
+      }
+    });
+  }
+
+  constructor(private strategyService: StrategyService,
+              private formBuilder: FormBuilder,
+              private toastrService: ToastrService) {
+  }
 
   ngOnInit() {
+    this.createform();
+    this.getOrgUnitCode();
+  }
+
+  saveValueGap() {
+    console.log(this.valueGapForm.value);
   }
 
 }

@@ -16,10 +16,11 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {StrategyPreviewComponent} from './strategy/strategy-preview/strategy-preview.component';
 import {StrategyAnalysisComponent} from './strategy/strategy-analysis/strategy-analysis.component';
+import {StrategyProjectionComponent} from './strategy/strategy-projection/strategy-projection.component';
 import {StrategyComponent} from './strategy/strategy.component';
 import {ValueGapComponent} from './strategy/value-gap/value-gap.component';
 import {ValueGapCloserComponent} from './strategy/value-gap-closer/value-gap-closer.component';
-// import {SubUnitComponent} from './strategy/sub-unit/sub-unit.component';
+import { DataTablesModule } from 'angular-datatables';
 import {EmitterService} from './shared/emitter.service';
 import {AuthService} from './auth/auth.service';
 import {StrategyService} from './strategy/strategy.service';
@@ -27,6 +28,8 @@ import {HttpService} from './shared/http.service';
 import {HttpClientModule} from '@angular/common/http';
 import {ToastrModule} from 'ngx-toastr';
 import {Utilities} from './shared/utils/utilities.service';
+import {StrategyAnalysisService} from './strategy/strategy-analysis/strategy-analysis.service';
+
 
 @NgModule({
   declarations: [
@@ -43,6 +46,7 @@ import {Utilities} from './shared/utils/utilities.service';
     ValueGapComponent,
     ValueGapCloserComponent,
     StrategyAnalysisComponent,
+    StrategyProjectionComponent
     // SubUnitComponent
   ],
   imports: [
@@ -52,9 +56,10 @@ import {Utilities} from './shared/utils/utilities.service';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    DataTablesModule,
     ToastrModule.forRoot({positionClass: 'toast-top-center', timeOut: 2000})
   ],
-  providers: [WINDOW_PROVIDERS, AppService, EmitterService, AuthService, StrategyService, HttpService, Utilities],
+  providers: [WINDOW_PROVIDERS, AppService, EmitterService, AuthService, StrategyService, HttpService, Utilities, StrategyAnalysisService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

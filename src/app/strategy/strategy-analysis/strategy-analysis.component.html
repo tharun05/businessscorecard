@@ -71,6 +71,7 @@
                               class="red">*</span> </label>
                             <div class="col-sm-7 input_i_icon pr-0">
                               <select name="items" placeholder="Select Year"
+                                      (change)="getStrategyAnalysis($event, 'SWOT')"
                                       formControlName='year' name='year' class="form-control col-form-label-sm">
                                 <option selected value="" disabled>Select Year</option>
                                 <option *ngFor="let year of years" [value]="year.name">
@@ -105,22 +106,28 @@
                       <div class="row mt-4">
                         <div class="col-md-4 criteriaList">
                           <ul>
-                            <li *ngFor="let item of swot; let i = index" (click)="activateClass(i)"
+                            <li *ngFor="let item of swot; let i = index" (click)="activateClass(i, item.name)"
+                                style="cursor: pointer"
                                 [class.active]="selectedIndex === i"
                             ><a> {{item.name}}</a>
-                              <div class="float-right"><a> <i class="fa fa-pencil-square-o"></i></a> <a
-                              >
+                              <div class="float-right"><a (click)="isEdit(item.name)"> <i
+                                class="fa fa-pencil-square-o"></i></a> <a
+                                (click)="add(item.name)">
                                 <i class="fa fa-plus"></i></a></div>
                             </li>
                           </ul>
                         </div>
-                        <div class="col-md-8 criteriatextarea">
-                          <textarea placeholder="Enter Strength..."></textarea>
+                        <div class="col-md-8 criteriatextarea" [ngClass]="{'readonlyMode': isEditMode === true }">
+                          <textarea placeholder="Enter Strength..." formControlName="details" name="details"
+                                    [readOnly]="isEditMode"
+                                    [ngClass]="{'readonlyMode': isEditMode === true }"></textarea>
                           <div class="form-group row m-0">
                             <div class="col-sm-12 pr-0">
                               <div class="float-right">
                                 <button type="button" class="btn btn-cancel"> Cancel</button>
-                                <button type="button" class="btn btn-pink"> Save</button>
+                                <button type="button" class="btn btn-pink" (click)="updateSwotAnalysis()">
+                                  Save
+                                </button>
                               </div>
                             </div>
                           </div>
@@ -138,9 +145,7 @@
                             <div id="collapseStrength" class="collapse show" aria-labelledby="strength"
                                  data-parent="#accordionCriteria">
                               <div class="card-body">
-                                <p>It has survived not only five centuries, but also the leap into electronic
-                                  typesetting,
-                                  remaining essentially unchanged.</p>
+                                <p>{{strength}}</p>
                               </div>
                             </div>
                           </div>
@@ -153,9 +158,7 @@
                             <div id="collapseWeakness" class="collapse" aria-labelledby="weakness"
                                  data-parent="#accordionCriteria">
                               <div class="card-body">
-                                <p>It has survived not only five centuries, but also the leap into electronic
-                                  typesetting,
-                                  remaining essentially unchanged.</p>
+                                <p>{{weaknesses}}</p>
                               </div>
                             </div>
                           </div>
@@ -168,9 +171,7 @@
                             <div id="collapseOpportunities" class="collapse" aria-labelledby="opportunities"
                                  data-parent="#accordionCriteria">
                               <div class="card-body">
-                                <p>It has survived not only five centuries, but also the leap into electronic
-                                  typesetting,
-                                  remaining essentially unchanged.</p>
+                                <p>{{opportunities}}</p>
                               </div>
                             </div>
                           </div>
@@ -183,9 +184,7 @@
                             <div id="collapseThreats" class="collapse" aria-labelledby="threats"
                                  data-parent="#accordionCriteria">
                               <div class="card-body">
-                                <p>It has survived not only five centuries, but also the leap into electronic
-                                  typesetting,
-                                  remaining essentially unchanged.</p>
+                                <p>{{threats}}</p>
                               </div>
                             </div>
                           </div>
@@ -197,7 +196,8 @@
                     <div class="col-md-12">
                       <div class="float-right">
                         <button type="button" class="btn btn-cancel"> Cancel</button>
-                        <button type="button" class="btn btn-save" (click)="swatAnalysis('swot')"> Save</button>
+                        <button type="button" class="btn btn-save" (click)="saveStrategiySwotAnalysis('SWOT')"> Save
+                        </button>
                       </div>
                     </div>
                   </div>
