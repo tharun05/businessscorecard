@@ -69,39 +69,28 @@
 
           </thead>
           <tbody>
-          <tr>
-            <td scope="row">1</td>
-            <td>352</td>
-            <td>Corporate</td>
-            <td>2019</td>
-            <td>2.2</td>
-            <td>$</td>
-            <td>M^2</td>
-            <td>India</td>
-            <td>Product Group1</td>
-            <td>60^2*1000</td>
-            <td>10000$</td>
-            <td>60^2*1000</td>
-            <td>10000$</td>
-            <td>60^2*1000</td>
-            <td>10000$</td>
-            <td>60^2*1000</td>
-            <td>10000$</td>
-            <td>60^2*1000</td>
-            <td>10000$</td>
-            <td>60^2*1000</td>
-            <td>10000$</td>
-            <td>60^2*1000</td>
-            <td>10000$</td>
-            <td>60^2*1000</td>
-            <td>10000$</td>
-            <td>60^2*1000</td>
-            <td>10000$</td>
-            <td>60^2*1000</td>
-            <td>10000$</td>
-            <td>60^2*1000</td>
-            <td>10000$</td>
-            <td><span class="btn btn-pink btn-sm"> <i class="fa fa-pencil"></i> <i class="fa fa-trash"></i> </span></td>
+          <tr *ngFor="let item of valueGapTableData;let i=index">
+            <td scope="row">{{i + 1}}</td>
+            <td>{{item.orgCode}}</td>
+            <td>{{item.orgName}}</td>
+            <td>{{item.year}}</td>
+            <td>{{item.version}}</td>
+            <td>{{item.region}}</td>
+            <td>{{item.currencyType}}</td>
+            <td>{{item.productGroupName}}</td>
+            <td>{{item.productGroupUnitOfMeasure}}</td>
+            <ng-container *ngFor="let item of item.values">
+              <td>{{item.revenueAmount}}</td>
+              <td>{{item.revenueGap}}</td>
+            </ng-container>
+            <td><i
+              class="fa fa-pencil padding10" style="font-size: 20px;cursor: pointer"
+              (click)="editValueGap(valueGapTableData, i)"></i>
+              <i class="fa fa-trash padding10" style="font-size: 20px;cursor: pointer"
+                 (click)="deleteValueGap(item.id)"></i>
+            </td>
+
+            <!--<td><span class="btn btn-pink btn-sm"> <i class="fa fa-pencil"></i> <i class="fa fa-trash"></i> </span></td>-->
           </tr>
           </tbody>
         </table>
@@ -259,19 +248,21 @@
                 <div class="valuesBg"><p> {{cd.get('yearRef').value}} </p></div>
               </div>
               <ng-container formGroupName={{i}}>
-                <div class="col-md-4"><input type="text" class="form-control col-form-label-sm" formControlName="revenueGap" name="revenueGap" placeholder=" ">
+                <div class="col-md-4"><input type="text" class="form-control col-form-label-sm"
+                                             formControlName="revenueGap" name="revenueGap" placeholder=" ">
                 </div>
-                <div class="col-md-4"><input type="text" class="form-control col-form-label-sm" formControlName="revenueAmount" name="revenueAmount" placeholder=" ">
+                <div class="col-md-4"><input type="text" class="form-control col-form-label-sm"
+                                             formControlName="revenueAmount" name="revenueAmount" placeholder=" ">
                 </div>
               </ng-container>
             </div>
           </div>
-          <div class="row mt-4">
-            <div class="col-md-12">
-              <div class="float-right">
-                <button type="button" class="btn btn-cancel"> Cancel</button>
-                <button type="button" class="btn btn-save" (click)="saveValueGap()"> Save</button>
-              </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="float-right">
+              <button type="button" class="btn btn-cancel" (click)="clear()"> Cancel</button>
+              <button type="button" class="btn btn-save" (click)="saveValueGap()"> Save</button>
             </div>
           </div>
         </div>

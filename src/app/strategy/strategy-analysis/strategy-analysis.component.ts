@@ -124,7 +124,7 @@ export class StrategyAnalysisComponent implements OnInit {
     orgName: ['', [Validators.required]],
     description: [''],
     version: [''],
-    details: [''],
+    details: ['test'],
     additionalFields: [''],
     year: ['', [Validators.required]]
 
@@ -142,49 +142,44 @@ export class StrategyAnalysisComponent implements OnInit {
   }
 
   getCodeName(code: any) {
-    const self = this;
-    this.codeAndName.forEach(function (val, key) {
-      if (self.strategyAnalysisFrom.controls.orgCode.value === val.code) {
-        self.orgName = val.name.toUpperCase();
-        self.strategyAnalysisFrom.controls.orgName.setValue(self.orgName);
+    this.codeAndName.forEach((val, key) => {
+      if (this.strategyAnalysisFrom.controls.orgCode.value === val.code) {
+        this.orgName = val.name.toUpperCase();
+        this.strategyAnalysisFrom.controls.orgName.setValue(this.orgName);
       }
     });
   }
 
   getCodeNameForPestal(code: any) {
-    const self = this;
-    this.codeAndName.forEach(function (val, key) {
-      if (self.pestalAnalysisFrom.controls.orgCode.value === val.code) {
-        self.orgName = val.name.toUpperCase();
-        self.pestalAnalysisFrom.controls.orgName.setValue(self.orgName);
+    this.codeAndName.forEach((val, key) => {
+      if (this.pestalAnalysisFrom.controls.orgCode.value === val.code) {
+        this.orgName = val.name.toUpperCase();
+        this.pestalAnalysisFrom.controls.orgName.setValue(this.orgName);
       }
     });
   }
 
   getCodeNameForPortersFiveForce(code: any) {
-    const self = this;
-    this.codeAndName.forEach(function (val, key) {
-      if (self.portersFiveForceAnalysisFrom.controls.orgCode.value === val.code) {
-        self.orgName = val.name.toUpperCase();
-        self.portersFiveForceAnalysisFrom.controls.orgName.setValue(self.orgName);
+    this.codeAndName.forEach((val, key) => {
+      if (this.portersFiveForceAnalysisFrom.controls.orgCode.value === val.code) {
+        this.orgName = val.name.toUpperCase();
+        this.portersFiveForceAnalysisFrom.controls.orgName.setValue(this.orgName);
       }
     });
   }
 
 
   getCodeNameForFiveCorner(code: any) {
-    const self = this;
-    this.codeAndName.forEach(function (val, key) {
-      if (self.fourCornerAnalysisFrom.controls.orgCode.value === val.code) {
-        self.orgName = val.name.toUpperCase();
-        self.fourCornerAnalysisFrom.controls.orgName.setValue(self.orgName);
+    this.codeAndName.forEach((val, key) => {
+      if (this.fourCornerAnalysisFrom.controls.orgCode.value === val.code) {
+        this.orgName = val.name.toUpperCase();
+        this.fourCornerAnalysisFrom.controls.orgName.setValue(this.orgName);
       }
     });
   }
 
   swatAnalysis(type: any) {
     this.strategyAnalysisFrom.controls.type.setValue(type);
-    console.log(this.strategyAnalysisFrom.value);
   }
 
   activateClass(index: any, name: string) {

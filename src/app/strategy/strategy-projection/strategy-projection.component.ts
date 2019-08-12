@@ -88,6 +88,7 @@ export class StrategyProjectionComponent implements OnDestroy, OnInit {
     };
     this.getOrgUnitCode();
     this.getAllStrategyProjection();
+    this.getProductGroup();
   }
 
 
@@ -153,6 +154,22 @@ export class StrategyProjectionComponent implements OnDestroy, OnInit {
     // Do not forget to unsubscribe the event
     this.dtTrigger.unsubscribe();
   }
+
+  getProductGroup() {
+    this.strategyService.getAllProductGroup().subscribe((data) => {
+      console.log(data);
+    });
+  }
+
+  calRevenueAmt(event: any) {
+
+  }
+
+  clear() {
+    this.strategyProjectionForm.reset();
+  }
+
+
 
 
 }

@@ -105,6 +105,7 @@
                       </div>
                       <div class="row mt-4">
                         <div class="col-md-4 criteriaList">
+
                           <ul>
                             <li *ngFor="let item of swot; let i = index" (click)="activateClass(i, item.name)"
                                 style="cursor: pointer"
@@ -117,18 +118,19 @@
                             </li>
                           </ul>
                         </div>
-                        <div class="col-md-8 criteriatextarea" [ngClass]="{'readonlyMode': isEditMode === true }">
-                          <textarea placeholder="Enter Strength..." formControlName="details" name="details"
-                                    [readOnly]="isEditMode"
-                                    [ngClass]="{'readonlyMode': isEditMode === true }"></textarea>
+                        <div class="col-md-8">
+                          <!--<textarea placeholder="Enter Strength..." formControlName="details" name="details"-->
+                                    <!--[readOnly]="isEditMode"-->
+                                    <!--[ngClass]="{'readonlyMode': isEditMode === true }"></textarea>-->
+                          <tag-input formControlName="details" name="details"></tag-input>
                           <div class="form-group row m-0">
                             <div class="col-sm-12 pr-0">
-                              <div class="float-right">
-                                <button type="button" class="btn btn-cancel"> Cancel</button>
-                                <button type="button" class="btn btn-pink" (click)="updateSwotAnalysis()">
-                                  Save
-                                </button>
-                              </div>
+                              <!--<div class="float-right">-->
+                                <!--<button type="button" class="btn btn-cancel"> Cancel</button>-->
+                                <!--<button type="button" class="btn btn-pink" (click)="updateSwotAnalysis()">-->
+                                  <!--Save-->
+                                <!--</button>-->
+                              <!--</div>-->
                             </div>
                           </div>
                         </div>

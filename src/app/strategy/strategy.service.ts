@@ -16,7 +16,8 @@ export class StrategyService {
   private strategyAnalysis_url = '/strategy/analysis';
   private getStrategyAnalysis_url = '/strategy/analysis';
   private strategyProjection_url = '/strategicprojection';
-
+  private valueGap_url = '/valuegap';
+  private productGroup_url = '/productgroup';
 
   constructor(private http: HttpService, private appService: AppService) {
   }
@@ -78,5 +79,33 @@ export class StrategyService {
 
   deleteStrategyProjection(id: any) {
     return this.http.delete(this.strategyProjection_url + '/' + id, null);
+  }
+
+  getValueGap() {
+    return this.http.get(this.valueGap_url, null);
+  }
+
+  saveValueGap(data: any) {
+    return this.http.post(this.valueGap_url, data);
+  }
+
+  deleteValueGap(id: any) {
+    return this.http.delete(this.valueGap_url + '/' + id, null);
+  }
+
+  updateValueGap(data: any, id: any) {
+    return this.http.put(this.valueGap_url + '/' + id, data);
+  }
+
+  getAllProductGroup() {
+    return this.http.get(this.productGroup_url, null);
+  }
+
+  updateProductGroup(data: any, id: any) {
+    return this.http.put(this.productGroup_url + '/' + id, data);
+  }
+
+  saveProductGroup(data: any) {
+    return this.http.post(this.productGroup_url, data);
   }
 }

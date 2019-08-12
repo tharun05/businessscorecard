@@ -13,6 +13,7 @@ export class ValueGapComponent implements OnInit {
   valueGapForm: FormGroup;
   codeAndName: any;
   orgName: any;
+  valueGapTableData: any;
   AllYearsData = [
     {yearRef: 'Y-5'},
     {yearRef: 'Y-4'},
@@ -26,6 +27,7 @@ export class ValueGapComponent implements OnInit {
     {yearRef: 'Y+4'},
     {yearRef: 'Y+5'}
   ];
+  valueGapId: any;
   currenctUnit = [
     {id: 1, type: 'USD'},
     {id: 1, type: 'GBP'},
@@ -93,10 +95,44 @@ export class ValueGapComponent implements OnInit {
   ngOnInit() {
     this.createform();
     this.getOrgUnitCode();
+    this.getValueGap();
   }
 
   saveValueGap() {
-    console.log(this.valueGapForm.value);
+    if (this.valueGapId) {
+      this.strategyService.updateValueGap(this.valueGapForm.value, this.valueGapId).subscribe((data: any) => {
+        this.getValueGap();
+        this.toastrService.success('Updated Successfully');
+      });
+    } else {
+      this.strategyService.saveValueGap(this.valueGapForm.value).subscribe((data: any) => {
+        this.getValueGap();
+        this.toastrService.success('Added Successfully');
+        this.valueGapId = data.id;
+      });
+    }
+  }
+
+  getValueGap() {
+    this.strategyService.getValueGap().subscribe((data) => {
+      this.valueGapTableData = data;
+    });
+  }
+
+  editValueGap(data: any, index) {
+    this.valueGapForm.patchValue(data[index]);
+    this.valueGapId = data[index].id;
+  }
+
+  deleteValueGap(id: any) {
+    this.strategyService.deleteValueGap(id).subscribe((data) => {
+      this.toastrService.error('Deleted Successfully');
+      this.getValueGap();
+    });
+  }
+
+  clear() {
+    this.valueGapForm.reset();
   }
 
 }

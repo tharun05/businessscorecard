@@ -100,8 +100,10 @@
               <td><span>{{item.revenueAmount}}</span></td>
             </ng-container>
             <td><i
-              class="fa fa-pencil padding10" style="font-size: 20px;cursor: pointer" (click)="editStrategyProjection(strategyProjectionTableData, i)"></i>
-              <i class="fa fa-trash padding10" style="font-size: 20px;cursor: pointer" (click)="deleteStrategyPorjection(item.id)"></i>
+              class="fa fa-pencil padding10" style="font-size: 20px;cursor: pointer"
+              (click)="editStrategyProjection(strategyProjectionTableData, i)"></i>
+              <i class="fa fa-trash padding10" style="font-size: 20px;cursor: pointer"
+                 (click)="deleteStrategyPorjection(item.id)"></i>
             </td>
           </tr>
 
@@ -247,24 +249,24 @@
               <div class="col-md-3">
                 <div class="valuesBg"><p> {{cd.get('yearRef').value}} </p></div>
               </div>
-              <div class="row" formGroupName={{i}}>
-                <div class="col-md-4"><input type="text" formControlName="quantity" name="quantity"
+              <ng-container formGroupName={{i}}>
+                <div class="col-md-3"><input type="text" formControlName="quantity" name="quantity"
                                              class="form-control col-form-label-sm" placeholder=" ">
                 </div>
-                <div class="col-md-4"><input type="text" class="form-control col-form-label-sm" placeholder=" "
-                                             formControlName="averagePrice" name="averagePrice">
+                <div class="col-md-3"><input type="text" class="form-control col-form-label-sm" placeholder=" "
+                                             formControlName="averagePrice" name="averagePrice" (keyup)="calRevenueAmt($event)">
                 </div>
-                <div class="col-md-4"><input type="text" class="form-control col-form-label-sm" placeholder=" "
+                <div class="col-md-3"><input type="text" class="form-control col-form-label-sm" placeholder=" "
                                              formControlName="revenueAmount" name="revenueAmount">
                 </div>
-              </div>
+              </ng-container>
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-md-12">
             <div class="float-right">
-              <button type="button" class="btn btn-cancel"> Cancel</button>
+              <button type="button" class="btn btn-cancel" (click)="clear()"> Cancel</button>
               <button type="button" class="btn btn-save" (click)="submitStrategyProjection()"> Save</button>
             </div>
           </div>
