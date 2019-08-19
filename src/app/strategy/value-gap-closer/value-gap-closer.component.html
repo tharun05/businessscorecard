@@ -21,6 +21,7 @@
               <th scope="col">Organization Unit Name</th>
               <th scope="col">Product Group</th>
               <th scope="col">Revenue Gap</th>
+              <th scope="col">Version</th>
               <th scope="col">Scorecard Name</th>
               <th scope="col">Percentage</th>
               <th scope="col">Amount</th>
@@ -28,103 +29,30 @@
               <th scope="col">Initiatives</th>
               <th scope="col"> Action</th>
             </tr>
-
-
             </thead>
-            <tbody>
-            <tr>
-              <td scope="row">1</td>
-              <td>2019</td>
-              <td>546</td>
-              <td>Organization</td>
-              <td>Product Group1</td>
-              <td>Revenue</td>
-              <td>Scorecard</td>
-              <td>25%</td>
-              <td>2500</td>
-              <td></td>
-              <td></td>
-              <td><span class="btn btn-pink btn-sm"> <i class="fa fa-pencil"></i> <i class="fa fa-trash"></i> </span>
+            <tbody *ngFor="let item of valueGapCloserTableData;let i=index">
+            <tr *ngIf="valueGapCloserTableData.length">
+              <td scope="row">{{i + 1}}</td>
+              <td>{{item.year}}</td>
+              <td>{{item.orgCode}}</td>
+              <td>{{item.orgName}}</td>
+              <td>{{item.productGroupName}}</td>
+              <td>{{item.revenueGap}}</td>
+              <td>{{item.version}}</td>
+              <td>{{item.scorecardCode}}</td>
+              <td>{{item.percentage}}</td>
+              <td>{{item.amount}}</td>
+              <td>{{item.objectiveCode}}</td>
+              <td>{{item.initiativeCode}}</td>
+              <td><i
+                class="fa fa-pencil padding10" style="font-size: 20px;cursor: pointer"
+                (click)="editValueGapCloser(valueGapCloserTableData, i)"></i>
+                <i class="fa fa-trash padding10" style="font-size: 20px;cursor: pointer"
+                   (click)="deleteValueGapCloser(item.id)"></i>
               </td>
             </tr>
-            <tr>
-              <td scope="row">2</td>
-              <td>2019</td>
-              <td>546</td>
-              <td>Organization</td>
-              <td>Product Group1</td>
-              <td>Revenue</td>
-              <td>Scorecard</td>
-              <td>25%</td>
-              <td>2500</td>
-              <td></td>
-              <td></td>
-              <td><span class="btn btn-pink btn-sm"> <i class="fa fa-pencil"></i> <i class="fa fa-trash"></i> </span>
-              </td>
-            </tr>
-            <tr>
-              <td scope="row">3</td>
-              <td>2019</td>
-              <td>546</td>
-              <td>Organization</td>
-              <td>Product Group1</td>
-              <td>Revenue</td>
-              <td>Scorecard</td>
-              <td>25%</td>
-              <td>2500</td>
-              <td></td>
-              <td></td>
-              <td><span class="btn btn-pink btn-sm"> <i class="fa fa-pencil"></i> <i class="fa fa-trash"></i> </span>
-              </td>
-            </tr>
-            <tr>
-              <td scope="row">4</td>
-              <td>2019</td>
-              <td>546</td>
-              <td>Organization</td>
-              <td>Product Group1</td>
-              <td>Revenue</td>
-              <td>Scorecard</td>
-              <td>25%</td>
-              <td>2500</td>
-              <td></td>
-              <td></td>
-              <td><span class="btn btn-pink btn-sm"> <i class="fa fa-pencil"></i> <i class="fa fa-trash"></i> </span>
-              </td>
-            </tr>
-            <tr>
-              <td scope="row">5</td>
-              <td>2019</td>
-              <td>546</td>
-              <td>Organization</td>
-              <td>Product Group1</td>
-              <td>Revenue</td>
-              <td>Scorecard</td>
-              <td>25%</td>
-              <td>2500</td>
-              <td></td>
-              <td></td>
-              <td><span class="btn btn-pink btn-sm"> <i class="fa fa-pencil"></i> <i class="fa fa-trash"></i> </span>
-              </td>
-            </tr>
-
-
-            <tr>
-              <td class="text-left">
-                <button type="button" class="btn btn-pink btn-sm">Add <i class="fa fa-plus"></i></button>
-              </td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-
+            <tr *ngIf="valueGapCloserTableData.length === 0">
+              no records found
             </tr>
             </tbody>
           </table>
@@ -140,37 +68,43 @@
 
 
   <!-- ================= SWOT Analysis Start=================== -->
+  <form [formGroup]="valueGapCloserForm">
+    <div class="row">
+      <div class="col-md-7">
+        <div class="boxs_BG">
 
-  <div class="row">
-    <div class="col-md-7">
-      <div class="boxs_BG">
-
-        <div class="titleBG"> Value Gap Closer</div>
+          <div class="titleBG"> Value Gap Closer</div>
 
 
-        <div class="row">
-          <div class="col-md-12">
-            <form>
+          <div class="row">
+            <div class="col-md-12">
+
               <div class="row mt-4">
                 <div class="col-md-6 pr-0">
                   <div class="form-group row m-0">
                     <label for="" class="col-sm-5 col-form-label col-form-label-sm">Years <span
                       class="red">*</span></label>
                     <div class="col-sm-7 input_i_icon">
-                      <select class="form-control col-form-label-sm">
-                        <option>Select Current Year</option>
-                        <option>2019</option>
-                        <option>2018</option>
+                      <select class="form-control col-form-label-sm" formControlName="year" name="year"
+                              (change)="getRevenueGapAmt($event)">
+                        <option selected value="" disabled>Select Year</option>
+                        <option *ngFor="let year of years" [value]="year.name">
+                          {{ year.name}}
+                        </option>
                       </select>
+
                       <img src="img/icons/input_i_icon.png" width="12" height="12"/></div>
                   </div>
                   <div class="form-group row m-0">
                     <label for="" class="col-sm-5 col-form-label col-form-label-sm">Organization Unit Code </label>
                     <div class="col-sm-7">
-                      <select class="form-control col-form-label-sm">
-                        <option>Select Unit Code</option>
-                        <option>2343</option>
-                        <option>5464</option>
+                      <select name="items" placeholder="Parent Organization Unit Code"
+                              (change)="getCodeNameForPestal()"
+                              formControlName='orgCode' name='orgCode' class="form-control col-form-label-sm">
+                        <option selected value="" disabled>Select Unit Code</option>
+                        <option *ngFor="let codeName of codeAndName" [value]="codeName.code">
+                          {{ codeName.code}}
+                        </option>
                       </select>
                     </div>
                   </div>
@@ -178,10 +112,10 @@
                     <label for="" class="col-sm-5 col-form-label col-form-label-sm">Product Group <span
                       class="red">*</span></label>
                     <div class="col-sm-7">
-                      <select class="form-control col-form-label-sm">
-                        <option>Select Product Group</option>
-                        <option>2343</option>
-                        <option>5464</option>
+                      <select class="form-control col-form-label-sm" formControlName="productGroupName"
+                              name="productGroupName">
+                        <option selected value="" disabled>Product Group</option>
+                        <option *ngFor="let item of prdGrp" [value]="item.name">{{item.name}}</option>
                       </select>
                     </div>
                   </div>
@@ -189,33 +123,43 @@
                   <div class="form-group row m-0">
                     <label for="" class="col-sm-5 col-form-label col-form-label-sm">Percentage </label>
                     <div class="col-sm-7">
-                      <input type="text" class="form-control col-form-label-sm" id="" placeholder="Percentage">
+                      <input type="text" class="form-control col-form-label-sm" id="" placeholder="Percentage"
+                             formControlName="percentage" name="percentage">
                     </div>
                   </div>
 
                 </div>
-                <div class="col-md-6 ">
+                <div class="col-md-6">
                   <div class="form-group row m-0">
-                    <label for="" class="col-sm-5 col-form-label col-form-label-sm">Organization Unit Name </label>
-                    <div class="col-sm-7 pr-0">
-                      <input type="text" class="form-control col-form-label-sm" id=""
-                             placeholder="Organization Unit Name">
+                    <label for="" class="col-sm-5 col-form-label col-form-label-sm">Revenue Gap </label>
+                    <div class="col-sm-7">
+                      <input type="text" class="form-control col-form-label-sm" id="" placeholder="Revenue Gap"
+                             formControlName="revenueGap" name="revenueGap">
                     </div>
                   </div>
                   <div class="form-group row m-0">
-                    <label for="" class="col-sm-5 col-form-label col-form-label-sm">Revenue Gap </label>
+
+                    <label for="" class="col-sm-5 col-form-label col-form-label-sm">Organization Unit Name </label>
                     <div class="col-sm-7 pr-0">
-                      <select class="form-control col-form-label-sm">
-                        <option>Select Revenue Gap</option>
-                        <option>265</option>
-                        <option>541</option>
-                      </select>
+                      <input type="text" class="form-control col-form-label-sm" formControlName="orgName" name="orgName"
+                             readonly>
                     </div>
+
+
                   </div>
                   <div class="form-group row m-0">
                     <label for="" class="col-sm-5 col-form-label col-form-label-sm">Amount </label>
                     <div class="col-sm-7 pr-0">
-                      <input type="text" class="form-control col-form-label-sm" id="" placeholder="Amount">
+                      <input type="text" class="form-control col-form-label-sm" id="" placeholder="Amount"
+                             formControlName="amount" name="amount">
+                    </div>
+                  </div>
+
+                  <div class="form-group row m-0">
+                    <label for="" class="col-sm-5 col-form-label col-form-label-sm">Version </label>
+                    <div class="col-sm-7 pr-0">
+                      <input type="text" class="form-control col-form-label-sm" id="" placeholder="Version"
+                             formControlName="version" name="version">
                     </div>
                   </div>
 
@@ -223,63 +167,68 @@
                 </div>
               </div>
 
-            </form>
+            </div>
+
           </div>
 
+
         </div>
-
-
       </div>
-    </div>
-    <div class="col-md-5">
-      <div class="boxs_BG">
+      <div class="col-md-5">
+        <div class="boxs_BG">
 
-        <!-- <div class="titleBG"> Values </div> -->
+          <!-- <div class="titleBG"> Values </div> -->
 
 
-        <div class="row">
-          <div class="col-md-12 mt-3">
-            <form>
+          <div class="row">
+            <div class="col-md-12 mt-3">
 
 
               <div class="form-group row m-0">
                 <label for="" class="col-sm-5 col-form-label col-form-label-sm">Scorecard Name </label>
                 <div class="col-sm-7 pr-0">
-                  <input type="text" class="form-control col-form-label-sm" id="" placeholder="Scorecard Name">
+                  <input type="text" class="form-control col-form-label-sm" id="" placeholder="Scorecard Name"
+                         formControlName="scorecardCode" name="scorecardCode">
                 </div>
               </div>
               <div class="form-group row m-0">
                 <label for="" class="col-sm-5 col-form-label col-form-label-sm">Objectives Name </label>
                 <div class="col-sm-7 pr-0">
-                  <input type="text" class="form-control col-form-label-sm" id="" placeholder="Objectives Name">
+                  <input type="text" class="form-control col-form-label-sm" id="" placeholder="Objectives Name"
+                         formControlName="objectiveCode" name="objectiveCode">
                 </div>
               </div>
               <div class="form-group row m-0">
                 <label for="" class="col-sm-5 col-form-label col-form-label-sm">Initiatives Name </label>
                 <div class="col-sm-7 pr-0">
-                  <input type="text" class="form-control col-form-label-sm" id="" placeholder="Initiatives Name">
+                  <input type="text" class="form-control col-form-label-sm" id="" placeholder="Initiatives Name"
+                         formControlName="initiativeCode" name="initiativeCode">
                 </div>
               </div>
 
-            </form>
+
+            </div>
+
           </div>
 
-        </div>
-
-        <div class="row mt-4">
-          <div class="col-md-12">
-            <div class="float-right">
-              <button type="button" class="btn btn-cancel"> Cancel</button>
-              <button type="button" class="btn btn-save"> Save</button>
+          <div class="row mt-4">
+            <div class="col-md-12">
+              <div class="float-right">
+                <button type="button" class="btn btn-cancel"> Cancel</button>
+                <button type="button" class="btn btn-save" (click)="saveValueGapCloser()"> Save</button>
+              </div>
             </div>
           </div>
+
         </div>
 
       </div>
+
     </div>
-  </div>
+  </form>
 
   <!-- ================= SWOT Analysis End=================== -->
 
 
 </div>
+

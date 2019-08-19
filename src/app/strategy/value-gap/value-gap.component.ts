@@ -14,6 +14,16 @@ export class ValueGapComponent implements OnInit {
   codeAndName: any;
   orgName: any;
   valueGapTableData: any;
+  reqObj: any;
+  unitOfMeasure: any;
+  prdGrp: any;
+  revenueAmt: any;
+
+  years = [{id: 1, name: '2016'},
+    {id: 1, name: '2017'},
+    {id: 1, name: '2018'},
+    {id: 1, name: '2019'}];
+
   AllYearsData = [
     {yearRef: 'Y-5'},
     {yearRef: 'Y-4'},
@@ -96,6 +106,8 @@ export class ValueGapComponent implements OnInit {
     this.createform();
     this.getOrgUnitCode();
     this.getValueGap();
+    this.getProductGrp();
+
   }
 
   saveValueGap() {
@@ -128,6 +140,34 @@ export class ValueGapComponent implements OnInit {
     this.strategyService.deleteValueGap(id).subscribe((data) => {
       this.toastrService.error('Deleted Successfully');
       this.getValueGap();
+    });
+  }
+
+  getRevenueAmt() {
+    this.reqObj = this.valueGapForm.value;
+    if (!!this.valueGapForm.controls.orgCode.value && !!this.valueGapForm.controls.version.value && !!this.valueGapForm.controls.productGroupName.value && !!this.valueGapForm.controls.year.value) {
+      this.strategyService.getRevenueAmount(this.reqObj.orgCode, this.reqObj.productGroupName, this.reqObj.year, this.reqObj.version).subscribe((data: any) => {
+        this.revenueAmt = data;
+        this.revenueAmt.forEach((val, index) => {
+          this.valueGapForm.controls.values['controls'][index].controls.revenueAmount.setValue(val.revenueAmount);
+        });
+
+      });
+    }
+  }
+
+  getProductGrp() {
+    this.strategyService.getAllProductGroup().subscribe((data: any) => {
+      this.prdGrp = data;
+    });
+  }
+
+  getProductUnitOfMeasure() {
+    this.prdGrp.forEach((val, key) => {
+      if (this.valueGapForm.controls.productGroupName.value === val.name) {
+        this.unitOfMeasure = val.unitOfMeasure.toUpperCase();
+        this.valueGapForm.controls.productGroupUnitOfMeasure.setValue(this.unitOfMeasure);
+      }
     });
   }
 

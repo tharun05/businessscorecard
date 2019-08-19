@@ -479,6 +479,7 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
   top: 10px;
   left: -5px;
 }
+
 .btn {
   margin: 0px 3px;
 }
@@ -987,13 +988,16 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
 .strategicProjectionTable .table tbody tr td:last-child span i {
   padding: 5px;
 }
+
 .strategicProjectionTable {
   font-size: 12px;
   overflow-y: hidden;
 }
+
 .strategicProjectionTable .table thead th:first-child {
   border-left: 1px solid #ffffff;
 }
+
 .strategicProjectionTable .table thead th {
   text-align: center;
   border-right: 1px solid #ffffff;
@@ -1004,6 +1008,7 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
   border-left: 1px solid #dee2e6;
 
 }
+
 .strategicProjectionTable .table tbody tr td {
   text-align: center;
   border-right: 1px solid #dee2e6;
@@ -1019,22 +1024,153 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
   text-transform: uppercase;
   font-size: 12px;
 }
+
 .valuesBg p {
   padding: 5px;
 }
+
 .valuesText input {
   margin-bottom: 1rem;
 }
+
 .strategicProjectionTable .table tbody tr td:last-child {
   /* display: inline-flex; */
 }
-.strategicProjectionTable .table tbody tr td:last-child span i{
+
+.strategicProjectionTable .table tbody tr td:last-child span i {
   padding: 5px;
 }
+
 .readonlyMode {
   background-color: #e9ecef !important;
   cursor: not-allowed;
 }
-.padding10{
+
+.padding10 {
   padding: 10px;
 }
+
+.balancedScorecardRadios .custom-radio {
+  padding-left: 2.5rem;
+  min-height: 3.5rem;
+}
+
+.balancedScorecardRadios .custom-radio label {
+  line-height: 23px;
+}
+
+/* ========== Perapectives Page ============= */
+.disabledText {
+  background-color: #ebebeb;
+  font-size: 12px;
+  margin-bottom: 5px;
+  max-height: 30px;
+  min-height: 30px;
+  text-align: center;
+  cursor: no-drop;
+  font-weight: 500;
+}
+
+.perapectivesRightTitle {
+  border-bottom: 2px solid #fa678a;
+  display: flex;
+}
+
+.perapectivesRightTitle span {
+  background-color: #fa678a;
+  padding: 7px 50px;
+  border-radius: 50px;
+  font-weight: 500;
+  margin-bottom: -15px;
+  margin-left: 30px;
+  color: #ffffff;
+}
+
+.perapectivesBSCNames {
+  background-color: #f8d1da;
+  padding: 10px 20px;
+  font-size: 14px;
+  margin: 15px 0px;
+  border-radius: 3px;
+}
+
+.perapectivesBSCNames:hover .perapectivesBSCNamesHover {
+  display: block;
+}
+
+.perapectivesBSCNamesHover {
+  display: inline-block;
+  float: right;
+  margin-top: -7px;
+  margin-right: -17px;
+  display: none;
+}
+
+.perapectivesBSCNamesHover i {
+  background-color: #f8b3c3;
+  padding: 8px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 18px;
+  border: 1px solid #f196aa;
+}
+
+/* ========== Objectives Page ============= */
+
+.objectTbsaccordion .objectTbs .card-body {
+  padding: 0px;
+}
+
+.objectTbsaccordion .objectTbs .perapectivesBSCNames {
+  padding: 10px 5px 10px 15px;
+}
+
+.objectTbsaccordion .objectTbs .perapectivesBSCNames i {
+  float: right;
+  font-size: 22px;
+  padding: 0px 10px;
+  cursor: pointer;
+}
+
+.objectTbsaccordion .objectTbs .card-body .perapectivesBSCNames {
+  margin-left: 35px;
+  background-color: #dbc8fe;
+}
+
+.objectTbsaccordion .objectTbs .card-body .perapectivesBSCNames .perapectivesBSCNamesHover {
+  margin-top: -5px;
+  margin-right: 0px;
+}
+
+.objectTbsaccordion .objectTbs .card-body .perapectivesBSCNames .perapectivesBSCNamesHover i {
+  background-color: #cebcef;
+  border: 1px solid #bfade1;
+  padding: 7px 10px;
+  font-size: 16px;
+  margin: 0px 2px;
+}
+
+.custom-control-label::before {
+  top: 0.10rem;
+  background-color: #cab3f6;
+}
+
+.custom-control-label::after {
+  top: .10rem;
+}
+
+.bscElementsbroders {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 5px 0px;
+  background: #f1eaff;
+}
+
+.bscElementsbroders .custom-control-label {
+  display: block;
+  cursor: pointer;
+}
+
+
+
+

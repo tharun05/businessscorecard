@@ -17,6 +17,7 @@ export class StrategyService {
   private getStrategyAnalysis_url = '/strategy/analysis';
   private strategyProjection_url = '/strategicprojection';
   private valueGap_url = '/valuegap';
+  private valueGapCloser_url = '/valuegapcloser';
   private productGroup_url = '/productgroup';
 
   constructor(private http: HttpService, private appService: AppService) {
@@ -65,6 +66,14 @@ export class StrategyService {
     return this.http.get(this.getStrategyAnalysis_url + '/' + code + '/' + year + '/' + version + '/' + type, null);
   }
 
+  getRevenueAmount(code: any, productgrp: any, year: any, version: any) {
+    return this.http.get(this.strategyProjection_url + '/' + code + '/' + productgrp + '/' + year + '/' + version, null);
+  }
+
+  getRevenueGap(code: any, productgrp: any, year: any, version: any) {
+    return this.http.get(this.valueGap_url + '/' + code + '/' + productgrp + '/' + year + '/' + version, null);
+  }
+
   saveStrategyProjection(data: any) {
     return this.http.post(this.strategyProjection_url, data);
   }
@@ -95,6 +104,18 @@ export class StrategyService {
 
   updateValueGap(data: any, id: any) {
     return this.http.put(this.valueGap_url + '/' + id, data);
+  }
+
+  getValueGapCloser() {
+    return this.http.get(this.valueGapCloser_url, null);
+  }
+
+  saveValueGapCloser(data: any) {
+    return this.http.post(this.valueGapCloser_url, data);
+  }
+
+  deleteValueGapCloser(id: any) {
+    return this.http.delete(this.valueGapCloser_url + '/' + id, null);
   }
 
   getAllProductGroup() {

@@ -152,10 +152,9 @@
                     class="red">*</span></label>
                   <div class="col-sm-7">
                     <select class="form-control col-form-label-sm" formControlName="productGroupName"
-                            name="productGroupName">
+                            name="productGroupName" (change)="getProductUnitOfMeasure()">
                       <option selected value="" disabled>Product Group</option>
-                      <option>2343</option>
-                      <option>5464</option>
+                      <option *ngFor="let item of prdGrp" [value]="item.name">{{item.name}}</option>
                     </select>
                   </div>
                 </div>
@@ -201,10 +200,12 @@
                   <label for="" class="col-sm-5 col-form-label col-form-label-sm">Current Year <span
                     class="red">*</span> </label>
                   <div class="col-sm-7 pr-0">
-                    <select class="form-control col-form-label-sm" formControlName="year" name="year">
+                    <select class="form-control col-form-label-sm" formControlName="year" name="year"
+                            (change)="getRevenueAmt()">
                       <option selected value="" disabled>Select Year</option>
-                      <option>2019</option>
-                      <option>2018</option>
+                      <option *ngFor="let year of years" [value]="year.name">
+                        {{ year.name}}
+                      </option>
                     </select>
                   </div>
                 </div>
@@ -249,10 +250,10 @@
               </div>
               <ng-container formGroupName={{i}}>
                 <div class="col-md-4"><input type="text" class="form-control col-form-label-sm"
-                                             formControlName="revenueGap" name="revenueGap" placeholder=" ">
+                                             formControlName="revenueAmount" name="revenueGap" placeholder=" ">
                 </div>
                 <div class="col-md-4"><input type="text" class="form-control col-form-label-sm"
-                                             formControlName="revenueAmount" name="revenueAmount" placeholder=" ">
+                                             formControlName="revenueGap" name="revenueAmount" placeholder=" ">
                 </div>
               </ng-container>
             </div>

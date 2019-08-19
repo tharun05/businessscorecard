@@ -80,7 +80,6 @@ export class CorporateStructureComponent implements OnInit {
     this.strategyService.getOrganizationById(id).subscribe((organizationData: any) => {
       if (!!organizationData) {
         this.organizationData = organizationData;
-        console.log(this.organizationData);
         this.corporateStructureForm.patchValue(this.organizationData);
       }
 
@@ -115,7 +114,6 @@ export class CorporateStructureComponent implements OnInit {
   }
 
   submitOrganization() {
-    console.log(this.corporateStructureForm.value);
     if (!!this.orgId) {
       this.isOrgAvailable = true;
       this.strategyService.UpdateOrganization(this.corporateStructureForm.value, this.orgId).subscribe((updatedOrg) => {
@@ -134,7 +132,6 @@ export class CorporateStructureComponent implements OnInit {
   getCodeAndName() {
     this.strategyService.getCodeAndName().subscribe((data: any) => {
       this.codeAndName = data;
-      console.log(this.codeAndName);
     });
   }
 

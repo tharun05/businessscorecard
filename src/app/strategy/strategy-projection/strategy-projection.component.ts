@@ -3,6 +3,7 @@ import {FormBuilder, Validators, FormGroup} from '@angular/forms';
 import {StrategyService} from '../strategy.service';
 import {Subject} from 'rxjs';
 import {ToastrService} from 'ngx-toastr';
+import {EmitterService} from '../../shared/emitter.service';
 
 @Component({
   selector: 'app-strategy-projection',
@@ -24,11 +25,23 @@ export class StrategyProjectionComponent implements OnDestroy, OnInit {
   strategyProjectionId: any;
   strategyProjectionItem: any;
   isEditDetails: any;
+  prdGrp: any;
+  prdGrpSubscription: any;
+  unitOfMeasure: any;
 
   constructor(private formBuilder: FormBuilder,
               private strategyService: StrategyService,
-              private toastrService: ToastrService) {
+              private toastrService: ToastrService,
+              private emitterService: EmitterService) {
+
+    this.prdGrpSubscription = this.emitterService.productGroup$.subscribe((data: any) => {
+      if (data) {
+        this.getProductGrp();
+      }
+    });
+
   }
+
 
   AllYearsData = [
     {yearRef: 'Y-5'},
@@ -89,6 +102,8 @@ export class StrategyProjectionComponent implements OnDestroy, OnInit {
     this.getOrgUnitCode();
     this.getAllStrategyProjection();
     this.getProductGroup();
+    this.getProductGrp();
+
   }
 
 
@@ -107,7 +122,7 @@ export class StrategyProjectionComponent implements OnDestroy, OnInit {
     });
   }
 
-  getCodeNameForPestal(code: any) {
+  getCodeNameForPestal() {
     this.codeAndName.forEach((val, key) => {
       if (this.strategyProjectionForm.controls.orgCode.value === val.code) {
         this.orgName = val.name.toUpperCase();
@@ -127,6 +142,7 @@ export class StrategyProjectionComponent implements OnDestroy, OnInit {
         this.getAllStrategyProjection();
         this.toastrService.success('Added Successfully');
         this.strategyProjId = data.id;
+        console.log(this.strategyProjectionForm.value);
       });
     }
   }
@@ -161,7 +177,11 @@ export class StrategyProjectionComponent implements OnDestroy, OnInit {
     });
   }
 
-  calRevenueAmt(event: any) {
+  calRevenueAmt(index: any) {
+    if (this.strategyProjectionForm.value.values[index].quantity && this.strategyProjectionForm.value.values[index].averagePrice) {
+      let revAmt = this.strategyProjectionForm.value.values[index].quantity * this.strategyProjectionForm.value.values[index].averagePrice;
+      this.strategyProjectionForm.controls.values['controls'][index].controls.revenueAmount.setValue(revAmt);
+    }
 
   }
 
@@ -169,7 +189,20 @@ export class StrategyProjectionComponent implements OnDestroy, OnInit {
     this.strategyProjectionForm.reset();
   }
 
+  getProductGrp() {
+    this.strategyService.getAllProductGroup().subscribe((data: any) => {
+      this.prdGrp = data;
+    });
+  }
 
+  getProductUnitOfMeasure() {
+    this.prdGrp.forEach((val, key) => {
+      if (this.strategyProjectionForm.controls.productGroupName.value === val.name) {
+        this.unitOfMeasure = val.unitOfMeasure.toUpperCase();
+        this.strategyProjectionForm.controls.productGroupUnitOfMeasure.setValue(this.unitOfMeasure);
+      }
+    });
+  }
 
 
 }

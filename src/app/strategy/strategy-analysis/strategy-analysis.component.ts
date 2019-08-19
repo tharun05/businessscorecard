@@ -150,7 +150,7 @@ export class StrategyAnalysisComponent implements OnInit {
     });
   }
 
-  getCodeNameForPestal(code: any) {
+  getCodeNameForPestal() {
     this.codeAndName.forEach((val, key) => {
       if (this.pestalAnalysisFrom.controls.orgCode.value === val.code) {
         this.orgName = val.name.toUpperCase();

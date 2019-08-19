@@ -10,6 +10,12 @@ import {ValueGapComponent} from './strategy/value-gap/value-gap.component';
 import {ValueGapCloserComponent} from './strategy/value-gap-closer/value-gap-closer.component';
 import {StrategyAnalysisComponent} from './strategy/strategy-analysis/strategy-analysis.component';
 import {StrategyProjectionComponent} from './strategy/strategy-projection/strategy-projection.component';
+import {BusinessScoreCardComponent} from './bsc/business-score-card/business-score-card.component';
+import {BscComponent} from './bsc/bsc/bsc.component';
+import {PerspectiveComponent} from './bsc/perspective/perspective.component';
+import {ThemesComponent} from './bsc/themes/themes.component';
+import {ObjectivesComponent} from './bsc/objectives/objectives.component';
+
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -25,6 +31,15 @@ const routes: Routes = [
       {path: 'strategyProjection', component: StrategyProjectionComponent},
       {path: 'valueGap', component: ValueGapComponent},
       {path: 'valueGapCloser', component: ValueGapCloserComponent}
+    ]
+  },
+  {
+    path: 'bsc', component: BusinessScoreCardComponent,
+    children: [
+      {path: 'bsc', component: BscComponent},
+      {path: 'perspective', component: PerspectiveComponent},
+      {path: 'themes', component: ThemesComponent},
+      {path: 'objectives', component: ObjectivesComponent},
     ]
   },
 

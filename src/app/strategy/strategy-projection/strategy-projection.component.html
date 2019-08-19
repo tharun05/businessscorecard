@@ -6,7 +6,15 @@
 <!--</div>-->
 
 <div class="row">
+
+
   <div class="col-md-12">
+    <app-modal></app-modal>
+
+    <div class="text-center" style="margin: 10px">
+      <input type="button" class="btn btn-save float-right" data-toggle="modal" data-target="#modalLoginForm"
+             value="Add Product Group">
+    </div>
     <div class="boxs_BG mt-5">
       <div class="titleBG"> Strategic Projection</div>
       <div class="col-md-12 mt-4 strategicProjectionTable">
@@ -111,7 +119,6 @@
         </table>
 
       </div>
-
       <div class="row">
         <div class="col-md-12 mt-3">
           <div class="float-right">
@@ -165,10 +172,9 @@
                     class="red">*</span></label>
                   <div class="col-sm-7">
                     <select class="form-control col-form-label-sm" formControlName="productGroupName"
-                            name="productGroupName">
+                            name="productGroupName" (change)="getProductUnitOfMeasure()">
                       <option selected value="" disabled>Product Group</option>
-                      <option>2343</option>
-                      <option>5464</option>
+                      <option *ngFor="let item of prdGrp" [value]="item.name">{{item.name}}</option>
                     </select>
                   </div>
                 </div>
@@ -251,12 +257,15 @@
               </div>
               <ng-container formGroupName={{i}}>
                 <div class="col-md-3"><input type="text" formControlName="quantity" name="quantity"
-                                             class="form-control col-form-label-sm" placeholder=" ">
+                                             class="form-control col-form-label-sm" placeholder=" "
+                                             (keyup)="calRevenueAmt(i)">
                 </div>
                 <div class="col-md-3"><input type="text" class="form-control col-form-label-sm" placeholder=" "
-                                             formControlName="averagePrice" name="averagePrice" (keyup)="calRevenueAmt($event)">
+                                             formControlName="averagePrice" name="averagePrice"
+                                             (keyup)="calRevenueAmt(i)">
                 </div>
                 <div class="col-md-3"><input type="text" class="form-control col-form-label-sm" placeholder=" "
+                                             [readOnly]="true"
                                              formControlName="revenueAmount" name="revenueAmount">
                 </div>
               </ng-container>
