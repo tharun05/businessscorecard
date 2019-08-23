@@ -15,6 +15,7 @@ import {BscComponent} from './bsc/bsc/bsc.component';
 import {PerspectiveComponent} from './bsc/perspective/perspective.component';
 import {ThemesComponent} from './bsc/themes/themes.component';
 import {ObjectivesComponent} from './bsc/objectives/objectives.component';
+import {MeasuresComponent} from './bsc/measures/measures.component';
 
 
 const routes: Routes = [
@@ -40,6 +41,7 @@ const routes: Routes = [
       {path: 'perspective', component: PerspectiveComponent},
       {path: 'themes', component: ThemesComponent},
       {path: 'objectives', component: ObjectivesComponent},
+      {path: 'measures', component: MeasuresComponent}
     ]
   },
 

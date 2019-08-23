@@ -30,7 +30,8 @@ export class HeaderComponent implements OnInit {
         {id: 1, name: 'Balance Scorecard', route: '/bsc/bsc', class: 'active'},
         {id: 2, name: 'Perspective', route: '/bsc/perspective'},
         {id: 3, name: 'Themes', route: '/bsc/themes'},
-        {id: 4, name: 'Objectives', route: '/bsc/objectives'}]
+        {id: 4, name: 'Objectives', route: '/bsc/objectives'},
+        {id: 5, name: 'Measures', route: '/bsc/measures'}]
     }];
 
   constructor(private apexService: ApexService) {

@@ -15,6 +15,8 @@ export class ValueGapCloserComponent implements OnInit {
   prdGrp: any;
   valueGapCloserTableData = [];
   valueGapCloserId: any;
+  revenueGap: any;
+  amount: any;
 
 
   years = [{id: 1, name: '2016'},
@@ -80,7 +82,12 @@ export class ValueGapCloserComponent implements OnInit {
   getRevenueGapAmt() {
     this.reqObj = this.valueGapCloserForm.value;
     this.strategyService.getRevenueGap(this.reqObj.orgCode, this.reqObj.productGroupName, this.reqObj.year, this.reqObj.version).subscribe((data: any) => {
-      console.log(data);
+      this.revenueGap = data;
+      this.valueGapCloserForm.controls.revenueGap.setValue(this.revenueGap);
+      if (this.valueGapCloserForm.controls.percentage.value !== '' && this.valueGapCloserForm.controls.revenueGap.value !== '') {
+        this.amount = (this.valueGapCloserForm.controls.percentage.value * this.valueGapCloserForm.controls.revenueGap.value) / 100;
+        this.valueGapCloserForm.controls.amount.setValue(this.amount);
+      }
     });
   }
 
@@ -111,5 +118,6 @@ export class ValueGapCloserComponent implements OnInit {
       this.getAllValueGapCloser();
     });
   }
+
 
 }

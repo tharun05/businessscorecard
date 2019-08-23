@@ -1090,7 +1090,7 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
   background-color: #f8d1da;
   padding: 10px 20px;
   font-size: 14px;
-  margin: 15px 0px;
+  margin: 7px 0px;
   border-radius: 3px;
 }
 
@@ -1171,6 +1171,14 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
   cursor: pointer;
 }
 
+.center-alignContent {
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  height: 15rem;
+}
 
 
 

@@ -37,6 +37,7 @@ import {ModalComponent} from './shared/components/modal/modal.component';
 import {ThemesComponent} from './bsc/themes/themes.component';
 import {ObjectivesComponent} from './bsc/objectives/objectives.component';
 import {BscService} from './bsc/bsc.service';
+import { MeasuresComponent } from './bsc/measures/measures.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import {BscService} from './bsc/bsc.service';
     PerspectiveComponent,
     ModalComponent,
     ThemesComponent,
-    ObjectivesComponent
+    ObjectivesComponent,
+    MeasuresComponent
     // SubUnitComponent
   ],
   imports: [

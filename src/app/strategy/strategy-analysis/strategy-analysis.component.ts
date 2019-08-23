@@ -18,12 +18,17 @@ export class StrategyAnalysisComponent implements OnInit {
   selectedIndex: number = 0;
   reqObj: any;
   strength: any;
+  strengths: any;
   weaknesses: any;
+  weaknessess: any;
   opportunities: any;
+  opportunitiess: any;
   threats: any;
+  threatss: any;
   swotTypes: any = 'Strengths';
   type: any;
   isEditMode = true;
+  index: any;
 
   years = [{id: 1, name: '2016'},
     {id: 1, name: '2017'},
@@ -68,7 +73,7 @@ export class StrategyAnalysisComponent implements OnInit {
               private strategyAnalysisService: StrategyAnalysisService,
               private toastrService: ToastrService) {
 
-    $(document).ready(function () {
+    $(function () {
       // Add minus icon for collapse element which is open by default
       $('.collapse.show').each(function () {
         $(this).prev('.criteriaTitle,.strategryAnalysisTitle').find('.fa').addClass('fa-angle-up').removeClass('fa-angle-down');
@@ -182,46 +187,8 @@ export class StrategyAnalysisComponent implements OnInit {
     this.strategyAnalysisFrom.controls.type.setValue(type);
   }
 
-  activateClass(index: any, name: string) {
-    this.swotTypes = name;
-    this.selectedIndex = index;
-    this.strategyAnalysisService.strategyAnalysis.details.forEach((key, i) => {
-      if (key.title.toUpperCase() === name.toUpperCase()) {
-        const swotMessage = this.strategyAnalysisService.strategyAnalysis.details[i].criterias;
-        this.strategyAnalysisFrom.controls.details.setValue(swotMessage);
-        switch (this.strategyAnalysisService.strategyAnalysis.details[i].title) {
-          case 'Strengths':
-            this.isEditMode = false;
-            this.strength = this.strategyAnalysisService.strategyAnalysis.details[i].criterias.toString();
-            break;
-          case 'Weaknesses':
-            this.weaknesses = this.strategyAnalysisService.strategyAnalysis.details[i].criterias.toString();
-            break;
-          case 'Opportunities':
-            this.opportunities = this.strategyAnalysisService.strategyAnalysis.details[i].criterias.toString();
-            break;
-          case 'Threats':
-            this.threats = this.strategyAnalysisService.strategyAnalysis.details[i].criterias.toString();
-            break;
-        }
-      }
-    });
-
-    // this.strategyAnalysisService.strategyAnalysis.details.forEach((key, i) => {
-    //   if (key.title.toUpperCase() === name) {
-    //     const isFound = this.strategyAnalysisService.strategyAnalysis.details[i].criterias.indexOf(this.strategyAnalysisFrom.value.details);
-    //     if (isFound !== -1 && this.strategyAnalysisService.strategyAnalysis.details[i].criterias.length) {
-    //       this.toastrService.error('already Exist');
-    //     } else {
-    //       this.strategyAnalysisService.strategyAnalysis.details[i].criterias.push(this.strategyAnalysisFrom.value.details);
-    //       this.toastrService.success('Added Successfully');
-    //     }
-    //   }
-    // });
-  }
 
   saveStrategiySwotAnalysis(type: any) {
-
     this.strategyAnalysisService.strategyAnalysis.orgCode = this.strategyAnalysisFrom.value.orgCode;
     this.strategyAnalysisService.strategyAnalysis.description = this.strategyAnalysisFrom.value.description;
     this.strategyAnalysisService.strategyAnalysis.orgName = this.strategyAnalysisFrom.value.orgName;
@@ -290,5 +257,96 @@ export class StrategyAnalysisComponent implements OnInit {
   isEdit(type: string) {
     // this.activateClass(0, type);
     this.strategyAnalysisFrom.value.details = null;
+  }
+
+  activateClass(index: any, name: string) {
+    this.swotTypes = name;
+    this.selectedIndex = index;
+    this.strategyAnalysisService.strategyAnalysis.details.forEach((key, i) => {
+      if (key.title.toUpperCase() === this.swotTypes.toUpperCase()) {
+        switch (this.strategyAnalysisService.strategyAnalysis.details[i].title) {
+          case 'Strengths':
+            this.strength = this.strategyAnalysisService.strategyAnalysis.details[i].criterias;
+            this.strategyAnalysisFrom.controls.details.setValue(this.strength);
+            break;
+          case 'Weaknesses':
+            this.weaknesses = this.strategyAnalysisService.strategyAnalysis.details[i].criterias;
+            this.strategyAnalysisFrom.controls.details.setValue(this.weaknesses);
+            break;
+          case 'Opportunities':
+            this.opportunities = this.strategyAnalysisService.strategyAnalysis.details[i].criterias;
+            this.strategyAnalysisFrom.controls.details.setValue(this.opportunities);
+            break;
+          case 'Threats':
+            this.threats = this.strategyAnalysisService.strategyAnalysis.details[i].criterias;
+            this.strategyAnalysisFrom.controls.details.setValue(this.threats);
+            break;
+        }
+      }
+    });
+  }
+
+  onItemAdded(event?: any) {
+    this.strategyAnalysisService.strategyAnalysis.details.forEach((key, i) => {
+      if (key.title.toUpperCase() === this.swotTypes.toUpperCase()) {
+        switch (this.strategyAnalysisService.strategyAnalysis.details[i].title) {
+          case 'Strengths':
+            this.strength = this.strategyAnalysisService.strategyAnalysis.details[i].criterias;
+            this.strengths = this.strength.push(event.value);
+
+            break;
+          case 'Weaknesses':
+            this.weaknesses = this.strategyAnalysisService.strategyAnalysis.details[i].criterias;
+            this.weaknessess = this.weaknesses.push(event.value);
+            break;
+          case 'Opportunities':
+            this.opportunities = this.strategyAnalysisService.strategyAnalysis.details[i].criterias;
+            this.opportunitiess = this.opportunities.push(event.value);
+            break;
+          case 'Threats':
+            this.threats = this.strategyAnalysisService.strategyAnalysis.details[i].criterias;
+            this.threatss = this.threats.push(event.value);
+            break;
+        }
+
+      }
+    });
+  }
+
+  onItemRemoved(event: any) {
+    this.strategyAnalysisService.strategyAnalysis.details.forEach((key, i) => {
+      if (key.title.toUpperCase() === this.swotTypes.toUpperCase()) {
+        switch (this.strategyAnalysisService.strategyAnalysis.details[i].title) {
+          case 'Strengths':
+            this.strength = this.strategyAnalysisService.strategyAnalysis.details[i].criterias;
+            this.index = this.strength.indexOf(event.value);
+            if (this.index !== -1) {
+              this.strength.splice(this.index, 1);
+            }
+            break;
+          case 'Weaknesses':
+            this.weaknesses = this.strategyAnalysisService.strategyAnalysis.details[i].criterias;
+            this.index = this.weaknesses.indexOf(event.value);
+            if (this.index !== -1) {
+              this.weaknesses.splice(this.index, 1);
+            }
+            break;
+          case 'Opportunities':
+            this.opportunities = this.strategyAnalysisService.strategyAnalysis.details[i].criterias;
+            this.index = this.opportunities.indexOf(event.value);
+            if (this.index !== -1) {
+              this.opportunities.splice(this.index, 1);
+            }
+            break;
+          case 'Threats':
+            this.threats = this.strategyAnalysisService.strategyAnalysis.details[i].criterias;
+            this.index = this.threats.indexOf(event.value);
+            if (this.index !== -1) {
+              this.threats.splice(this.index, 1);
+            }
+            break;
+        }
+      }
+    });
   }
 }

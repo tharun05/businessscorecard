@@ -111,28 +111,17 @@
                                 style="cursor: pointer"
                                 [class.active]="selectedIndex === i"
                             ><a> {{item.name}}</a>
-                              <div class="float-right"><a (click)="isEdit(item.name)"> <i
-                                class="fa fa-pencil-square-o"></i></a> <a
-                                (click)="add(item.name)">
-                                <i class="fa fa-plus"></i></a></div>
+                              <!--<div class="float-right"><a (click)="isEdit(item.name)"> <i-->
+                                <!--class="fa fa-pencil-square-o"></i></a> <a-->
+                                <!--(click)="add(item.name)">-->
+                                <!--<i class="fa fa-plus"></i></a></div>-->
                             </li>
                           </ul>
                         </div>
                         <div class="col-md-8">
-                          <!--<textarea placeholder="Enter Strength..." formControlName="details" name="details"-->
-                                    <!--[readOnly]="isEditMode"-->
-                                    <!--[ngClass]="{'readonlyMode': isEditMode === true }"></textarea>-->
-                          <tag-input formControlName="details" name="details"></tag-input>
-                          <div class="form-group row m-0">
-                            <div class="col-sm-12 pr-0">
-                              <!--<div class="float-right">-->
-                                <!--<button type="button" class="btn btn-cancel"> Cancel</button>-->
-                                <!--<button type="button" class="btn btn-pink" (click)="updateSwotAnalysis()">-->
-                                  <!--Save-->
-                                <!--</button>-->
-                              <!--</div>-->
-                            </div>
-                          </div>
+                          <tag-input formControlName="details" name="details" (onAdd)="onItemAdded($event)"
+                                     placeholder='Add SWOT'
+                                     (onRemove)="onItemRemoved($event)"></tag-input>
                         </div>
                       </div>
                     </div>
@@ -146,9 +135,7 @@
                             </div>
                             <div id="collapseStrength" class="collapse show" aria-labelledby="strength"
                                  data-parent="#accordionCriteria">
-                              <div class="card-body">
-                                <p>{{strength}}</p>
-                              </div>
+                              <span class="badge badge-pill badge-default" *ngFor="let item of strength">{{item}}</span>
                             </div>
                           </div>
                           <div class="criteriaTbs">
@@ -159,9 +146,8 @@
                             </div>
                             <div id="collapseWeakness" class="collapse" aria-labelledby="weakness"
                                  data-parent="#accordionCriteria">
-                              <div class="card-body">
-                                <p>{{weaknesses}}</p>
-                              </div>
+                              <span class="badge badge-secondary"
+                                    *ngFor="let item of weaknesses">{{item}}</span>
                             </div>
                           </div>
                           <div class="criteriaTbs">
@@ -172,9 +158,8 @@
                             </div>
                             <div id="collapseOpportunities" class="collapse" aria-labelledby="opportunities"
                                  data-parent="#accordionCriteria">
-                              <div class="card-body">
-                                <p>{{opportunities}}</p>
-                              </div>
+                              <span class="badge badge-secondary"
+                                    *ngFor="let item of opportunities">{{item}}</span>
                             </div>
                           </div>
                           <div class="criteriaTbs">
@@ -185,9 +170,8 @@
                             </div>
                             <div id="collapseThreats" class="collapse" aria-labelledby="threats"
                                  data-parent="#accordionCriteria">
-                              <div class="card-body">
-                                <p>{{threats}}</p>
-                              </div>
+                              <span class="badge badge-pill badge-default"
+                                    *ngFor="let item of threats">{{item}}</span>
                             </div>
                           </div>
                         </div>
