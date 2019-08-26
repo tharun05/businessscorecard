@@ -4,6 +4,7 @@ import {StrategyService} from '../strategy.service';
 import {Subject} from 'rxjs';
 import {ToastrService} from 'ngx-toastr';
 import {EmitterService} from '../../shared/emitter.service';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-strategy-projection',
@@ -97,12 +98,14 @@ export class StrategyProjectionComponent implements OnDestroy, OnInit {
     this.createform();
     this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength: 10
+      pageLength: 1
     };
     this.getOrgUnitCode();
     this.getAllStrategyProjection();
     this.getProductGroup();
     this.getProductGrp();
+    (<any>$('#selector')).DataTable();
+
 
   }
 

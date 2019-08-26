@@ -1179,6 +1179,302 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
   justify-content: center;
   height: 15rem;
 }
+/* ============================ MeasureTbs ====================== */
 
+.measureTbs {
+
+}
+.measureTbs .nav-pills .nav-link.active, .measureTbs .nav-pills .show>.nav-link {
+  background-image: linear-gradient(90deg, #ff3c69, #fa678a);
+  color: #ffffff;
+}
+.measureTbs .nav-pills .nav-link {
+  background-color:#edc2d3;
+  color: #000;
+  border: 1px solid #ff0000;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  font-size: 14px;
+  text-transform: uppercase;
+  margin-right: 3px;
+}
+.measureTbs .tab-content {
+  background: #ffffff;
+  padding: 20px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+
+.measureTitle_BG {
+  background-color: #ffffff;
+  border: 2px solid #7254ab;
+  margin: 20px 0px;
+  padding: 20px;
+}
+
+.measureTitle_BG .titleBG {
+  background-color: #7254ab;
+  color: #ffffff;
+  font-size: 12px;
+  border-radius: 30px;
+  padding: 10px 28px;
+  text-align: center;
+  display: table;
+  margin-top: -40px;
+  width: 250px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.initiativesBG {
+  background-color: #ee6ca0;
+  text-align: center;
+  color: #ffffff;
+  border-radius: 3px;
+  font-size: 12px;
+  padding: 7px 0px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.linkToObjectivesDiv .linkToObjectivesSearch .linkObjectTitle {
+  background-color: #dbc8fe;
+  font-size: 16px;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 35px;
+}
+.linkToObjectivesDiv .linkToObjectivesSearch .linkObjectCreateLink {
+  background-color: #dbc8fe;
+  font-size: 16px;
+  text-align: center;
+  line-height: 35px;
+  cursor: pointer;
+}
+.linkToObjectivesDiv .linkToObjectivesSearch select {
+  background-color: #f7f7f7;
+  font-size: 14px;
+  margin-bottom: 0px;
+  max-height: 35px;
+  min-height: 35px;
+  border-radius: 0px;
+}
+.linkToObjectivesDiv .linkToObjectivesFilds .measurePinkBoxs {
+  background-color: #fb557c;
+  padding: 10px;
+  text-align: center;
+  font-size: 16px;
+  color: #ffffff;
+  margin-bottom: 15px;
+  border-radius: 3px;
+}
+
+.linkToObjectivesDiv .linkToObjectivesFilds .objectiveBlueBoxs {
+  background-color: #7254ab;
+  padding: 10px;
+  text-align: center;
+  font-size: 16px;
+  color: #ffffff;
+  margin-bottom: 15px;
+  border-radius: 3px;
+}
+.linkToObjectivesDiv .linkToObjectivesFilds .objectivePinkBoxs {
+  background-color: #fb557c;
+  padding: 10px;
+  text-align: center;
+  font-size: 16px;
+  color: #ffffff;
+  margin-bottom: 15px;
+  border-radius: 3px;
+}
+
+.linkToObjectivesDiv .linkToObjectivesFilds .objectivePinkBoxs i {
+  padding: 0px 7px;
+  cursor: pointer;
+}
+
+
+.verticalMenu {
+
+}
+.verticalMenu .nav-link[data-toggle].collapsed:after {
+  content: "\f107";
+  float: right;
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 18px;
+}
+.verticalMenu .nav-link[data-toggle]:not(.collapsed):after {
+  content: "\f106";
+  float: right;
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 18px;
+}
+.verticalMenu .nav-link{
+  background-color: #f8d1da;
+  padding: 10px 20px;
+  font-size: 14px;
+  margin: 5px 0px;
+  border-radius: 3px;
+  color: #000000;
+}
+
+.verticalMenu .nav-item .collapse .flex-column .nav-link {
+  background-color: #dbc8fe;
+}
+.verticalMenu .nav-item .collapse .flex-column .nav-item #submenu1sub1 .flex-column .nav-link {
+  background-color: #e9e1f6;
+}
+.verticalMenu .nav-link .iConsHover {
+  float: right;
+  margin-top: -5px;
+  margin-right: -17px;
+}
+.verticalMenu .nav-link .iConsHover i {
+  border: 1px solid #bfade1;
+  padding: 7px 10px;
+  font-size: 16px;
+  margin: 0px 2px;
+}
+.verticalMenu .nav-link .iConsHover {
+  display:none;
+}
+.verticalMenu .nav-link:hover .iConsHover {
+  display:block;
+}
+
+.seriesListDiv .seriesListCheckBox {
+  background-color: #dbc8fe;
+  font-size: 16px;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 35px;
+}
+.seriesListDiv .seriesListAction {
+  background-color: #dbc8fe;
+  font-size: 16px;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 35px;
+}
+.seriesListDiv select {
+  background-color: #f7f7f7;
+  font-size: 14px;
+  margin-bottom: 0px;
+  max-height: 35px;
+  min-height: 35px;
+  border-radius: 0px;
+}
+.seriesListDiv .custom-checkbox {
+  display: inline-grid;
+}
+.seriesListDiv .custom-control-label::after {
+  width: 1.5rem;
+  height: 1.5rem;
+  top: 6px;
+  cursor:pointer;
+}
+
+.seriesListDiv .custom-control-label::before {
+  width: 1.5rem;
+  height: 1.5rem;
+  top: 6px;
+  background-color: #ffffff;
+  border: 1px solid #c0a3f5;
+  border-radius: 0px;
+}
+
+
+.seriesListDiv .custom-control-input:checked~.custom-control-label::before {
+
+  background-color: #7254ab !important;
+}
+
+.seriesListDiv .seriesListAction i {
+  background-color: #cebcef;
+  padding: 5px 10px;
+  border: 1px solid #bfade1;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.seriesListDiv .bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
+  width: 100% !important;
+}
+.createSeries .custom-control-label::before {
+  top: .10rem;
+}
+.createSeries .custom-control-label::after {
+  top: .10rem;
+}
+
+.calculationSearch .calculationTitle {
+  background-color: #dbc8fe;
+  font-size: 16px;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 35px;
+}
+
+.calculationSearch select {
+  background-color: #f7f7f7;
+  font-size: 14px;
+  margin-bottom: 0px;
+  max-height: 35px;
+  min-height: 35px;
+  border-radius: 0px;
+}
+
+.calculationSeries {
+  border: 2px solid #7254ab;
+  padding-bottom: 10px;
+  font-size: 14px;
+  line-height: 30px;
+}
+.calculationSeries select {
+  background-color: #7254ab;
+  color: #ffffff;
+  border-radius: 0px;
+  border: 0px;
+  border-right: 1px solid #ffffff;
+  margin-bottom: 0px;
+}
+.calculationSeries h6  {
+  font-size: 14px;
+  text-align: center;
+  line-height: 100px;
+}
+.seriesEvaluationBG {
+  background-color: #dbc8fe;
+  padding: 5px 20px;
+}
+.seriesEvaluationBG .custom-control-label::before {
+  top: .10rem;
+  background-color: #ffffff;
+}
+.seriesEvaluationBG .custom-control-label::after {
+  top: .10rem;
+}
+
+.seriesEvaluationBG label {
+  cursor: pointer;
+}
+.seriesEvaluation select {
+  background-color: #dbc8fe;
+  border-radius: 0px;
+  border: 0px;
+  min-height: 35px;
+}
 
 

@@ -29,6 +29,7 @@ export class StrategyAnalysisComponent implements OnInit {
   type: any;
   isEditMode = true;
   index: any;
+  swotId: any;
 
   years = [{id: 1, name: '2016'},
     {id: 1, name: '2017'},
@@ -95,7 +96,7 @@ export class StrategyAnalysisComponent implements OnInit {
     description: [''],
     version: [''],
     details: [''],
-    additionalFields: [''],
+    additionalFields: [[]],
     year: ['', [Validators.required]],
     type: ['']
 
@@ -120,7 +121,6 @@ export class StrategyAnalysisComponent implements OnInit {
     details: [''],
     additionalFields: [''],
     year: ['', [Validators.required]]
-
   });
 
 
@@ -195,35 +195,51 @@ export class StrategyAnalysisComponent implements OnInit {
     this.strategyAnalysisService.strategyAnalysis.type = type;
     this.strategyAnalysisService.strategyAnalysis.year = this.strategyAnalysisFrom.value.year;
     this.strategyAnalysisService.strategyAnalysis.version = this.strategyAnalysisFrom.value.version;
-    this.strategyService.saveSwotAnalysis(this.strategyAnalysisService.strategyAnalysis).subscribe((data: any) => {
-      console.log(data);
-    });
+    this.strategyAnalysisFrom.value.details = this.strategyAnalysisService.strategyAnalysis.details;
+    this.strategyAnalysisFrom.value.type = 'SWOT';
+    if (this.swotId) {
+      this.strategyAnalysisFrom.value.id = this.swotId;
+      this.strategyService.UpdateSwotAnalysis(this.strategyAnalysisFrom.value, this.swotId).subscribe((data: any) => {
+        this.toastrService.success('Updated Successfully');
+      }, error => {
+        this.toastrService.error('Unable to update, Please try again later');
+      });
+    } else {
+      this.strategyService.saveSwotAnalysis(this.strategyAnalysisService.strategyAnalysis).subscribe((data: any) => {
+        if (!!data.id) {
+          this.swotId = data.id;
+          this.toastrService.success('Saved Successfully');
+        }
+      }, error => {
+        this.toastrService.error('Error While saving Swot Analysis');
+      });
+    }
+
   }
 
   getStrategyAnalysis(event: any, type: any) {
     this.reqObj = this.strategyAnalysisFrom.value;
     this.strategyService.getStretegyAnalysis(this.reqObj.orgCode, this.reqObj.year, this.reqObj.version, type)
       .subscribe((data: any) => {
-
+        this.swotId = data.id;
         this.strategyAnalysisService.strategyAnalysis = Object.assign({}, data);
         this.strategyAnalysisService.strategyAnalysis.details.forEach((key, i) => {
           const strategyDetails = this.strategyAnalysisService.strategyAnalysis;
           switch (this.strategyAnalysisService.strategyAnalysis.details[i].title) {
             case 'Strengths':
-              this.strength = strategyDetails.details[i].criterias.toString();
+              this.strength = strategyDetails.details[i].criterias;
               break;
             case 'Weaknesses':
-              this.weaknesses = strategyDetails.details[i].criterias.toString();
+              this.weaknesses = strategyDetails.details[i].criterias;
               break;
             case 'Opportunities':
-              this.opportunities = strategyDetails.details[i].criterias.toString();
+              this.opportunities = strategyDetails.details[i].criterias;
               break;
             case 'Threats':
-              this.threats = strategyDetails.details[i].criterias.toString();
+              this.threats = strategyDetails.details[i].criterias;
               break;
           }
         });
-        // this.activateClass(0, 'STRENGTHS');
 
       });
   }
@@ -286,26 +302,25 @@ export class StrategyAnalysisComponent implements OnInit {
     });
   }
 
-  onItemAdded(event?: any) {
+  onItemAdded(event: any) {
     this.strategyAnalysisService.strategyAnalysis.details.forEach((key, i) => {
       if (key.title.toUpperCase() === this.swotTypes.toUpperCase()) {
         switch (this.strategyAnalysisService.strategyAnalysis.details[i].title) {
           case 'Strengths':
             this.strength = this.strategyAnalysisService.strategyAnalysis.details[i].criterias;
-            this.strengths = this.strength.push(event.value);
-
+            this.strengths = this.strength.push(event.value ? event.value : event);
             break;
           case 'Weaknesses':
             this.weaknesses = this.strategyAnalysisService.strategyAnalysis.details[i].criterias;
-            this.weaknessess = this.weaknesses.push(event.value);
+            this.weaknessess = this.weaknesses.push(event.value ? event.value : event);
             break;
           case 'Opportunities':
             this.opportunities = this.strategyAnalysisService.strategyAnalysis.details[i].criterias;
-            this.opportunitiess = this.opportunities.push(event.value);
+            this.opportunitiess = this.opportunities.push(event.value ? event.value : event);
             break;
           case 'Threats':
             this.threats = this.strategyAnalysisService.strategyAnalysis.details[i].criterias;
-            this.threatss = this.threats.push(event.value);
+            this.threatss = this.threats.push(event.value ? event.value : event);
             break;
         }
 
@@ -319,28 +334,28 @@ export class StrategyAnalysisComponent implements OnInit {
         switch (this.strategyAnalysisService.strategyAnalysis.details[i].title) {
           case 'Strengths':
             this.strength = this.strategyAnalysisService.strategyAnalysis.details[i].criterias;
-            this.index = this.strength.indexOf(event.value);
+            this.index = this.strength.indexOf(event);
             if (this.index !== -1) {
               this.strength.splice(this.index, 1);
             }
             break;
           case 'Weaknesses':
             this.weaknesses = this.strategyAnalysisService.strategyAnalysis.details[i].criterias;
-            this.index = this.weaknesses.indexOf(event.value);
+            this.index = this.weaknesses.indexOf(event);
             if (this.index !== -1) {
               this.weaknesses.splice(this.index, 1);
             }
             break;
           case 'Opportunities':
             this.opportunities = this.strategyAnalysisService.strategyAnalysis.details[i].criterias;
-            this.index = this.opportunities.indexOf(event.value);
+            this.index = this.opportunities.indexOf(event);
             if (this.index !== -1) {
               this.opportunities.splice(this.index, 1);
             }
             break;
           case 'Threats':
             this.threats = this.strategyAnalysisService.strategyAnalysis.details[i].criterias;
-            this.index = this.threats.indexOf(event.value);
+            this.index = this.threats.indexOf(event);
             if (this.index !== -1) {
               this.threats.splice(this.index, 1);
             }

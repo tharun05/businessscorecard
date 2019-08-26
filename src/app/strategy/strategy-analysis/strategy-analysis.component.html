@@ -135,7 +135,7 @@
                             </div>
                             <div id="collapseStrength" class="collapse show" aria-labelledby="strength"
                                  data-parent="#accordionCriteria">
-                              <span class="badge badge-pill badge-default" *ngFor="let item of strength">{{item}}</span>
+                              <span class="badge badge-pill badge-default" *ngFor="let item of strength">{{item.value ? item.value : item}}</span>
                             </div>
                           </div>
                           <div class="criteriaTbs">
@@ -146,8 +146,8 @@
                             </div>
                             <div id="collapseWeakness" class="collapse" aria-labelledby="weakness"
                                  data-parent="#accordionCriteria">
-                              <span class="badge badge-secondary"
-                                    *ngFor="let item of weaknesses">{{item}}</span>
+                              <span class="badge badge-pill badge-default"
+                                    *ngFor="let item of weaknesses">{{item.value ? item.value : item}}</span>
                             </div>
                           </div>
                           <div class="criteriaTbs">
@@ -159,7 +159,7 @@
                             <div id="collapseOpportunities" class="collapse" aria-labelledby="opportunities"
                                  data-parent="#accordionCriteria">
                               <span class="badge badge-secondary"
-                                    *ngFor="let item of opportunities">{{item}}</span>
+                                    *ngFor="let item of opportunities">{{item.value ? item.value : item}}</span>
                             </div>
                           </div>
                           <div class="criteriaTbs">
@@ -171,7 +171,7 @@
                             <div id="collapseThreats" class="collapse" aria-labelledby="threats"
                                  data-parent="#accordionCriteria">
                               <span class="badge badge-pill badge-default"
-                                    *ngFor="let item of threats">{{item}}</span>
+                                    *ngFor="let item of threats">{{item.value ? item.value : item}}</span>
                             </div>
                           </div>
                         </div>

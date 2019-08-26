@@ -6,6 +6,7 @@ import {StrategyService} from '../strategy.service';
 import {ToastrService} from 'ngx-toastr';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Utilities} from '../../shared/utils/utilities.service';
+import {EmitterService} from '../../shared/emitter.service';
 
 @Component({
   selector: 'app-corporate-structure',
@@ -42,7 +43,8 @@ export class CorporateStructureComponent implements OnInit {
               private router: Router,
               private appService: AppService,
               private  utilities: Utilities,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              private emitterService: EmitterService) {
     this.corporateStructure = new CorporateStructure();
     this.utilities.fieldCriterias();
   }
@@ -132,6 +134,7 @@ export class CorporateStructureComponent implements OnInit {
   getCodeAndName() {
     this.strategyService.getCodeAndName().subscribe((data: any) => {
       this.codeAndName = data;
+      this.emitterService.broadcastParentOrgUnitCode(this.codeAndName);
     });
   }
 

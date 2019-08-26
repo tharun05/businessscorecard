@@ -14,7 +14,6 @@ export class StrategyService {
   private organizationById_url = '/organization';
   private organizationCodeAndName_url = '/organization/codeAndName';
   private strategyAnalysis_url = '/strategy/analysis';
-  private getStrategyAnalysis_url = '/strategy/analysis';
   private strategyProjection_url = '/strategicprojection';
   private valueGap_url = '/valuegap';
   private valueGapCloser_url = '/valuegapcloser';
@@ -63,7 +62,11 @@ export class StrategyService {
   }
 
   getStretegyAnalysis(code: any, year: any, version: any, type: any) {
-    return this.http.get(this.getStrategyAnalysis_url + '/' + code + '/' + year + '/' + version + '/' + type, null);
+    return this.http.get(this.strategyAnalysis_url + '/' + code + '/' + year + '/' + version + '/' + type, null);
+  }
+
+  UpdateSwotAnalysis(data: any, id: any) {
+    return this.http.put(this.strategyAnalysis_url + '/' + id, data);
   }
 
   getRevenueAmount(code: any, productgrp: any, year: any, version: any) {

@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import {Injectable} from '@angular/core';
+import {Subject} from 'rxjs';
 
 @Injectable()
 export class EmitterService {
@@ -10,12 +10,26 @@ export class EmitterService {
   private productGroupSource = new Subject<any>();
   productGroup$ = this.productGroupSource.asObservable();
 
+  private parentOrgCodeSource = new Subject<any>();
+  parentOrgCodeSource$ = this.parentOrgCodeSource.asObservable();
+
+  private orgUnitCodeSource = new Subject<any>();
+  orgCodeSource$ = this.orgUnitCodeSource.asObservable();
+
   broadcastloginComplete(loginStatus: string) {
     this.loginCompleteSource.next(loginStatus);
   }
 
   broadcastProductGroup(productGrp: any) {
     this.productGroupSource.next(productGrp);
+  }
+
+  broadcastParentOrgUnitCode(ParentOrgCodes: any) {
+    this.parentOrgCodeSource.next(ParentOrgCodes);
+  }
+
+  broadcastOrgUnitCode(OrgUnitCodes: any) {
+    this.orgUnitCodeSource.next(OrgUnitCodes);
   }
 
 }
