@@ -61,11 +61,19 @@ export class StrategyService {
     return this.http.post(this.strategyAnalysis_url, data);
   }
 
+  savePestelAnalysis(data: any) {
+    return this.http.post(this.strategyAnalysis_url, data);
+  }
+
   getStretegyAnalysis(code: any, year: any, version: any, type: any) {
     return this.http.get(this.strategyAnalysis_url + '/' + code + '/' + year + '/' + version + '/' + type, null);
   }
 
   UpdateSwotAnalysis(data: any, id: any) {
+    return this.http.put(this.strategyAnalysis_url + '/' + id, data);
+  }
+
+  UpdatePestelAnalysis(data: any, id: any) {
     return this.http.put(this.strategyAnalysis_url + '/' + id, data);
   }
 

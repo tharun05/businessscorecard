@@ -26,10 +26,18 @@ export class StrategyAnalysisComponent implements OnInit {
   threats: any;
   threatss: any;
   swotTypes: any = 'Strengths';
+  pestalType: any = 'Political Analysis';
   type: any;
   isEditMode = true;
   index: any;
   swotId: any;
+  pestalId: any;
+  politicalAnalysis: any;
+  economicAnalysis: any;
+  socialAnalysis: any;
+  technologicalAnalysis: any;
+  environmentalAnalysis: any;
+  legalAnalysis: any;
 
   years = [{id: 1, name: '2016'},
     {id: 1, name: '2017'},
@@ -108,10 +116,22 @@ export class StrategyAnalysisComponent implements OnInit {
     description: [''],
     version: [''],
     details: [''],
-    additionalFields: [''],
-    year: ['', [Validators.required]]
+    additionalFields: [[]],
+    year: ['', [Validators.required]],
+    type: ['']
 
   });
+
+  // pestalAnalysisFrom = this.formBuilder.group({
+  //   orgCode: ['', [Validators.required]],
+  //   orgName: ['', [Validators.required]],
+  //   description: [''],
+  //   version: [''],
+  //   details: [''],
+  //   additionalFields: [''],
+  //   year: ['', [Validators.required]]
+  //
+  // });
 
   portersFiveForceAnalysisFrom = this.formBuilder.group({
     orgCode: ['', [Validators.required]],
@@ -214,7 +234,36 @@ export class StrategyAnalysisComponent implements OnInit {
         this.toastrService.error('Error While saving Swot Analysis');
       });
     }
+  }
 
+  //save pestel analysis
+
+  savePestelAnalysis(type: any) {
+    this.strategyAnalysisService.pestalAnalysis.orgCode = this.pestalAnalysisFrom.value.orgCode;
+    this.strategyAnalysisService.pestalAnalysis.description = this.pestalAnalysisFrom.value.description;
+    this.strategyAnalysisService.pestalAnalysis.orgName = this.pestalAnalysisFrom.value.orgName;
+    this.strategyAnalysisService.pestalAnalysis.type = type;
+    this.strategyAnalysisService.pestalAnalysis.year = this.strategyAnalysisFrom.value.year;
+    this.strategyAnalysisService.pestalAnalysis.version = this.pestalAnalysisFrom.value.version;
+    this.strategyAnalysisFrom.value.details = this.strategyAnalysisService.pestalAnalysis.details;
+    this.strategyAnalysisFrom.value.type = 'PESTEL';
+    if (this.pestalId) {
+      this.pestalAnalysisFrom.value.id = this.swotId;
+      this.strategyService.UpdatePestelAnalysis(this.pestalAnalysisFrom.value, this.pestalId).subscribe((data: any) => {
+        this.toastrService.success('Updated Successfully');
+      }, error => {
+        this.toastrService.error('Unable to update, Please try again later');
+      });
+    } else {
+      this.strategyService.savePestelAnalysis(this.strategyAnalysisService.pestalAnalysis).subscribe((data: any) => {
+        if (!!data.id) {
+          this.pestalId = data.id;
+          this.toastrService.success('Saved Successfully');
+        }
+      }, error => {
+        this.toastrService.error('Error While saving Swot Analysis');
+      });
+    }
   }
 
   getStrategyAnalysis(event: any, type: any) {
@@ -277,7 +326,6 @@ export class StrategyAnalysisComponent implements OnInit {
 
   activateClass(index: any, name: string) {
     this.swotTypes = name;
-    this.selectedIndex = index;
     this.strategyAnalysisService.strategyAnalysis.details.forEach((key, i) => {
       if (key.title.toUpperCase() === this.swotTypes.toUpperCase()) {
         switch (this.strategyAnalysisService.strategyAnalysis.details[i].title) {
@@ -296,6 +344,40 @@ export class StrategyAnalysisComponent implements OnInit {
           case 'Threats':
             this.threats = this.strategyAnalysisService.strategyAnalysis.details[i].criterias;
             this.strategyAnalysisFrom.controls.details.setValue(this.threats);
+            break;
+        }
+      }
+    });
+  }
+
+  getPestelAnalysis(index: any, name: string) {
+    this.pestalType = name;
+    this.strategyAnalysisService.pestalAnalysis.details.forEach((key, i) => {
+      if (key.title.toUpperCase() === this.pestalType.toUpperCase()) {
+        switch (this.strategyAnalysisService.pestalAnalysis.details[i].title) {
+          case 'Political Analysis':
+            this.politicalAnalysis = this.strategyAnalysisService.pestalAnalysis.details[i].criterias;
+            this.pestalAnalysisFrom.controls.details.setValue(this.politicalAnalysis);
+            break;
+          case 'Economic Analysis':
+            this.economicAnalysis = this.strategyAnalysisService.pestalAnalysis.details[i].criterias;
+            this.pestalAnalysisFrom.controls.details.setValue(this.economicAnalysis);
+            break;
+          case 'Social Analysis':
+            this.socialAnalysis = this.strategyAnalysisService.pestalAnalysis.details[i].criterias;
+            this.pestalAnalysisFrom.controls.details.setValue(this.socialAnalysis);
+            break;
+          case 'Technological Analysis':
+            this.technologicalAnalysis = this.strategyAnalysisService.pestalAnalysis.details[i].criterias;
+            this.pestalAnalysisFrom.controls.details.setValue(this.technologicalAnalysis);
+            break;
+          case 'Environmental Analysis':
+            this.environmentalAnalysis = this.strategyAnalysisService.pestalAnalysis.details[i].criterias;
+            this.pestalAnalysisFrom.controls.details.setValue(this.environmentalAnalysis);
+            break;
+          case 'Legal Analysis':
+            this.legalAnalysis = this.strategyAnalysisService.pestalAnalysis.details[i].criterias;
+            this.pestalAnalysisFrom.controls.details.setValue(this.legalAnalysis);
             break;
         }
       }
@@ -328,36 +410,121 @@ export class StrategyAnalysisComponent implements OnInit {
     });
   }
 
+  addPestel(event: any) {
+    this.strategyAnalysisService.pestalAnalysis.details.forEach((key, i) => {
+      if (key.title.toUpperCase() === this.pestalType.toUpperCase()) {
+        switch (this.strategyAnalysisService.pestalAnalysis.details[i].title) {
+          case 'Political Analysis':
+            this.politicalAnalysis = this.strategyAnalysisService.pestalAnalysis.details[i].criterias;
+            this.strengths = this.politicalAnalysis.push(event.value ? event.value : event);
+            break;
+          case 'Economic Analysis':
+            this.economicAnalysis = this.strategyAnalysisService.pestalAnalysis.details[i].criterias;
+            this.weaknessess = this.economicAnalysis.push(event.value ? event.value : event);
+            break;
+          case 'Social Analysis':
+            this.socialAnalysis = this.strategyAnalysisService.pestalAnalysis.details[i].criterias;
+            this.opportunitiess = this.socialAnalysis.push(event.value ? event.value : event);
+            break;
+          case 'Technological Analysis':
+            this.technologicalAnalysis = this.strategyAnalysisService.pestalAnalysis.details[i].criterias;
+            this.threatss = this.technologicalAnalysis.push(event.value ? event.value : event);
+            break;
+          case 'Environmental Analysis':
+            this.environmentalAnalysis = this.strategyAnalysisService.pestalAnalysis.details[i].criterias;
+            this.threatss = this.environmentalAnalysis.push(event.value ? event.value : event);
+            break;
+          case 'Legal Analysis':
+            this.legalAnalysis = this.strategyAnalysisService.pestalAnalysis.details[i].criterias;
+            this.threatss = this.legalAnalysis.push(event.value ? event.value : event);
+            break;
+        }
+
+      }
+    });
+  }
+
   onItemRemoved(event: any) {
     this.strategyAnalysisService.strategyAnalysis.details.forEach((key, i) => {
       if (key.title.toUpperCase() === this.swotTypes.toUpperCase()) {
         switch (this.strategyAnalysisService.strategyAnalysis.details[i].title) {
           case 'Strengths':
             this.strength = this.strategyAnalysisService.strategyAnalysis.details[i].criterias;
-            this.index = this.strength.indexOf(event);
+            this.index = this.strength.indexOf(event.value ? event.value : event);
             if (this.index !== -1) {
               this.strength.splice(this.index, 1);
             }
             break;
           case 'Weaknesses':
             this.weaknesses = this.strategyAnalysisService.strategyAnalysis.details[i].criterias;
-            this.index = this.weaknesses.indexOf(event);
+            this.index = this.weaknesses.indexOf(event.value ? event.value : event);
             if (this.index !== -1) {
               this.weaknesses.splice(this.index, 1);
             }
             break;
           case 'Opportunities':
             this.opportunities = this.strategyAnalysisService.strategyAnalysis.details[i].criterias;
-            this.index = this.opportunities.indexOf(event);
+            this.index = this.opportunities.indexOf(event.value ? event.value : event);
             if (this.index !== -1) {
               this.opportunities.splice(this.index, 1);
             }
             break;
           case 'Threats':
             this.threats = this.strategyAnalysisService.strategyAnalysis.details[i].criterias;
-            this.index = this.threats.indexOf(event);
+            this.index = this.threats.indexOf(event.value ? event.value : event);
             if (this.index !== -1) {
               this.threats.splice(this.index, 1);
+            }
+            break;
+        }
+      }
+    });
+  }
+
+  deletePestel(event: any) {
+    this.strategyAnalysisService.pestalAnalysis.details.forEach((key, i) => {
+      if (key.title.toUpperCase() === this.pestalType.toUpperCase()) {
+        switch (this.strategyAnalysisService.pestalAnalysis.details[i].title) {
+          case 'Political Analysis':
+            this.politicalAnalysis = this.strategyAnalysisService.pestalAnalysis.details[i].criterias;
+            this.index = this.politicalAnalysis.indexOf(event.value ? event.value : event);
+            if (this.index !== -1) {
+              this.politicalAnalysis.splice(this.index, 1);
+            }
+            break;
+          case 'Economic Analysis':
+            this.economicAnalysis = this.strategyAnalysisService.pestalAnalysis.details[i].criterias;
+            this.index = this.economicAnalysis.indexOf(event.value ? event.value : event);
+            if (this.index !== -1) {
+              this.economicAnalysis.splice(this.index, 1);
+            }
+            break;
+          case 'Social Analysis':
+            this.socialAnalysis = this.strategyAnalysisService.pestalAnalysis.details[i].criterias;
+            this.index = this.socialAnalysis.indexOf(event.value ? event.value : event);
+            if (this.index !== -1) {
+              this.socialAnalysis.splice(this.index, 1);
+            }
+            break;
+          case 'Technological Analysis':
+            this.technologicalAnalysis = this.strategyAnalysisService.pestalAnalysis.details[i].criterias;
+            this.index = this.technologicalAnalysis.indexOf(event.value ? event.value : event);
+            if (this.index !== -1) {
+              this.technologicalAnalysis.splice(this.index, 1);
+            }
+            break;
+          case 'Environmental Analysis':
+            this.environmentalAnalysis = this.strategyAnalysisService.pestalAnalysis.details[i].criterias;
+            this.index = this.environmentalAnalysis.indexOf(event.value ? event.value : event);
+            if (this.index !== -1) {
+              this.environmentalAnalysis.splice(this.index, 1);
+            }
+            break;
+          case 'Legal Analysis':
+            this.legalAnalysis = this.strategyAnalysisService.pestalAnalysis.details[i].criterias;
+            this.index = this.legalAnalysis.indexOf(event.value ? event.value : event);
+            if (this.index !== -1) {
+              this.legalAnalysis.splice(this.index, 1);
             }
             break;
         }

@@ -38,6 +38,7 @@ import {ThemesComponent} from './bsc/themes/themes.component';
 import {ObjectivesComponent} from './bsc/objectives/objectives.component';
 import {BscService} from './bsc/bsc.service';
 import { MeasuresComponent } from './bsc/measures/measures.component';
+import { InitiativeComponent } from './initiatives/initiative/initiative.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { MeasuresComponent } from './bsc/measures/measures.component';
     ModalComponent,
     ThemesComponent,
     ObjectivesComponent,
-    MeasuresComponent
+    MeasuresComponent,
+    InitiativeComponent
     // SubUnitComponent
   ],
   imports: [

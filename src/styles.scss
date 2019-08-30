@@ -423,7 +423,7 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
 }
 
 .boxs_BG .titleBG {
-  background-color: #7254ab;
+  background-color: #15d6ce;
   color: #ffffff;
   font-size: 12px;
   border-radius: 30px;
@@ -1179,25 +1179,30 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
   justify-content: center;
   height: 15rem;
 }
+
 /* ============================ MeasureTbs ====================== */
 
 .measureTbs {
 
 }
-.measureTbs .nav-pills .nav-link.active, .measureTbs .nav-pills .show>.nav-link {
-  background-image: linear-gradient(90deg, #ff3c69, #fa678a);
+
+.measureTbs .nav-pills .nav-link.active, .measureTbs .nav-pills .show > .nav-link {
+  background-image: linear-gradient(90deg, #15d6ce, #1abab3);
   color: #ffffff;
+  border: 1px solid #15d6ce;
 }
+
 .measureTbs .nav-pills .nav-link {
-  background-color:#edc2d3;
-  color: #000;
-  border: 1px solid #ff0000;
+  background-color: #805ce6;
+  color: #fff;
+  border: 1px solid #734ddf;
   border-bottom-right-radius: 0px;
   border-bottom-left-radius: 0px;
   font-size: 14px;
   text-transform: uppercase;
   margin-right: 3px;
 }
+
 .measureTbs .tab-content {
   background: #ffffff;
   padding: 20px;
@@ -1209,13 +1214,13 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
 
 .measureTitle_BG {
   background-color: #ffffff;
-  border: 2px solid #7254ab;
+  border: 2px solid #15d6ce;
   margin: 20px 0px;
   padding: 20px;
 }
 
 .measureTitle_BG .titleBG {
-  background-color: #7254ab;
+  background-color: #15d6ce;
   color: #ffffff;
   font-size: 12px;
   border-radius: 30px;
@@ -1229,7 +1234,7 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
 }
 
 .initiativesBG {
-  background-color: #ee6ca0;
+  background-color: #805ce6;
   text-align: center;
   color: #ffffff;
   border-radius: 3px;
@@ -1246,6 +1251,7 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
   text-align: center;
   line-height: 35px;
 }
+
 .linkToObjectivesDiv .linkToObjectivesSearch .linkObjectCreateLink {
   background-color: #dbc8fe;
   font-size: 16px;
@@ -1253,6 +1259,7 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
   line-height: 35px;
   cursor: pointer;
 }
+
 .linkToObjectivesDiv .linkToObjectivesSearch select {
   background-color: #f7f7f7;
   font-size: 14px;
@@ -1261,8 +1268,9 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
   min-height: 35px;
   border-radius: 0px;
 }
+
 .linkToObjectivesDiv .linkToObjectivesFilds .measurePinkBoxs {
-  background-color: #fb557c;
+  background-color: #805ce6;
   padding: 10px;
   text-align: center;
   font-size: 16px;
@@ -1272,7 +1280,7 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
 }
 
 .linkToObjectivesDiv .linkToObjectivesFilds .objectiveBlueBoxs {
-  background-color: #7254ab;
+  background-color: #15d6ce;
   padding: 10px;
   text-align: center;
   font-size: 16px;
@@ -1280,8 +1288,9 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
   margin-bottom: 15px;
   border-radius: 3px;
 }
+
 .linkToObjectivesDiv .linkToObjectivesFilds .objectivePinkBoxs {
-  background-color: #fb557c;
+  background-color: #805ce6;
   padding: 10px;
   text-align: center;
   font-size: 16px;
@@ -1299,6 +1308,7 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
 .verticalMenu {
 
 }
+
 .verticalMenu .nav-link[data-toggle].collapsed:after {
   content: "\f107";
   float: right;
@@ -1310,6 +1320,7 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
   -moz-osx-font-smoothing: grayscale;
   font-size: 18px;
 }
+
 .verticalMenu .nav-link[data-toggle]:not(.collapsed):after {
   content: "\f106";
   float: right;
@@ -1321,8 +1332,9 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
   -moz-osx-font-smoothing: grayscale;
   font-size: 18px;
 }
-.verticalMenu .nav-link{
-  background-color: #f8d1da;
+
+.verticalMenu .nav-link {
+  background-color: #c0edeb;
   padding: 10px 20px;
   font-size: 14px;
   margin: 5px 0px;
@@ -1331,27 +1343,32 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
 }
 
 .verticalMenu .nav-item .collapse .flex-column .nav-link {
-  background-color: #dbc8fe;
+  background-color: #dcf6f4;
 }
+
 .verticalMenu .nav-item .collapse .flex-column .nav-item #submenu1sub1 .flex-column .nav-link {
-  background-color: #e9e1f6;
+  background-color: #dbebea;
 }
+
 .verticalMenu .nav-link .iConsHover {
   float: right;
   margin-top: -5px;
   margin-right: -17px;
 }
+
 .verticalMenu .nav-link .iConsHover i {
   border: 1px solid #bfade1;
   padding: 7px 10px;
   font-size: 16px;
   margin: 0px 2px;
 }
+
 .verticalMenu .nav-link .iConsHover {
-  display:none;
+  display: none;
 }
+
 .verticalMenu .nav-link:hover .iConsHover {
-  display:block;
+  display: block;
 }
 
 .seriesListDiv .seriesListCheckBox {
@@ -1361,6 +1378,7 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
   text-align: center;
   line-height: 35px;
 }
+
 .seriesListDiv .seriesListAction {
   background-color: #dbc8fe;
   font-size: 16px;
@@ -1368,6 +1386,7 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
   text-align: center;
   line-height: 35px;
 }
+
 .seriesListDiv select {
   background-color: #f7f7f7;
   font-size: 14px;
@@ -1376,14 +1395,16 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
   min-height: 35px;
   border-radius: 0px;
 }
+
 .seriesListDiv .custom-checkbox {
   display: inline-grid;
 }
+
 .seriesListDiv .custom-control-label::after {
   width: 1.5rem;
   height: 1.5rem;
   top: 6px;
-  cursor:pointer;
+  cursor: pointer;
 }
 
 .seriesListDiv .custom-control-label::before {
@@ -1396,7 +1417,7 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
 }
 
 
-.seriesListDiv .custom-control-input:checked~.custom-control-label::before {
+.seriesListDiv .custom-control-input:checked ~ .custom-control-label::before {
 
   background-color: #7254ab !important;
 }
@@ -1412,9 +1433,11 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
 .seriesListDiv .bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
   width: 100% !important;
 }
+
 .createSeries .custom-control-label::before {
   top: .10rem;
 }
+
 .createSeries .custom-control-label::after {
   top: .10rem;
 }
@@ -1437,32 +1460,37 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
 }
 
 .calculationSeries {
-  border: 2px solid #7254ab;
+  border: 2px solid #805ce6;
   padding-bottom: 10px;
   font-size: 14px;
   line-height: 30px;
 }
+
 .calculationSeries select {
-  background-color: #7254ab;
+  background-color: #805ce6;
   color: #ffffff;
   border-radius: 0px;
   border: 0px;
   border-right: 1px solid #ffffff;
   margin-bottom: 0px;
 }
-.calculationSeries h6  {
+
+.calculationSeries h6 {
   font-size: 14px;
   text-align: center;
   line-height: 100px;
 }
+
 .seriesEvaluationBG {
   background-color: #dbc8fe;
   padding: 5px 20px;
 }
+
 .seriesEvaluationBG .custom-control-label::before {
   top: .10rem;
   background-color: #ffffff;
 }
+
 .seriesEvaluationBG .custom-control-label::after {
   top: .10rem;
 }
@@ -1470,6 +1498,7 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
 .seriesEvaluationBG label {
   cursor: pointer;
 }
+
 .seriesEvaluation select {
   background-color: #dbc8fe;
   border-radius: 0px;
@@ -1477,4 +1506,25 @@ input:focus, input.form-control:focus, select:focus, select.form-control:focus, 
   min-height: 35px;
 }
 
+.bscCustomSwitch .custom-switch label {
+  line-height: 23px;
+  cursor: pointer;
+}
 
+.bscCustomSwitch .custom-switch .custom-control-label::before {
+  background-color: #ffffff;
+}
+
+.bscCustomSwitch .custom-switch .custom-control-input:checked ~ .custom-control-label::before {
+  background-color: #ac97e9;
+}
+
+.bscCustomSwitch .custom-switch .custom-control-label::after {
+  top: calc(.25rem + 0px);
+  box-shadow: 1px 0px 3px;
+}
+
+.slider.slider-horizontal {
+  width: 100% !important;
+  height: 20px;
+}

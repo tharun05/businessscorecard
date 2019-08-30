@@ -104,9 +104,6 @@ export class StrategyProjectionComponent implements OnDestroy, OnInit {
     this.getAllStrategyProjection();
     this.getProductGroup();
     this.getProductGrp();
-    (<any>$('#selector')).DataTable();
-
-
   }
 
 

@@ -16,6 +16,9 @@ export class EmitterService {
   private orgUnitCodeSource = new Subject<any>();
   orgCodeSource$ = this.orgUnitCodeSource.asObservable();
 
+  private emptyProjSource = new Subject<any>();
+  emptyProjSource$ = this.emptyProjSource.asObservable();
+
   broadcastloginComplete(loginStatus: string) {
     this.loginCompleteSource.next(loginStatus);
   }
@@ -30,6 +33,10 @@ export class EmitterService {
 
   broadcastOrgUnitCode(OrgUnitCodes: any) {
     this.orgUnitCodeSource.next(OrgUnitCodes);
+  }
+
+  broadcastemptyProj(show: any) {
+    this.emptyProjSource.next(show);
   }
 
 }

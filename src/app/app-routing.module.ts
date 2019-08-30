@@ -16,12 +16,14 @@ import {PerspectiveComponent} from './bsc/perspective/perspective.component';
 import {ThemesComponent} from './bsc/themes/themes.component';
 import {ObjectivesComponent} from './bsc/objectives/objectives.component';
 import {MeasuresComponent} from './bsc/measures/measures.component';
+import {InitiativeComponent} from './initiatives/initiative/initiative.component';
 
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
   {path: 'login', component: LoginComponent},
   {path: 'dashboard', component: DashboardComponent},
+  {path: 'initiative', component: InitiativeComponent},
   {
     path: 'strategy', component: StrategyComponent,
     children: [

@@ -32,6 +32,12 @@ export class HeaderComponent implements OnInit {
         {id: 3, name: 'Themes', route: '/bsc/themes'},
         {id: 4, name: 'Objectives', route: '/bsc/objectives'},
         {id: 5, name: 'Measures', route: '/bsc/measures'}]
+    }, {
+      id: 3,
+      name: 'initiatives',
+      link: '/initiative',
+      children: [
+        {id: 1, name: 'initiative', route: '/initiative', class: 'active'}]
     }];
 
   constructor(private apexService: ApexService) {
