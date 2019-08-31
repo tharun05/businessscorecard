@@ -40,6 +40,8 @@ import {ObjectivesComponent} from './bsc/objectives/objectives.component';
 import {BscService} from './bsc/bsc.service';
 import {MeasuresComponent} from './bsc/measures/measures.component';
 import {InitiativeComponent} from './initiatives/initiative/initiative.component';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { Ng5SliderModule } from 'ng5-slider';
 
 @NgModule({
   declarations: [
@@ -77,6 +79,8 @@ import {InitiativeComponent} from './initiatives/initiative/initiative.component
     HttpClientModule,
     DataTablesModule,
     TagInputModule,
+    Ng5SliderModule,
+    BsDatepickerModule.forRoot(),
     ToastrModule.forRoot({positionClass: 'toast-top-center', timeOut: 2000})
   ],
   providers: [
