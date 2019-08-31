@@ -34,6 +34,10 @@ export class BscService {
     return this.http.put(this.theme_url + '/' + id, data);
   }
 
+  updatePerspective(data: any, id: any) {
+    return this.http.put(this.perspective_url + '/' + id, data);
+  }
+
   getBalanceScoreCard() {
     return this.http.get(this.balanceScoreCard_url, null);
   }
