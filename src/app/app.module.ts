@@ -24,6 +24,7 @@ import {DataTablesModule} from 'angular-datatables';
 import {EmitterService} from './shared/emitter.service';
 import {AuthService} from './auth/auth.service';
 import {StrategyService} from './strategy/strategy.service';
+import {InitiativeService} from './initiatives/initiative.service';
 import {HttpService} from './shared/http.service';
 import {HttpClientModule} from '@angular/common/http';
 import {ToastrModule} from 'ngx-toastr';
@@ -37,8 +38,8 @@ import {ModalComponent} from './shared/components/modal/modal.component';
 import {ThemesComponent} from './bsc/themes/themes.component';
 import {ObjectivesComponent} from './bsc/objectives/objectives.component';
 import {BscService} from './bsc/bsc.service';
-import { MeasuresComponent } from './bsc/measures/measures.component';
-import { InitiativeComponent } from './initiatives/initiative/initiative.component';
+import {MeasuresComponent} from './bsc/measures/measures.component';
+import {InitiativeComponent} from './initiatives/initiative/initiative.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +79,18 @@ import { InitiativeComponent } from './initiatives/initiative/initiative.compone
     TagInputModule,
     ToastrModule.forRoot({positionClass: 'toast-top-center', timeOut: 2000})
   ],
-  providers: [WINDOW_PROVIDERS, AppService, EmitterService, AuthService, StrategyService, HttpService, Utilities, StrategyAnalysisService, BscService],
+  providers: [
+    WINDOW_PROVIDERS,
+    AppService,
+    EmitterService,
+    AuthService,
+    StrategyService,
+    HttpService,
+    Utilities,
+    StrategyAnalysisService,
+    BscService,
+    InitiativeService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

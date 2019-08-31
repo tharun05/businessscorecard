@@ -38,7 +38,7 @@ export class ValueGapComponent implements OnInit {
     {yearRef: 'Y+5'}
   ];
   valueGapId: any;
-  currenctUnit = [
+  currencyUnit = [
     {id: 1, type: 'USD'},
     {id: 1, type: 'GBP'},
     {id: 1, type: 'INR'},
