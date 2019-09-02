@@ -1,0 +1,170 @@
+<div class="container-fluid gryBG">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="boxs_BG mt-5">
+        <div class="titleBG"> PERSPECTIVES</div>
+        <form [formGroup]="perspectiveForm">
+          <div class="row mt-4">
+            <div class="col-md-6">
+              <div class="form-group row m-0">
+                <label for="" class="col-sm-6 col-form-label col-form-label-sm">Type </label>
+                <div class="col-sm-6 pr-0">
+                  <span class="form-control col-form-label-sm disabledText"> Perspective </span>
+                </div>
+              </div>
+              <div class="form-group row m-0">
+                <label for="" class="col-sm-6 col-form-label col-form-label-sm">Organization Unit Code <span
+                  class="red">*</span></label>
+                <div class="col-sm-6 input_i_icon pr-0">
+                  <select name="items" placeholder="Parent Organization Unit Code" (change)="getCodeName()"
+                          formControlName='orgCode' name='orgCode' class="form-control col-form-label-sm">
+                    <option selected value="" disabled>Select Unit Code</option>
+                    <option *ngFor="let codeName of codeAndName" [value]="codeName.code">
+                      {{ codeName.code}}
+                    </option>
+                  </select>
+                  <img src="img/icons/input_i_icon.png" width="12" height="12"/></div>
+              </div>
+              <div class="form-group row m-0">
+                <label for="" class="col-sm-6 col-form-label col-form-label-sm">Scorecard Code <span
+                  class="red">*</span></label>
+                <div class="col-sm-6 input_i_icon pr-0">
+                  <select class="form-control col-form-label-sm" (change)="getScorecardName()" formControlName="scCode"
+                          name="scCode">
+                    <option>Select Unit Code</option>
+                    <option *ngFor="let item of balanceScoreCardData">{{item.code}}</option>
+                  </select>
+                  <img src="img/icons/input_i_icon.png" width="12" height="12"/></div>
+              </div>
+
+              <div class="form-group row m-0">
+                <label for="" class="col-sm-6 col-form-label col-form-label-sm">Perspective Code <span
+                  class="red">*</span></label>
+                <div class="col-sm-6 input_i_icon pr-0">
+                  <img src="img/icons/input_i_icon.png" width="12" height="12"/>
+                  <input type="text" class="form-control col-form-label-sm" id="" placeholder="Perspective Code"
+                         formControlName="code" name="code">
+                </div>
+              </div>
+              <div class="form-group row m-0">
+                <label for="" class="col-sm-6 col-form-label col-form-label-sm red">Info 1</label>
+                <div class="col-sm-6 pr-0">
+                  <input type="text" class="form-control col-form-label-sm" id="" placeholder=" ">
+                </div>
+              </div>
+              <div class="form-group row m-0">
+                <label for="" class="col-sm-6 col-form-label col-form-label-sm red">Info 3 </label>
+                <div class="col-sm-6 pr-0">
+                  <input type="text" class="form-control col-form-label-sm" id="" placeholder=" ">
+                </div>
+              </div>
+
+            </div>
+
+            <div class="col-md-6">
+              <br/>
+              <br/>
+
+              <div class="form-group row m-0">
+                <label for="" class="col-sm-6 col-form-label col-form-label-sm">Organization Unit Name </label>
+                <div class="col-sm-6 pr-0">
+                  <input type="text" class="form-control col-form-label-sm" readonly
+                         formControlName="orgName" name="orgName"
+                         placeholder="Organization Unit Name">
+                </div>
+              </div>
+              <div class="form-group row m-0">
+                <label for="" class="col-sm-6 col-form-label col-form-label-sm">Scorecard Name </label>
+                <div class="col-sm-6 pr-0">
+                  <input type="text" class="form-control col-form-label-sm" id="" placeholder="Scorecard Name" readonly
+                         formControlName="scName" name="scName">
+                </div>
+              </div>
+              <div class="form-group row m-0">
+                <label for="" class="col-sm-6 col-form-label col-form-label-sm">Perspective Name </label>
+                <div class="col-sm-6 pr-0">
+                  <input type="text" class="form-control col-form-label-sm" placeholder="Perspective Name"
+                         formControlName="name" name="name">
+                </div>
+              </div>
+
+              <div class="form-group row m-0">
+                <label for="" class="col-sm-6 col-form-label col-form-label-sm red">Info 2</label>
+                <div class="col-sm-6 pr-0">
+                  <input type="text" class="form-control col-form-label-sm" placeholder=" ">
+                </div>
+              </div>
+              <div class="form-group row m-0">
+                <label for="" class="col-sm-6 col-form-label col-form-label-sm red">Info 4 </label>
+                <div class="col-sm-6 pr-0">
+                  <input type="text" class="form-control col-form-label-sm" placeholder=" ">
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+          <div class="row mt-4">
+            <div class="col-md-12">
+              <div class="float-right">
+                <button type="button" class="btn btn-cancel"> Cancel</button>
+                <button type="button" class="btn btn-save" (click)="savePerspective()"> Save</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="boxs_BG mt-5" style="min-height: 330px;">
+        <div class="titleBG"> G100: Group Company</div>
+
+        <div class="row mt-4">
+          <div class="col-md-12">
+            <div class="perapectivesRightTitle">
+              <span> S1: BSC </span>
+            </div>
+          </div>
+        </div>
+
+          <div class="row mt-4">
+              <div class="col-md-6 offset-md-2" *ngFor="let item of PerspectivesByCode">
+                <div class="perapectivesBSCNames" *ngIf="item.name !== null && item.name !== ''"> {{item.name}}
+                  <div class="perapectivesBSCNamesHover"><i class="fa fa-pencil-square-o"
+                                                            (click)="editPerspective(item)"></i> <i
+                    class="fa fa-trash" (click)="deletePerspective(item.id)"></i>
+                  </div>
+                </div>
+              </div>
+
+
+            <div class="col-md-6 offset-md-2" *ngIf="showDefaultProjType">
+              <div class="perapectivesBSCNames"> Financial
+                <div class="perapectivesBSCNamesHover"><i class="fa fa-pencil-square-o"></i> <i class="fa fa-trash"></i>
+                </div>
+              </div>
+              <div class="perapectivesBSCNames"> Customer
+                <div class="perapectivesBSCNamesHover"><i class="fa fa-pencil-square-o"></i> <i class="fa fa-trash"></i>
+                </div>
+              </div>
+              <div class="perapectivesBSCNames"> Internal Process
+                <div class="perapectivesBSCNamesHover"><i class="fa fa-pencil-square-o"></i> <i class="fa fa-trash"></i>
+                </div>
+              </div>
+              <div class="perapectivesBSCNames"> Learning & Growth
+                <div class="perapectivesBSCNamesHover"><i class="fa fa-pencil-square-o"></i> <i class="fa fa-trash"></i>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div *ngIf="PerspectivesByCode.length === 0 && !showDefaultProjType" class="center-alignContent">
+            <p>Please Add Perspectives or select Scorecard Code</p>
+          </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,383 @@
+<div class="container-fluid gryBG">
+
+  <form [formGroup]="initiativeForm">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="boxs_BG mt-5">
+          <div class="titleBG"> Initiative</div>
+          <div class="row mt-4">
+            <div class="col-md-6 pr-0">
+              <div class="form-group row m-0">
+                <label for="" class="col-sm-5 col-form-label col-form-label-sm">Organization Unit Code </label>
+                <div class="col-sm-7">
+                  <select name="items" placeholder="Parent Organization Unit Code"
+                          (change)="getCodeNameForPestal()"
+                          formControlName='orgCode' name='orgCode' class="form-control col-form-label-sm">
+                    <option selected value="" disabled>Select Unit Code</option>
+                    <option *ngFor="let codeName of codeAndName" [value]="codeName.code">
+                      {{ codeName.code}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group row m-0">
+                <label for="" class="col-sm-5 col-form-label col-form-label-sm">Scorecard Code </label>
+                <div class="col-sm-7">
+                  <select class="form-control col-form-label-sm" (change)="getScorecardName()" formControlName="scCode"
+                          name="scCode">
+                    <option>Select Unit Code</option>
+                    <option *ngFor="let item of balanceScoreCardData">{{item.code}}</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group row m-0">
+                <label for="" class="col-sm-5 col-form-label col-form-label-sm">Initiative Code </label>
+                <div class="col-sm-7">
+                  <input type="text" class="form-control col-form-label-sm" id="" placeholder="Initiative Code"
+                         formControlName="code">
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 ">
+              <div class="form-group row m-0">
+                <label for="" class="col-sm-5 col-form-label col-form-label-sm">Organization Unit Name </label>
+                <div class="col-sm-7 pr-0">
+                  <input type="text" class="form-control col-form-label-sm" formControlName="orgName" name="orgName"
+                         readonly
+                         placeholder="Organization Unit Name"></div>
+              </div>
+
+
+              <div class="form-group row m-0">
+                <label for="" class="col-sm-5 col-form-label col-form-label-sm">Scorecard Name </label>
+                <div class="col-sm-7 pr-0">
+                  <input type="text" class="form-control col-form-label-sm" id="" placeholder="Scorecard Name" readonly
+                         formControlName="scName" name="scName">
+                </div>
+              </div>
+              <div class="form-group row m-0">
+                <label for="" class="col-sm-5 col-form-label col-form-label-sm">Initiative Name </label>
+                <div class="col-sm-7 pr-0">
+                  <input type="text" class="form-control col-form-label-sm" id="" placeholder="Initiative Name"
+                         formControlName="name" name="name">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mt-4">
+            <div class="col-md-12">
+              <div class="form-group row m-0">
+                <label for="" class="col-sm-2 col-form-label col-form-label-sm mr-4">Description </label>
+                <div class="col-sm-9 offset-md-1 p-0 ml-5">
+                <textarea class="form-control col-form-label-sm" id="" placeholder="Description"
+                          formControlName="description" name="description"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-md-7">
+        <div class="boxs_BG">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group row m-0">
+                <label for="" class="col-sm-3 col-form-label col-form-label-sm">Reporting Frequency </label>
+                <div class="col-sm-9 pr-0">
+                  <select class="form-control col-form-label-sm" formControlName="reportingFrequency"
+                          name="reportingFrequency">
+                    <option selected value="" disabled>Reporting Frequency</option>
+                    <option *ngFor="let item of reportingFrequency" [value]="item.frequency">
+                      {{ item.frequency}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="form-group row m-0">
+                <label for="" class="col-sm-3 col-form-label col-form-label-sm">Duration (Hours & Days) </label>
+                <div class="col-sm-9 pr-0">
+
+
+                  <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                      <a class="nav-link active show" href="#profile" role="tab" data-toggle="tab"
+                         aria-selected="true">
+                        <div class="custom-control custom-radio mr-3">
+                          <input type="radio" class="custom-control-input" id="newProjectWith4Perapectives"
+                                 name="balancedScorecardRadios" checked>
+                          <label class="custom-control-label cursorPointer" for="newProjectWith4Perapectives">
+                            Hours </label>
+                        </div>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#buzz" role="tab" data-toggle="tab" aria-selected="false">
+                        <div class="custom-control custom-radio mr-3">
+                          <input type="radio" class="custom-control-input" id="emptyProject"
+                                 name="balancedScorecardRadios">
+                          <label class="custom-control-label cursorPointer" for="emptyProject"> Days </label>
+                        </div>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#references" role="tab" data-toggle="tab">
+                        <div class="custom-control custom-radio mr-3">
+                          <input type="radio" class="custom-control-input" id="strategyWizard"
+                                 name="balancedScorecardRadios">
+                          <label class="custom-control-label cursorPointer" for="strategyWizard"> From To
+                            Dates </label>
+                        </div>
+                      </a>
+                    </li>
+                  </ul>
+
+                  <!-- Tab panes -->
+                  <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade in active show" id="profile">
+
+                      <div class="form-group row m-0 mt-3">
+                        <label for="" class="col-sm-2 col-form-label col-form-label-sm">Hours </label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control col-form-label-sm" id="" placeholder="Hours"
+                                 formControlName="durationInHours" name="durationInHours">
+                        </div>
+                      </div>
+
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="buzz">
+
+                      <div class="form-group row m-0 mt-3">
+                        <label for="" class="col-sm-2 col-form-label col-form-label-sm">Days </label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control col-form-label-sm" id="" placeholder="Days"
+                                 formControlName="durationInDays" name="durationInDays">
+                        </div>
+                      </div>
+
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="references">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group row m-0 mt-3">
+                            <label for="" class="col-sm-2 col-form-label col-form-label-sm">From </label>
+                            <div class="col-sm-10">
+                              <input type="text" class="form-control mb-3" placeholder="From" bsDatepicker
+                                     [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY', containerClass: 'theme-blue' }"
+                                     formControlName="startDate" name="startDate" [minDate]="minDate"/>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-md-6">
+                          <div class="form-group row m-0 mt-3">
+                            <label for="" class="col-sm-2 col-form-label col-form-label-sm">To </label>
+                            <div class="col-sm-10">
+                              <input type="text" class="form-control mb-3" placeholder="To" bsDatepicker
+                                     [minDate]="minDate"
+                                     [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY', containerClass: 'theme-blue' }"
+                                     formControlName="endDate" name="endDate"/>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+
+              <div class="row mt-4">
+                <div class="col-md-6 pr-0">
+                  <div class="form-group row m-0">
+                    <label for="" class="col-sm-5 col-form-label col-form-label-sm">Budget </label>
+                    <div class="col-sm-7">
+                      <input type="text" class="form-control col-form-label-sm" id="" placeholder="Budget"
+                             formControlName="budget" name="budget">
+                    </div>
+                  </div>
+
+                  <div class="form-group row m-0">
+                    <label for="" class="col-sm-5 col-form-label col-form-label-sm">Currency </label>
+                    <div class="col-sm-7">
+                      <select class="form-control col-form-label-sm" formControlName="currencyType" name="currencyType">
+                        <option selected value="" disabled>Select curreny Unit</option>
+                        <option *ngFor="let unit of currencyUnit" [value]="unit.type">
+                          {{ unit.type}}
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+
+
+                </div>
+                <div class="col-md-6 ">
+
+                  <div class="form-group row m-0">
+                    <label for="" class="col-sm-5 col-form-label col-form-label-sm">Owner </label>
+                    <div class="col-sm-7 pr-0">
+                      <select class="form-control col-form-label-sm" formControlName="owner" name="owner">
+                        <option>Select Owner</option>
+                        <option>Owner 1</option>
+                        <option>Owner 2</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group row m-0">
+                    <label for="" class="col-sm-5 col-form-label col-form-label-sm">Attachments </label>
+                    <div class="col-sm-7 pr-0">
+                      <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="customFileLang" lang="es"
+                               formControlName="attachmentUrls" name="attachmentUrls">
+                        <label class="custom-file-label" for="customFileLang">Upload..</label>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+
+            </div>
+
+          </div>
+
+          <div class="row mt-3">
+            <div class="col-md-12">
+              <div class="form-group row m-0">
+                <label for="" class="col-sm-3 col-form-label col-form-label-sm">Planed Mager Expendature </label>
+                <div class="col-sm-9 pr-0">
+                  <textarea class="form-control col-form-label-sm" id=""
+                            placeholder="Planed Mager Expendature" formControlName="plannedMajorExpenditure"
+                            name="plannedMajorExpenditure"></textarea>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+
+
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="boxs_BG">
+
+          <!-- <div class="titleBG"> Values </div> -->
+
+
+          <div class="row">
+            <div class="col-md-12 mt-3">
+
+              <div class="form-group row m-0">
+                <label for="" class="col-sm-5 col-form-label col-form-label-sm">Analysis </label>
+                <div class="col-sm-7 pr-0">
+                    <textarea class="form-control col-form-label-sm" id="" placeholder="Analysis"
+                              formControlName="analysis" name="analysis"></textarea>
+                </div>
+              </div>
+
+              <div class="form-group row m-0">
+                <label for="" class="col-sm-5 col-form-label col-form-label-sm">Recommendation </label>
+                <div class="col-sm-7 pr-0">
+                  <textarea class="form-control col-form-label-sm" id="" placeholder="Recommendation"
+                            formControlName="recommendations"></textarea>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="boxs_BG">
+
+          <!-- <div class="titleBG"> Value Gap Closer </div> -->
+
+          <div class="row">
+            <div class="col-md-5">
+              <div class="form-group row m-0">
+                <label for="" class="col-sm-3 col-form-label col-form-label-sm">Status </label>
+                <div class="col-sm-9 pr-0">
+                  <select class="form-control col-form-label-sm">
+                    <option>Select Status</option>
+                    <option>Status 1</option>
+                    <option>Status 2</option>
+                  </select>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="col-md-7">
+              <div class="form-group row m-0">
+                <label for="" class="col-sm-3 col-form-label col-form-label-sm">Percent Complete </label>
+                <div class="col-sm-9 pr-0">
+                  <ng5-slider [options]="options"
+                              (valueChange)="percentCompleted($event)"></ng5-slider>
+                </div>
+              </div>
+
+              <div class="custom-control custom-checkbox ml-3 mt-4">
+                <input type="checkbox" class="custom-control-input" id="completed" formControlName="completed"
+                       (change)="isCompleted($event)"
+                       name="completed">
+                <label class="custom-control-label cursorPointer" for="completed">Completed</label>
+              </div>
+
+              <div class="form-group row m-0 mt-3">
+                <label for="" class="col-sm-2 col-form-label col-form-label-sm">Completed Date </label>
+                <div class="col-sm-5 pr-0">
+                  <input type="text" class="form-control mb-3" placeholder="To" bsDatepicker
+                         [minDate]="minDate"
+                         [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY', containerClass: 'theme-blue' }"
+                         placement="top"
+                         formControlName="completionDate" name="completionDate"/>
+                </div>
+
+                <div class="col-sm-5 pr-0">
+                  <button type="button" class="btn btn-cancel"> Cancel</button>
+                  <button type="button" class="btn btn-save" (click)="saveInitiative()"> Save</button>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+
+        </div>
+      </div>
+
+    </div>
+  </form>
+</div>
