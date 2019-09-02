@@ -244,7 +244,7 @@
             </div>
 
             <div class="row" formArrayName="values"
-                 *ngFor="let cd of valueGapForm.controls.values.controls;let i=index">
+                 *ngFor="let cd of valueGapForm.controls.values['controls'];let i=index">
               <div class="col-md-4">
                 <div class="valuesBg"><p> {{cd.get('yearRef').value}} </p></div>
               </div>

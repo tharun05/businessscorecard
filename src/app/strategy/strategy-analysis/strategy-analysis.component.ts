@@ -166,7 +166,7 @@ export class StrategyAnalysisComponent implements OnInit {
     });
   }
 
-  getCodeName(code: any) {
+  getCodeName() {
     this.codeAndName.forEach((val, key) => {
       if (this.strategyAnalysisFrom.controls.orgCode.value === val.code) {
         this.orgName = val.name.toUpperCase();
@@ -184,7 +184,7 @@ export class StrategyAnalysisComponent implements OnInit {
     });
   }
 
-  getCodeNameForPortersFiveForce(code: any) {
+  getCodeNameForPortersFiveForce() {
     this.codeAndName.forEach((val, key) => {
       if (this.portersFiveForceAnalysisFrom.controls.orgCode.value === val.code) {
         this.orgName = val.name.toUpperCase();
@@ -194,7 +194,7 @@ export class StrategyAnalysisComponent implements OnInit {
   }
 
 
-  getCodeNameForFiveCorner(code: any) {
+  getCodeNameForFiveCorner() {
     this.codeAndName.forEach((val, key) => {
       if (this.fourCornerAnalysisFrom.controls.orgCode.value === val.code) {
         this.orgName = val.name.toUpperCase();

@@ -86,7 +86,7 @@
                       class="red">*</span></label>
                     <div class="col-sm-7 input_i_icon">
                       <select class="form-control col-form-label-sm" formControlName="year" name="year"
-                              (change)="getRevenueGapAmt($event)">
+                              (change)="getRevenueGapAmt()">
                         <option selected value="" disabled>Select Year</option>
                         <option *ngFor="let year of years" [value]="year.name">
                           {{ year.name}}

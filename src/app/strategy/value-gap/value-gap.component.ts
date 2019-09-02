@@ -79,7 +79,7 @@ export class ValueGapComponent implements OnInit {
     });
   }
 
-  getCodeName(code: any) {
+  getCodeName() {
     this.codeAndName.forEach((val, key) => {
       if (this.valueGapForm.controls.orgCode.value === val.code) {
         this.orgName = val.name.toUpperCase();
@@ -88,7 +88,7 @@ export class ValueGapComponent implements OnInit {
     });
   }
 
-  getCodeNameForPestal(code: any) {
+  getCodeNameForPestal() {
     this.codeAndName.forEach((val, key) => {
       if (this.valueGapForm.controls.orgCode.value === val.code) {
         this.orgName = val.name.toUpperCase();

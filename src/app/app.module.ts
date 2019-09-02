@@ -40,8 +40,8 @@ import {ObjectivesComponent} from './bsc/objectives/objectives.component';
 import {BscService} from './bsc/bsc.service';
 import {MeasuresComponent} from './bsc/measures/measures.component';
 import {InitiativeComponent} from './initiatives/initiative/initiative.component';
-import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
-import { Ng5SliderModule } from 'ng5-slider';
+import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
+import {Ng5SliderModule} from 'ng5-slider';
 
 @NgModule({
   declarations: [
@@ -68,7 +68,6 @@ import { Ng5SliderModule } from 'ng5-slider';
     ObjectivesComponent,
     MeasuresComponent,
     InitiativeComponent
-    // SubUnitComponent
   ],
   imports: [
     BrowserModule,

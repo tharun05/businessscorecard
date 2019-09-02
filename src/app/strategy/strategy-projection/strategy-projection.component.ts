@@ -113,7 +113,7 @@ export class StrategyProjectionComponent implements OnDestroy, OnInit {
     });
   }
 
-  getCodeName(code: any) {
+  getCodeName() {
     this.codeAndName.forEach((val, key) => {
       if (this.strategyProjectionForm.controls.orgCode.value === val.code) {
         this.orgName = val.name.toUpperCase();

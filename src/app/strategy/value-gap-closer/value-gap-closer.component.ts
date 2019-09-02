@@ -55,7 +55,7 @@ export class ValueGapCloserComponent implements OnInit {
     });
   }
 
-  getCodeName(code: any) {
+  getCodeName() {
     this.codeAndName.forEach((val, key) => {
       if (this.valueGapCloserForm.controls.orgCode.value === val.code) {
         this.orgName = val.name.toUpperCase();
@@ -64,7 +64,7 @@ export class ValueGapCloserComponent implements OnInit {
     });
   }
 
-  getCodeNameForPestal(code: any) {
+  getCodeNameForPestal() {
     this.codeAndName.forEach((val, key) => {
       if (this.valueGapCloserForm.controls.orgCode.value === val.code) {
         this.orgName = val.name.toUpperCase();

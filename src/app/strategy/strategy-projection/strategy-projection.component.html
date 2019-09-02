@@ -252,7 +252,7 @@
               </div>
             </div>
             <div class="row" formArrayName="values"
-                 *ngFor="let cd of strategyProjectionForm.controls.values.controls;let i=index">
+                 *ngFor="let cd of strategyProjectionForm.controls.values['controls'];let i=index">
               <div class="col-md-3">
                 <div class="valuesBg"><p> {{cd.get('yearRef').value}} </p></div>
               </div>
